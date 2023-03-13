@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +38,7 @@
 <body>
 	
 	<form method="post" action="/board/writeBoard" onsubmit="return confirm('등록하시겠습니까?');" name="registration" enctype="multipart/form-data">
+    			<input type="hidden" value="${principal.uName }" name ="username">
     			<table style= "text-align: center; boarder: 1px solid #dddddd; margin-left:auto; margin-right:auto;">
 	    	    	<thead>
 		    	    	<tr>

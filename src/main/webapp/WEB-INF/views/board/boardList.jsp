@@ -184,7 +184,7 @@
 			</div>
 			
 				<div class= "fr">
-						<input type="button" class="written" onclick="location.href = '/board/writeBoard'" value="글쓰기"  name="write">
+						<input type="button" class="written" onclick="location.href = '/board/beforeWriteBoard'" value="글쓰기"  name="write">
 				</div>
 			
 		</div>
