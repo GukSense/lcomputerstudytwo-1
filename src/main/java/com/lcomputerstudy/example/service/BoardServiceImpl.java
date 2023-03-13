@@ -12,8 +12,14 @@ import com.lcomputerstudy.example.mapper.BoardMapper;
 public class BoardServiceImpl implements BoardService{
 	
 	@Autowired  BoardMapper  boardmapper;
+	
 	@Override
 	public List<Board> selectBoardList(){
 		return boardmapper.selectBoardList();
 	}
+	@Override
+	public void insertBoard(Board board) {
+		boardmapper.insertBoard(board);
+	}
+	
 }

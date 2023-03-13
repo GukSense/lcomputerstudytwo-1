@@ -26,7 +26,8 @@ dependencies {
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'javax.servlet:jstl:1.2'
 	
-	compileOnly('org.spring.framework.boot:spring-boot-devtools')
+	compileOnly("org.springframework.boot:spring-boot-devtools")
+	
 }
 
 test {

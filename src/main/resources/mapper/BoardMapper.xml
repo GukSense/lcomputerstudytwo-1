@@ -2,10 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mabatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lcomputerstudy.example.mapper.BoardMapper">
 	<select id="selectBoardList" resultType="Board">
-		SELECT 		b_id as bID,
+		SELECT 		b_idx as bIDX,
 					b_title as bTitle,
 					b_content as bContent,
-					b_writer as bWriter
+					b_writer as bWriter,
+					b_category as bCategory
 		FROM		lc_board	
 	</select>
+	<!-- 글쓰기 등록 -->
+	<insert id="insertBoard" parameterType="Board">
+		INSERT INTO lc_board (
+			b_datetime,
+			b_category,
+			b_title,
+			b_content,
+			b_writer						
+		)
+		VALUES(
+			NOW(),
+			#{bCategory},
+			#{bTitle},
+			#{bContent},
+			#{user.uName}			
+		)		
+	</insert>
+	
+	
+	
 </mapper>
