@@ -9,6 +9,7 @@
 					b_category as bCategory
 		FROM		lc_board	
 	</select>
+<<<<<<< Updated upstream
 	<!-- 글쓰기 등록 -->
 	<insert id="insertBoard" parameterType="Board">
 		INSERT INTO lc_board (
@@ -29,4 +30,18 @@
 	
 	
 	
+=======
+	<!-- 글쓰기 게시판등록 -->
+	<insert id="insertBoard" parameterType="Board">
+		INSERT INTO lc_board(b_title, b_content, b_writer, b_datetime,u_idx)
+		VALUES	(
+			#{bTitle},
+			#{bContent},
+			#{bWriter},
+			NOW(),
+			#{user.u_idx}			
+		)
+	</insert>
+	
+>>>>>>> Stashed changes
 </mapper>

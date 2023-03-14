@@ -27,7 +27,11 @@
 	        <sec:authorize access="isAuthenticated()">
 	        	<a href="/user/info">내 정보</a>
 	        	<a href="/admin">관리자</a>
+<<<<<<< Updated upstream
 	        	<a href="/board/boardList">게시판</a>	        	
+=======
+	        	<button type="button" onclick="location.href='/Board/beforeInsertBoard'">글쓰기</button>
+>>>>>>> Stashed changes
 	        </sec:authorize>
         </div>
 </body>
