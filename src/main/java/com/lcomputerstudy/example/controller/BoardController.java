@@ -36,7 +36,7 @@ public class BoardController {
 	public String insertBoard(Board board) {
 //		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		UserDetails userDetails = (UserDetails)principal; 
-//		String username = ((UserDetails) principal).getUsername(); 
+//		String username = ((UserDetails) principal).getUsername();  
 		board.setbWriter("username");
 		boardService.insertBoard(board);
 		return "/board/boardList";
