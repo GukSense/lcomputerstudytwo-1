@@ -11,26 +11,9 @@ public class Board {
 	
 	
 	
-<<<<<<< Updated upstream
-	
+
 	public User getUser() {
 		return user;
-=======
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	public String getbCategory() {
-		return bCategory;
-	}
-	public void setbCategory(String bCategory) {
-		this.bCategory = bCategory;
-	}
-	public int getbId() {
-		return bId;
->>>>>>> Stashed changes
 	}
 	public void setUser(User user) {
 		this.user = user;

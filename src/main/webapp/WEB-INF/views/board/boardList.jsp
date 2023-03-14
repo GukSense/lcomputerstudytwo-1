@@ -155,7 +155,7 @@
 			<tr>
 				<td>${board.bCategory}</td>				
 				<td class= "td_title">
-					<a href="#">
+					<a href="/board/viewBoard?bIdx=${ board.bIdx}">
 						${board.bTitle}				
 					</a></td>
 				<td>${board.bWriter} </td>

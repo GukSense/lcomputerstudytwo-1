@@ -1,6 +1,7 @@
 package com.lcomputerstudy.example.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.lcomputerstudy.example.domain.Board;
@@ -9,12 +10,9 @@ import com.lcomputerstudy.example.domain.Board;
 public interface BoardMapper {
 	//게시판보기
 	public List<Board> selectBoardList();
-<<<<<<< Updated upstream
-	
-=======
-
-	//게시판글쓰기
->>>>>>> Stashed changes
+	//게시판 글쓰기
 	public void insertBoard(Board board);
+	//그룹업데이트
+	public void updateBoard(Board board);
 }
 

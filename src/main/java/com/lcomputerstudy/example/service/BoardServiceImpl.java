@@ -17,16 +17,12 @@ public class BoardServiceImpl implements BoardService{
 	public List<Board> selectBoardList(){
 		return boardmapper.selectBoardList();
 	}
-<<<<<<< Updated upstream
 	@Override
 	public void insertBoard(Board board) {
-=======
-	
-	@Override
-	public void insertBoard(Board board) {
-		
->>>>>>> Stashed changes
 		boardmapper.insertBoard(board);
+		System.out.println(board.getbIdx());
+		boardmapper.updateBoard(board);
+		
 	}
 	
 }

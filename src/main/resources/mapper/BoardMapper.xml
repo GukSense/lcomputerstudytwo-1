@@ -6,42 +6,38 @@
 					b_title as bTitle,
 					b_content as bContent,
 					b_writer as bWriter,
-					b_category as bCategory
+					b_category as bCategory,
+					b_datetime as bDateTime
 		FROM		lc_board	
 	</select>
-<<<<<<< Updated upstream
+	
 	<!-- 글쓰기 등록 -->
 	<insert id="insertBoard" parameterType="Board">
+		
 		INSERT INTO lc_board (
 			b_datetime,
 			b_category,
 			b_title,
 			b_content,
-			b_writer						
+			b_writer,
+			u_id						
 		)
 		VALUES(
 			NOW(),
 			#{bCategory},
 			#{bTitle},
 			#{bContent},
-			#{user.uName}			
+			#{user.uName},
+			#{user.username}			
 		)		
+		<selectKey resultType="int" keyProperty="bIdx" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>
-	
-	
-	
-=======
-	<!-- 글쓰기 게시판등록 -->
-	<insert id="insertBoard" parameterType="Board">
-		INSERT INTO lc_board(b_title, b_content, b_writer, b_datetime,u_idx)
-		VALUES	(
-			#{bTitle},
-			#{bContent},
-			#{bWriter},
-			NOW(),
-			#{user.u_idx}			
-		)
-	</insert>
-	
->>>>>>> Stashed changes
+	<!-- 조회수 오더 뎁스 -->
+	<update id="updateBoard" parameterType="Board">
+		UPDATE 	lc_board
+		SET 	b_group = #{bIdx}
+		WHERE	b_idx	= #{bIdx}
+	</update>
 </mapper>

@@ -8,5 +8,8 @@
 </head>
 <body>
 	<h1>view The Board</h1>
+	
+	
+	
 </body>
 </html>
