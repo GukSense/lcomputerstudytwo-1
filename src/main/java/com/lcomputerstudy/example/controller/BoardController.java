@@ -4,8 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lcomputerstudy.example.domain.Board;
@@ -40,12 +41,17 @@ public class BoardController {
 		boardService.insertBoard(board);
 		return "/board/boardList";
 	}
-	@RequestMapping("/board/viewBoard")
-	public String viewBoard(Board board) {
-		
-		
+	@GetMapping("/board/viewBoard/{bIdx}")
+	public String viewBoard(Model model, Board board) {
+		boardService.viewBoard(board);
+		model.addAttribute("board", board);
 		return "/board/viewBoard";
 	}
-	
+	@RequestMapping("/board/replyBoard")
+	public String replyBoard(Board board) {
+		
+		boardService.replyBoard(board);
+		return "/board/replyBoard";
+	}
 	
 }

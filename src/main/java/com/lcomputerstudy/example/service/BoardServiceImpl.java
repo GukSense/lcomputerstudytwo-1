@@ -24,5 +24,15 @@ public class BoardServiceImpl implements BoardService{
 		boardmapper.updateBoard(board);
 		
 	}
+	@Override
+	public void replyBoard(Board board) {
+		boardmapper.replyBoard(board);		
+	}
+	@Override
+	public Board viewBoard(Board board) {
+		System.out.println(board.getbIdx());	// bIdx check
+		return boardmapper.viewBoard(board);
+	} 
+	
 	
 }

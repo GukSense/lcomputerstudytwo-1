@@ -14,5 +14,9 @@ public interface BoardMapper {
 	public void insertBoard(Board board);
 	//그룹업데이트
 	public void updateBoard(Board board);
+	//답글기능
+	public void replyBoard(Board board);
+	//보기
+	public Board viewBoard(Board board);
 }
 

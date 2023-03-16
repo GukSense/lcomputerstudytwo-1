@@ -8,10 +8,16 @@ public class Board {
 	private String bDateTime;
 	private String bCategory;
 	private User user;
-	
+	private int bHits;
 	
 	
 
+	public int getbHits() {
+		return bHits;
+	}
+	public void setbHits(int bHits) {
+		this.bHits = bHits;
+	}
 	public User getUser() {
 		return user;
 	}

@@ -40,4 +40,31 @@
 		SET 	b_group = #{bIdx}
 		WHERE	b_idx	= #{bIdx}
 	</update>
+	<!--  답글 등록-->
+	<update id="replyBoardUpdate" parameterType="Board">
+		UPDATE lc_board
+		SET 	b_group = #{bIdx} <!--  AND b_depth = #{}-->
+		WHERE	b_idx = #{bIdx}
+	</update>
+	<!--  글 보기 -->
+	<resultMap id="lc_board" type="Board" >
+		<result column="" property="" jdbcType=""/>
+		<result column="" property="" jdbcType=""/>
+		<result column="" property="" jdbcType=""/>
+		<result column="" property="" jdbcType=""/>
+		<result column="" property="" jdbcType=""/>
+		<result column="" property="" jdbcType=""/>
+		<result column="" property="" jdbcType=""/>
+	</resultMap>
+	
+	<select id="viewBoard" resultType="Board">
+		SELECT 		b_idx as bIDX,
+					b_title as bTitle,
+					b_content as bContent,
+					b_writer as bWriter,
+					b_category as bCategory,
+					b_datetime as bDateTime
+		FROM		lc_board
+		WHERE 		b_idx	=	#{bIdx}		
+	</select>
 </mapper>
