@@ -26,7 +26,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 	@Override
 	public void replyBoard(Board board) {
-		boardmapper.replyBoard(board);		
+		boardmapper.replyInsertBoard(board);
+		System.out.println(board.getbIdx() + "  " + board.getbGroup() + "  " + board.getbDepth() + "  " + board.getbOrder() );
+		boardmapper.depthGroupUpdate(board);
+		System.out.println(board.getbIdx() + "  " + board.getbGroup() + "  " + board.getbDepth() + "  " + board.getbOrder() );
+		boardmapper.orderUpdate(board);
+		
 	}
 	@Override
 	public Board viewBoard(Board board) {

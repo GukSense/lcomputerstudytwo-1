@@ -15,7 +15,7 @@ public interface BoardMapper {
 	//그룹업데이트
 	public void updateBoard(Board board);
 	//답글기능
-	public void replyBoard(Board board);
+	public void replyInsertBoard(Board board);	public void depthGroupUpdate(Board board);	public void orderUpdate(Board board);
 	//보기
 	public Board viewBoard(Board board);
 }
