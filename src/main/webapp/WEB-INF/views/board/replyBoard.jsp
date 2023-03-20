@@ -7,8 +7,11 @@
 <title>replyBoard</title>
 </head>
 <body>
-	<form method="post" action="/board/writeBoard" onsubmit="return confirm('등록하시겠습니까?');" name="registration" enctype="multipart/form-data">
+	<form method="post" action="/board/replyBoard" onsubmit="return confirm('등록하시겠습니까?');" name="registration" enctype="multipart/form-data">
     			<input type="hidden" value="${principal.uName }" name ="username">
+    			<input type="hidden" value="${board.bOrder }" name="bOrder">
+    			<input type="hidden" value="${board.bGroup }" name="bGroup">
+    			<input type="hidden" value="${board.bDepth }" name="bDepth">
     			<table style= "text-align: center; boarder: 1px solid #dddddd; margin-left:auto; margin-right:auto;">
 	    	    	<thead>
 		    	    	<tr>
@@ -29,7 +32,9 @@
 			    		</tr>
 			    		<tr>
 			    			<td>
-			    				<textarea  placeholder="글 내용"  name="bContent" class="content_box" maxlength="2048" ></textarea>
+			    				
+			    				<textarea  placeholder="Check -> Order :${board.bOrder } Group:${board.bGroup } Depth:${board.bDepth }"  name="bContent" class="content_box" maxlength="2048" ></textarea>
+			    				
 			    			</td>
 			    		</tr>
 			    	</tbody>

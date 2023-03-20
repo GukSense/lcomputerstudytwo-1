@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mabatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lcomputerstudy.example.mapper.BoardMapper">
 	<select id="selectBoardList" resultType="Board">
-		SELECT 		b_idx as bIDX,
+		SELECT 		b_idx as bIdx,
 					b_title as bTitle,
 					b_content as bContent,
 					b_writer as bWriter,
 					b_category as bCategory,
 					b_datetime as bDateTime
 		FROM		lc_board	
+		ORDER BY 	b_group DESC, b_order ASC
 	</select>
 	
 	<!-- 글쓰기 등록 -->
@@ -41,12 +42,44 @@
 		WHERE	b_idx	= #{bIdx}
 	</update>
 	<!--  답글 등록-->
-	<update id="replyBoardUpdate" parameterType="Board">
+	<insert id="replyInsertBoard">
+		INSERT INTO lc_board (
+			b_datetime,
+			b_category,
+			b_title,
+			b_content,
+			b_writer,
+			b_order,
+			u_id
+		)
+		
+		VALUES (
+			NOW(),
+			#{bCategory},
+			#{bTitle},
+			#{bContent},
+			#{user.uName},
+			#{bOrder},
+			#{user.username}
+		)
+		<selectKey resultType="int" keyProperty="bIdx" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	
+	<update id="depthGroupUpdate" parameterType="Board">
 		UPDATE lc_board
-		SET 	b_group = #{bIdx} <!--  AND b_depth = #{}-->
+		SET 	b_group = #{bGroup} , b_depth = #{bDepth} +1
 		WHERE	b_idx = #{bIdx}
 	</update>
-	<!--  글 보기 -->
+	
+	<update id="orderUpdate" parameterType="Board">
+		UPDATE	lc_board
+		SET 	b_order = b_order +1
+		WHERE	b_group	= #{bGroup} AND b_order >= #{bOrder} and b_idx != #{bIdx}
+	</update>
+	<!--  글 보기 
 	<resultMap id="lc_board" type="Board" >
 		<result column="" property="" jdbcType=""/>
 		<result column="" property="" jdbcType=""/>
@@ -56,14 +89,18 @@
 		<result column="" property="" jdbcType=""/>
 		<result column="" property="" jdbcType=""/>
 	</resultMap>
-	
+	-->
 	<select id="viewBoard" resultType="Board">
-		SELECT 		b_idx as bIDX,
+		SELECT 		b_idx as bIdx,
 					b_title as bTitle,
 					b_content as bContent,
 					b_writer as bWriter,
 					b_category as bCategory,
-					b_datetime as bDateTime
+					b_datetime as bDateTime,
+					b_order as bOrder,
+					b_depth as bDepth,
+					b_group as bGroup
+					
 		FROM		lc_board
 		WHERE 		b_idx	=	#{bIdx}		
 	</select>

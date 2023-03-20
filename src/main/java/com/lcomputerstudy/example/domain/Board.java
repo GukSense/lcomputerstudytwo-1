@@ -9,9 +9,29 @@ public class Board {
 	private String bCategory;
 	private User user;
 	private int bHits;
+	private int bOrder;
+	private int bDepth;
+	private int bGroup;
 	
 	
-
+	public int getbOrder() {
+		return bOrder;
+	}
+	public void setbOrder(int bOrder) {
+		this.bOrder = bOrder;
+	}
+	public int getbDepth() {
+		return bDepth;
+	}
+	public void setbDepth(int bDepth) {
+		this.bDepth = bDepth;
+	}
+	public int getbGroup() {
+		return bGroup;
+	}
+	public void setbGroup(int bGroup) {
+		this.bGroup = bGroup;
+	}
 	public int getbHits() {
 		return bHits;
 	}
