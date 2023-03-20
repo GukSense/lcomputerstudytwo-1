@@ -80,6 +80,13 @@ public class Board {
 	public void setbDateTime(String bDateTime) {
 		this.bDateTime = bDateTime;
 	}
+	@Override
+	public String toString() {
+		return "Board [bIdx=" + bIdx + ", bTitle=" + bTitle + ", bContent=" + bContent + ", bWriter=" + bWriter
+				+ ", bDateTime=" + bDateTime + ", bCategory=" + bCategory + ", user=" + user + ", bHits=" + bHits
+				+ ", bOrder=" + bOrder + ", bDepth=" + bDepth + ", bGroup=" + bGroup + "]";
+	}
+	
 	
 	
 }

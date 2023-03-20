@@ -17,6 +17,10 @@ public interface BoardMapper {
 	//답글기능
 	public void replyInsertBoard(Board board);	public void depthGroupUpdate(Board board);	public void orderUpdate(Board board);
 	//보기
-	public Board viewBoard(Board board);
+	public Board viewBoard(Board board);	public void hitsBoard(Board board);
+	//삭제
+	public void deleteBoard(Board board);
+	//수정
+	public void editBoard(Board board);
 }
 

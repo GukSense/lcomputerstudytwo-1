@@ -22,6 +22,8 @@
 		</tr>
 		<tr>
 			<td>Check -> Order :${board.bOrder } Group:${board.bGroup } Depth:${board.bDepth }</td>
+			<td><a href="/board/beforeEditBoard/${board.bIdx }">수정</a></td>
+			<td><a href="/board/deleteBoard/${board.bIdx }">삭제</a></td>
 			<td><a href="/board/beforeReplyBoard/${board.bOrder }&${board.bGroup }&${board.bDepth }">답글</a></td>
 		</tr>
 	</table>

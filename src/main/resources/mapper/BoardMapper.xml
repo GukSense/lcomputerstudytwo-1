@@ -7,7 +7,8 @@
 					b_content as bContent,
 					b_writer as bWriter,
 					b_category as bCategory,
-					b_datetime as bDateTime
+					b_datetime as bDateTime,
+					b_hits as bHits
 		FROM		lc_board	
 		ORDER BY 	b_group DESC, b_order ASC
 	</select>
@@ -35,13 +36,13 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
-	<!-- 조회수 오더 뎁스 -->
+	<!-- 	조회수 오더 뎁스		 -->
 	<update id="updateBoard" parameterType="Board">
 		UPDATE 	lc_board
 		SET 	b_group = #{bIdx}
 		WHERE	b_idx	= #{bIdx}
 	</update>
-	<!--  답글 등록-->
+	<!--  	답글 등록	-->
 	<insert id="replyInsertBoard">
 		INSERT INTO lc_board (
 			b_datetime,
@@ -79,17 +80,8 @@
 		SET 	b_order = b_order +1
 		WHERE	b_group	= #{bGroup} AND b_order >= #{bOrder} and b_idx != #{bIdx}
 	</update>
-	<!--  글 보기 
-	<resultMap id="lc_board" type="Board" >
-		<result column="" property="" jdbcType=""/>
-		<result column="" property="" jdbcType=""/>
-		<result column="" property="" jdbcType=""/>
-		<result column="" property="" jdbcType=""/>
-		<result column="" property="" jdbcType=""/>
-		<result column="" property="" jdbcType=""/>
-		<result column="" property="" jdbcType=""/>
-	</resultMap>
-	-->
+	
+	<!--  	글 보기 	  -->
 	<select id="viewBoard" resultType="Board">
 		SELECT 		b_idx as bIdx,
 					b_title as bTitle,
@@ -97,6 +89,7 @@
 					b_writer as bWriter,
 					b_category as bCategory,
 					b_datetime as bDateTime,
+					b_hits as bHits,
 					b_order as bOrder,
 					b_depth as bDepth,
 					b_group as bGroup
@@ -104,4 +97,22 @@
 		FROM		lc_board
 		WHERE 		b_idx	=	#{bIdx}		
 	</select>
+	<update id="hitsBoard" parameterType="Board">
+		UPDATE 	lc_board
+		SET		b_hits = b_hits + 1
+		WHERE	b_idx = #{bIdx}
+	</update>
+	<!-- 	글 삭제	 -->
+	<delete id="deleteBoard">
+		DELETE		 	
+		FROM		lc_board
+		WHERE		b_idx = #{bIdx}
+	</delete>
+	<!-- 	글 수정	 -->
+	<update id="editBoard">
+		UPDATE		lc_board
+		SET			b_title = #{bTitle},
+					b_content = #{bContent}
+		WHERE		b_idx = #{bIdx}
+	</update>
 </mapper>

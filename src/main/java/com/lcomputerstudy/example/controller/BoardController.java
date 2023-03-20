@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.lcomputerstudy.example.domain.Board;
 import com.lcomputerstudy.example.domain.User;
 import com.lcomputerstudy.example.service.BoardService;
@@ -24,6 +23,7 @@ public class BoardController {
 	@RequestMapping("/board/boardList")
 	public String boardList(Model model) {
 		List<Board> list = boardService.selectBoardList();
+		System.out.println(list.get(0));
 		model.addAttribute("list", list);
 		
 		return "/board/boardList";
@@ -63,5 +63,20 @@ public class BoardController {
 		boardService.replyBoard(board); 
 		return "/board/boardList";
 	}
-	
+	@RequestMapping("/board/beforeEditBoard/{bIdx}")
+	public String beforeEditBoard(Model model, Board board) {
+		System.out.println(board.getbIdx());
+		model.addAttribute("board", board);
+		return "/board/editBoard";
+	}
+	@RequestMapping("/board/editBoard")
+	public String editBoard(Board board) {
+		boardService.editBoard(board);
+		return "/board/editResult";
+	}
+	@RequestMapping("/board/deleteBoard/{bIdx}")
+	public String deleteBoard(Board board) {
+		boardService.deleteBoard(board);
+		return "/board/deleteBoard";
+	}
 }

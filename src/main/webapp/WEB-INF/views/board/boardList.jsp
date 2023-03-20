@@ -160,15 +160,14 @@
 					</a></td>
 				<td>${board.bWriter} </td>
 				<td>${board.bDateTime }</td>
-				<td></td>
+				<td>${board.bHits }</td>
 			</tr>
 		</c:forEach>
 		<tr>
 			<td colspan="5" style="border:none; padding:10px 0px;" >
 		<div class="btm">
 			<div class="fl_search">
-				<form method="get" action="/lcomputerstudy/board-list.do" name="search">
-					
+				<form method="get" action="/lcomputerstudy/board-list.do" name="search">					
 					<span class="select">
 						<select class ="select_t" name="search_target" >
 							<option value="title">제목</option>
