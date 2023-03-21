@@ -8,7 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.lcomputerstudy.example.domain.Board;
+import com.lcomputerstudy.example.domain.Pagination;
+import com.lcomputerstudy.example.domain.Search;
 import com.lcomputerstudy.example.domain.User;
 import com.lcomputerstudy.example.service.BoardService;
 import com.lcomputerstudy.example.service.UserService;
@@ -21,11 +24,20 @@ public class BoardController {
 	@Autowired UserService userService;
 	
 	@RequestMapping("/board/boardList")
-	public String boardList(Model model) {
-		List<Board> list = boardService.selectBoardList();
-		System.out.println(list.get(0));
-		model.addAttribute("list", list);
+	public String boardList(Model model, Pagination pagination ) {
 		
+		System.out.println(pagination);
+		int boardCount = boardService.countBoard();
+		System.out.println("보드카운트: "+boardCount);
+		
+		Pagination pagi = new Pagination();
+		pagi.setCount(boardCount);
+		pagi.setPage(pagination.getPage());
+		pagi.init();
+		//pagi.setSearch(search);
+		List<Board> list = boardService.selectBoardList(pagi);
+		model.addAttribute("list", list);
+		model.addAttribute("pagination", pagi);
 		return "/board/boardList";
 	}
 	@RequestMapping("/board/beforeWriteBoard")

@@ -137,10 +137,10 @@
 	<tr>
 		<td colspan="5" style="border:none; padding:10px 0px;">
 			<ul class ="tab_menu">
-				<li><a href="/lcomputerstudy/board-list.do?category=lcomputer" style="color:#ffffff;">lcomputer</a></li>
-				<li><a href="/lcomputerstudy/board-list.do?category=개발" style="color:#ffffff;">개발</a></li>
-				<li><a href="/lcomputerstudy/board-list.do?category=일상" style="color:#ffffff;">일상</a></li>
-				<li><a href="/lcomputerstudy/board-list.do?category=질문" style="color:#ffffff;">질문</a></li>
+				<li><a href="/board/boardList?category=lcomputer" style="color:#ffffff;">lcomputer</a></li>
+				<li><a href="/board/boardList?category=개발" style="color:#ffffff;">개발</a></li>
+				<li><a href="/board/boardList?category=일상" style="color:#ffffff;">일상</a></li>
+				<li><a href="/board/boardList?category=질문" style="color:#ffffff;">질문</a></li>
 			</ul>
 		</td>
 	</tr>
@@ -167,15 +167,15 @@
 			<td colspan="5" style="border:none; padding:10px 0px;" >
 		<div class="btm">
 			<div class="fl_search">
-				<form method="get" action="/lcomputerstudy/board-list.do" name="search">					
+				<form method="get" action="/board/boardList" name="search">					
 					<span class="select">
-						<select class ="select_t" name="search_target" >
+						<select class ="select_t" name="search.target" >
 							<option value="title">제목</option>
 							<option value="title_content">내용</option>
 							<option value="nick_name">작성자</option>
 						</select>
 					
-						<input type="text" class="i_search" placeholder="검색어 입력" name="search_keyword">	
+						<input type="text" class="i_search" placeholder="검색어 입력" name="keyword">	
 						<button class="s_button">검색</button>
 					</span>
 					
