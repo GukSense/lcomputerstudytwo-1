@@ -100,6 +100,22 @@ public class Pagination {
 	public void setNextPage(int nextPage) {
 		this.nextPage = nextPage;
 	}
+
+	@Override
+	public String toString() {
+		return "Pagination [count=" + count + ", page=" + page + ", pageNum=" + pageNum + ", startPage=" + startPage
+				+ ", endPage=" + endPage + ", lastPage=" + lastPage + ", prevPage=" + prevPage + ", nextPage="
+				+ nextPage + ", search=" + search + "]";
+	}
+	
+	public String testSearch(Search search) {
+		String where = "";
+		System.out.println(search.getCategory());
+		where = "WHERE = b_category = " + search.getCategory();
+		
+		return where;
+	}
+	
 	
 	
 }

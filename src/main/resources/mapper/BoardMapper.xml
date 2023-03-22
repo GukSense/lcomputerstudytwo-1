@@ -16,11 +16,14 @@
 						b_content as bContent,
 						b_writer as bWriter,
 						b_category as bCategory,
-						b_hits as bHits
+						b_hits as bHits,
+						b_group as bGroup,
+						b_order as bOrder,
+						b_depth as bDepth
 			FROM		lc_board			
 			) ta	
 		INNER JOIN 	(SELECT @rownum := (SELECT COUNT(*)-#{pageNum}+1 FROM lc_board)) tb ON 1=1
-		ORDER BY 	b_group DESC, b_order ASC
+		ORDER BY 	bGroup DESC, bOrder ASC
 		LIMIT #{pageNum}, #{perPage}
 	</select>
 	

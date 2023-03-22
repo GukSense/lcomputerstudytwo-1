@@ -23,5 +23,10 @@ public class Search {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	@Override
+	public String toString() {
+		return "Search [target=" + target + ", keyword=" + keyword + ", category=" + category + "]";
+	}
 	 
+	
 }

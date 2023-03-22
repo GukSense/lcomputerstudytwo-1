@@ -24,13 +24,16 @@ public class BoardController {
 	@Autowired UserService userService;
 	
 	@RequestMapping("/board/boardList")
-	public String boardList(Model model, Pagination pagination ) {
+	public String boardList(Model model, Pagination pagination, Search search) {
 		
-		System.out.println(pagination);
+		System.out.println(search);
 		int boardCount = boardService.countBoard();
 		System.out.println("보드카운트: "+boardCount);
 		
 		Pagination pagi = new Pagination();
+		pagi.setSearch(search);
+		System.out.println("카테고리: " + pagi.getSearch().getCategory());
+		System.out.println(pagi.testSearch(pagi.getSearch()));
 		pagi.setCount(boardCount);
 		pagi.setPage(pagination.getPage());
 		pagi.init();

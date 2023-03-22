@@ -129,9 +129,10 @@
 <title>boardList</title>
 </head>
 <body>
+	<!--  로고 이미지 -->
 	<div class="logo">
-		<a href="/lcomputerstudy/board-list.do"><img src="/lcomputerstudy/img/logo.jpg" alt="" style="width:150px; height:70px;"></a>
-		<a href="/lcomputerstudy/board-list.do"><img src="/lcomputerstudy/img/logo_title.jpg" alt="" style="width:400px; height:70px;"></a>
+		<a href="/board/boardList"><img src="/img/logo.jpg" alt="" style="width:150px; height:70px;"></a>
+		<a href="/board/boardList"><img src="/img/logo_title.jpg" alt="" style="width:400px; height:70px;"></a>
 	</div>
 	<table>
 	<tr>
@@ -166,6 +167,7 @@
 		<tr>
 			<td colspan="5" style="border:none; padding:10px 0px;" >
 		<div class="btm">
+		<!-- 검색 -->
 			<div class="fl_search">
 				<form method="get" action="/board/boardList" name="search">					
 					<span class="select">
@@ -189,6 +191,43 @@
 		</div>
 		</tr>
 	</table>
+<!-- 페이지네이션 -->
 
+<!--페이지네이션-->
+	<div>
+		<ul>
+			<c:choose>
+				<c:when test="${pagination.startPage > 5}">
+					<li>
+						<a href="/board/boardList?page=${pagination.prevPage }">
+							◀
+						</a>
+					</li>
+				</c:when>
+			</c:choose>
+			<c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+				<c:choose>
+					<c:when test="${ pagination.page == i}">
+						
+						<li style="background-color:#ededed; color:black;">
+							<span>${i}</span>
+						</li>
+					</c:when>
+					<c:when test="${pagination.page != i }">
+						<li>
+							<a href="/board/boardList?page=${i}">${i}</a>
+						</li>
+					</c:when>				
+				</c:choose>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${ pagination.nextPage < pagination.lastPage }">
+					<li style="display:inlien;">
+						<a href ="/board/boardList?page=${pagination.nextPage }">▶</a>
+					</li>
+				</c:when>
+			</c:choose>
+		</ul>
+	</div>
 </body>
 </html>
