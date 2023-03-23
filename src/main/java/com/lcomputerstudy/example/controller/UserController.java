@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lcomputerstudy.example.domain.Board;
 import com.lcomputerstudy.example.domain.Pagination;
+import com.lcomputerstudy.example.domain.Search;
 import com.lcomputerstudy.example.domain.User;
 import com.lcomputerstudy.example.service.BoardService;
 import com.lcomputerstudy.example.service.UserService;
@@ -26,8 +27,8 @@ public class UserController {
 	@Autowired PasswordEncoder encoder;
 
 	@RequestMapping("/")
-	public String home(Model model, Pagination pagination) {
-		
+	public String home(Model model, Pagination pagination, Search search) {
+		pagination.setSearch(search);
 		List<Board> list = boardservice.selectBoardList(pagination );
 		model.addAttribute("list", list);
 		logger.debug("debug");

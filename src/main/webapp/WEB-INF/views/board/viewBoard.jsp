@@ -28,5 +28,25 @@
 		</tr>
 	</table>
 	
+	<!-- 댓글코멘트 -->
+	
+	<ul id="commentList">
+		
+		<li>
+			<div>
+				<a>id</a>
+				<span>~전</span>
+			</div>
+			<div class="cont">댓글내용</div>
+			<div>
+				<span></span>
+				<button type="button" class="btnUpdateForm">수정</button>
+				<button type="button" class="btnUpdateForm">삭제</button>
+				<button type="button" class="btnReplyForm">답글</button>
+			</div>
+		</li>
+		
+	</ul>
+	
 </body>
 </html>
