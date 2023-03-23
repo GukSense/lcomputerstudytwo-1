@@ -33,7 +33,7 @@ public class BoardController {
 		Pagination pagi = new Pagination();
 		pagi.setSearch(search);
 		System.out.println("카테고리: " + pagi.getSearch().getCategory());
-		System.out.println(pagi.testSearch(pagi.getSearch()));
+		System.out.println("타겟: " + pagi.getSearch().getTarget() + " 키워드: " + pagi.getSearch().getKeyword() );
 		pagi.setCount(boardCount);
 		pagi.setPage(pagination.getPage());
 		pagi.init();

@@ -108,12 +108,9 @@ public class Pagination {
 				+ nextPage + ", search=" + search + "]";
 	}
 	
-	public String testSearch(Search search) {
-		String where = "";
-		System.out.println(search.getCategory());
-		where = "WHERE = b_category = " + search.getCategory();
+	public String test() {
 		
-		return where;
+		return "개발";
 	}
 	
 	

@@ -16,6 +16,10 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public List<Board> selectBoardList(Pagination pagination){
+		System.out.println("----- at Service -----");
+		System.out.println("카테고리: " + pagination.getSearch().getCategory());
+		System.out.println("타겟: " + pagination.getSearch().getTarget());
+		System.out.println("키워드: " + pagination.getSearch().getKeyword());
 		return boardmapper.selectBoardList(pagination);
 	}
 	@Override

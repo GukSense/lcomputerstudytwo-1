@@ -20,7 +20,32 @@
 						b_group as bGroup,
 						b_order as bOrder,
 						b_depth as bDepth
-			FROM		lc_board			
+			FROM		lc_board		
+			WHERE 		1 = 1
+			<choose>
+				<when test='search.category == null and search.target != null'>	<!-- 카테고리x 검색o -->
+					and 
+					<choose>
+						<when test='search.target.equals("b_title")'>b_title</when> 
+						<when test='search.target.equals("b_content")'>b_content</when>
+						<when test='search.target.equals("b_writer")'>b_writer</when>
+					</choose>
+					LIKE CONCAT('%',#{search.keyword},'%')
+				</when>
+				<when test='search.category != null'>	
+					and b_category = #{search.category}	<!-- 카테고리o 검색 x -->
+					<if test='search.category != null and search.target != null' >	<!-- 카테고리o 검색o -->
+					and b_category = #{search.category} 
+					and 
+					<choose>
+						<when test='search.target.equals("b_title")'>b_title</when> 
+						<when test='search.target.equals("b_content")'>b_content</when>
+						<when test='search.target.equals("b_writer")'>b_writer</when>
+					</choose> 
+					LIKE CONCAT('%',#{search.keyword},'%')
+					</if>	
+				</when>
+			</choose>
 			) ta	
 		INNER JOIN 	(SELECT @rownum := (SELECT COUNT(*)-#{pageNum}+1 FROM lc_board)) tb ON 1=1
 		ORDER BY 	bGroup DESC, bOrder ASC
