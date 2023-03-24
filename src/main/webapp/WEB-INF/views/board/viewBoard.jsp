@@ -44,20 +44,23 @@
 	<!-- 댓글코멘트 -->
 	
 	<ul id="commentList">
-		
+		<c:forEach items="${list}" var="comment">		
 		<li>
 			<div>
 				<a>id</a>
 				<span>~전</span>
 			</div>
-			<div class="cont">댓글내용</div>
+			<div class="cont">내용:--->${comment.cContent }</div>
 			<div>
 				<span></span>
-				<button type="button" class="btnUpdateForm">수정</button>
-				<button type="button" class="btnUpdateForm">삭제</button>
+				<input type="hidden" name=cBidx value="${board.bIdx }">
+				<input type="hidden" name="cIdx" value="${comment.cIdx }">
+				<button type="button" id="edit-button"class="btnUpdateForm">수정</button>
+				<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
 				<button type="button" class="btnReplyForm">답글</button>
 			</div>
-		</li>	
+		</li>
+		</c:forEach>	
 	</ul>
 	<div>
 		<label></label>

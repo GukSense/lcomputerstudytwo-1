@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lcomputerstudy.example.domain.Board;
+import com.lcomputerstudy.example.domain.Comment;
 import com.lcomputerstudy.example.domain.Pagination;
 import com.lcomputerstudy.example.domain.Search;
 import com.lcomputerstudy.example.domain.User;
 import com.lcomputerstudy.example.service.BoardService;
+import com.lcomputerstudy.example.service.CommentService;
 import com.lcomputerstudy.example.service.UserService;
 
 
@@ -22,6 +24,7 @@ public class BoardController {
 	
 	@Autowired BoardService boardService;
 	@Autowired UserService userService;
+	@Autowired CommentService commentService;
 	
 	@RequestMapping("/board/boardList")
 	public String boardList(Model model, Pagination pagination, Search search) {
@@ -57,9 +60,19 @@ public class BoardController {
 		return "/board/boardList";
 	}
 	@GetMapping("/board/viewBoard/{bIdx}")
-	public String viewBoard(Model model, Board board) {
+	public String viewBoard(Model model, Board board, Comment comment) {
 		board = boardService.viewBoard(board);
+		
+		//코멘트
+		System.out.println("댓글 목록 컨트롤러 동작");
+		List<Comment> list = commentService.getCommentList(board.getbIdx());
+		int total = commentService.getCount(board.getbIdx());
+		System.out.println(board.getbIdx());		
+		System.out.println(total);
+		
+		model.addAttribute("list", list);		
 		model.addAttribute("board", board);
+		model.addAttribute("comment", comment);
 		return "/board/viewBoard";
 	}
 	@RequestMapping("/board/beforeReplyBoard/{bOrder}&{bGroup}&{bDepth}")

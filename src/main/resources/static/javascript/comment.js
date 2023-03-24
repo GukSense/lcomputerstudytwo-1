@@ -15,3 +15,25 @@ $(document).ready(function(){
 		});
 	});
 });
+
+
+//삭제
+
+$(document).ready(function() {
+    $('.btnDelete').click(function() {
+        var formData = {
+        	 cIdx : $(this).attr('cDelteCidx').val(),
+        	 cBidx : $(this).attr('cDeleteBidx').val()
+			
+		}
+
+        $.ajax({
+            type: "POST",
+            url: "/delete-comment",
+            data: formData,
+            success: function(response) {
+                console.log(response);
+            }
+        });
+    });
+});

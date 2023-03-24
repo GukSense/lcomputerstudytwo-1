@@ -17,16 +17,29 @@
 		)
 	</insert>
 	<select id="getCommentList" resultType="Comment">
-		SELECT 	*
+		SELECT 	c_idx as cIdx,
+				c_content as cContent,
+				c_datetime as cDatetime,
+				c_id as cId,
+				c_bIdx as cBidx,
+				c_order as cOrder,
+				c_depth as cDepth,
+				c_group as cGroup
+				
 		FROM	lc_comment
 		WHERE	c_bIdx = #{cBidx}
 	</select>
+	
 	<select id="getCount" resultType="int">
 		SELECT	COUNT(*)
 		FROM	lc_comment
 		WHERE	c_bIdx = #{cBidx}
 	</select>
-	
+	<delete id="deleteComment" parameterType="Comment">
+		DELETE		
+		FROM		lc_comment
+		WHERE		c_bIdx = #{cBidx} and c_idx = #{cIdx}
+	</delete>
 	
 	
 </mapper>

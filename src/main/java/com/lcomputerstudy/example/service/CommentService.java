@@ -11,4 +11,6 @@ public interface CommentService {
 	public int getCount(int comment_bIdx);
 	//코멘트 카운트
 	public List<Comment> getCommentList(int comment_bIdx);
+	//코멘트 삭제
+	public void deleteComment(int comment_bIdx, int comment_cIdx);
 }
