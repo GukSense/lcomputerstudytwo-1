@@ -5,7 +5,20 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <title>view The Board</title>
+	<style>
+		li {
+			list-style:none;
+		}
+		.administratorBtn, .retrunBtn, .manageBtn, .loginBtn, .logoutBtn{
+		border: none;
+		background:#ffffff;
+		outline: none;
+		float: right;
+		color: #1b5ac2;
+	}
+	</style>
 </head>
 <body>
 	<h1>view The Board</h1>
@@ -44,9 +57,19 @@
 				<button type="button" class="btnUpdateForm">삭제</button>
 				<button type="button" class="btnReplyForm">답글</button>
 			</div>
-		</li>
-		
+		</li>	
 	</ul>
+	<div>
+		<label></label>
+			<div class="simple_wrt">
+				<!-- <a>댓글을 작성해주시려면 로그인해주세요. 로그인 하시겠습니까?</a> -->
+				<input type="hidden" name=cBidx value="${board.bIdx }">
+				<textarea rows="4" cols="50" id="cContent" name="cContent" style="background: rgb(255,255,255); overflow: hidden; width:690px; height:63px; resize:none;"></textarea>
+				<button id="submit-button">등록</button>
+			</div>
+		
+	</div>
 	
+	<script src="/javascript/comment.js"></script>
 </body>
 </html>

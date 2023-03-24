@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lcomputersutdy.example.mapper.CommentMapper">
-
+<mapper namespace="com.lcomputerstudy.example.mapper.CommentMapper">
+	
+	<insert id="writeComment" parameterType="Comment">
+		INSERT INTO lc_comment (
+			c_datetime,
+			c_id,
+			c_content,			
+			c_bIdx
+		)	
+		VALUES (
+			NOW(),
+			#{cId},
+			#{cContent},
+			#{cBidx}
+		)
+	</insert>
+	<select id="getCommentList" resultType="Comment">
+		SELECT 	*
+		FROM	lc_comment
+		WHERE	c_bIdx = #{cBidx}
+	</select>
+	<select id="getCount" resultType="int">
+		SELECT	COUNT(*)
+		FROM	lc_comment
+		WHERE	c_bIdx = #{cBidx}
+	</select>
+	
+	
+	
 </mapper>
