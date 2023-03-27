@@ -40,6 +40,11 @@
 		FROM		lc_comment
 		WHERE		c_bIdx = #{cBidx} and c_idx = #{cIdx}
 	</delete>
-	
+	<update id="editComment" parameterType="Comment">
+		UPDATE	lc_comment
+		SET 	c_content = #{cContent},
+				c_datetime = NOW()
+		WHERE 	c_idx = #{cIdx}	
+	</update>
 	
 </mapper>

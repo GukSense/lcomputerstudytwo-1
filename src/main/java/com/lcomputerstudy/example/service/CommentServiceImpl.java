@@ -26,7 +26,11 @@ public class CommentServiceImpl implements CommentService {
 		return commentmapper.getCount(comment_bIdx);
 	}	
 	@Override
-	public void deleteComment(int comment_bIdx, int comment_cIdx) {
-		commentmapper.deleteComment(comment_bIdx, comment_cIdx);
+	public void deleteComment(Comment comment) {
+		commentmapper.deleteComment(comment);
+	}
+	@Override
+	public void editComment(Comment comment) {
+		commentmapper.editComment(comment);
 	}
 }
