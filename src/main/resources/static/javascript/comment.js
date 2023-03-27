@@ -15,7 +15,9 @@ $(document).ready(function(){
 			}
 		})
 		.done(function(data){
+			console.log(data);
 			alert("Data Saved");
+			$('#commentList').html(data);
 		});
 	});
 });

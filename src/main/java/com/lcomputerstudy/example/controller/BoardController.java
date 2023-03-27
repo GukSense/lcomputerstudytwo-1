@@ -73,6 +73,7 @@ public class BoardController {
 		model.addAttribute("list", list);		
 		model.addAttribute("board", board);
 		model.addAttribute("comment", comment);
+		
 		return "/board/viewBoard";
 	}
 	@RequestMapping("/board/beforeReplyBoard/{bOrder}&{bGroup}&{bDepth}")
