@@ -50,7 +50,7 @@
 				<a>id</a>
 				<span>~전</span>
 			</div>
-			<div class="cont">내용:--->${comment.cContent }</div>
+			<div class="cont">${comment.cContent }</div>
 			<div>
 				<span></span>
 				<input type="hidden" name=cBidx value="${board.bIdx }">
@@ -67,6 +67,13 @@
 					<button type="button" class="btnCancel">취소</button>
 				</div>
 		</li>
+		<li style="display: none; list-style-position:inside;">
+				<div>
+					<textarea class="replyBox" rows="3" cols="80"></textarea>
+					<button type="button" class="btnReply" bidx="${comment.cBidx}" order="${comment.cOrder }" group="${comment.cGroup}" depth="${comment.cDepth }">등록</button>
+					<button type="button" class="btnCancelR">취소</button>
+				</div>
+		</li>
 		</c:forEach>	
 	</ul>
 	<div>
@@ -75,7 +82,7 @@
 				<!-- <a>댓글을 작성해주시려면 로그인해주세요. 로그인 하시겠습니까?</a> -->
 				<input type="hidden" name=cBidx value="${board.bIdx }">
 				<textarea rows="4" cols="50" id="cContent" name="cContent" style="background: rgb(255,255,255); overflow: hidden; width:690px; height:63px; resize:none;"></textarea>
-				<button id="submit-button">등록</button>
+				<input type="button" value="등록" id="submit">
 			</div>
 		
 	</div>

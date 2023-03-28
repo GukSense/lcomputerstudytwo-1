@@ -15,6 +15,7 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public void writeComment(Comment comment) {
 		commentmapper.writeComment(comment);
+		commentmapper.updateComment(comment);
 	}
 	@Override
 	public List<Comment> getCommentList(int comment_bIdx) {
@@ -32,5 +33,11 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public void editComment(Comment comment) {
 		commentmapper.editComment(comment);
+	}
+	@Override
+	public void replyComment(Comment comment) {
+		commentmapper.replyComment(comment);
+		commentmapper.depthGroupUpdate(comment);
+		commentmapper.orderUpdate(comment);
 	}
 }

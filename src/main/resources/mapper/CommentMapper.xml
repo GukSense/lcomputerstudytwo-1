@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lcomputerstudy.example.mapper.CommentMapper">
-	
+	<!-- 코멘트 등록 -->
 	<insert id="writeComment" parameterType="Comment">
 		INSERT INTO lc_comment (
 			c_datetime,
@@ -11,40 +11,86 @@
 		)	
 		VALUES (
 			NOW(),
-			#{cId},
+			#{user.uName},
 			#{cContent},
 			#{cBidx}
 		)
+		<selectKey resultType="int" keyProperty="cIdx" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>
+	<update id="updateComment">
+		UPDATE		lc_comment
+		SET			c_group = #{cIdx}
+		WHERE		c_idx = #{cIdx}
+	</update>
+	<!-- 코멘트 리스트 -->
 	<select id="getCommentList" resultType="Comment">
-		SELECT 	c_idx as cIdx,
-				c_content as cContent,
-				c_datetime as cDatetime,
-				c_id as cId,
-				c_bIdx as cBidx,
-				c_order as cOrder,
-				c_depth as cDepth,
-				c_group as cGroup
+		SELECT 		c_idx as cIdx,
+					c_content as cContent,
+					c_datetime as cDatetime,
+					c_id as cId,
+					c_bIdx as cBidx,
+					c_order as cOrder,
+					c_depth as cDepth,
+					c_group as cGroup
 				
-		FROM	lc_comment
-		WHERE	c_bIdx = #{cBidx}
+		FROM		lc_comment
+		WHERE		c_bIdx = #{cBidx}
+		ORDER BY 	c_group ASC, c_order ASC
 	</select>
-	
+	<!-- 코멘트 숫자 -->
 	<select id="getCount" resultType="int">
 		SELECT	COUNT(*)
 		FROM	lc_comment
 		WHERE	c_bIdx = #{cBidx}
 	</select>
+	<!-- 코멘트 삭제 -->
 	<delete id="deleteComment" parameterType="Comment">
 		DELETE		
 		FROM		lc_comment
 		WHERE		c_bIdx = #{cBidx} and c_idx = #{cIdx}
 	</delete>
+	<!-- 코멘트 수정 -->
 	<update id="editComment" parameterType="Comment">
 		UPDATE	lc_comment
 		SET 	c_content = #{cContent},
 				c_datetime = NOW()
 		WHERE 	c_idx = #{cIdx}	
 	</update>
-	
+	<!-- 코멘트답글 -->
+	<insert id="replyComment" parameterType="Comment">
+		INSERT INTO lc_comment
+		(
+			c_datetime,
+			c_id,
+			c_content,			
+			c_bIdx,
+			c_order,
+			c_depth,
+			c_group
+		)
+		VALUES (
+			NOW(),
+			#{user.uName},
+			#{cContent},
+			#{cBidx},
+			#{cOrder},
+			#{cDepth},
+			#{cGroup}
+		)
+	<selectKey resultType="int" keyProperty="cIdx" order="AFTER">
+		SELECT LAST_INSERT_ID()
+	</selectKey>
+	</insert>
+	<update id="depthGroupUpdate" parameterType="Comment">
+		UPDATE 	lc_comment
+		SET		c_depth = #{cDepth} +1, c_group = #{cGroup}
+		WHERE	c_idx = #{cIdx}
+	</update>
+	<update id="orderUpdate" parameterType="Comment">
+		UPDATE	lc_comment
+		SET 	c_order = c_order +1
+		WHERE	c_group	= #{cGroup} AND c_order >= #{cOrder} and c_idx != #{cIdx}
+	</update>
 </mapper>

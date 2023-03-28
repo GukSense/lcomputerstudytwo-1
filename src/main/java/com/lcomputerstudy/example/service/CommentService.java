@@ -15,4 +15,6 @@ public interface CommentService {
 	public void deleteComment(Comment comment);
 	//코멘트 수정
 	public void editComment(Comment comment);
+	//코멘트 답글
+	public void replyComment(Comment comment);
 }
