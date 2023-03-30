@@ -7,6 +7,7 @@ public class Board {
 	private String bWriter;
 	private String bDateTime;
 	private String bCategory;
+	private String bId;
 	private User user;
 	private int bHits;
 	private int bOrder;
@@ -14,6 +15,12 @@ public class Board {
 	private int bGroup;
 	
 	
+	public String getbId() {
+		return bId;
+	}
+	public void setbId(String bId) {
+		this.bId = bId;
+	}
 	public int getbOrder() {
 		return bOrder;
 	}

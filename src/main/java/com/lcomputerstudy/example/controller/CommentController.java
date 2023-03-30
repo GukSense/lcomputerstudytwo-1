@@ -81,6 +81,8 @@ public class CommentController {
 	@RequestMapping("/reply-comment")
 	public String replyComment(@ModelAttribute Comment comment, Model model) {
 		System.out.println("댓글 답글 기능 동작");
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		comment.setUser(user);
 		comment.setcOrder(comment.getcOrder()+1);
 		commentService.replyComment(comment);
 		

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,6 +130,13 @@
 <title>boardList</title>
 </head>
 <body>
+	<sec:authorize access="isAnonymous()">
+		<a href="/beforeSignUp" style="color:#1b5ac2; float: right;">회원가입</a> 
+		<a href="/login" style="color:#1b5ac2; float: right; padding-right:10px;">로그인</a>
+    </sec:authorize>
+    <sec:authorize access="isAuthenticated()">
+		<a href="/logout" style="color:#1b5ac2; float: right; padding-right:10px;">로그아웃</a>
+	</sec:authorize>	
 	<!--  로고 이미지 -->
 	<div class="logo">
 		<a href="/board/boardList"><img src="/img/logo.jpg" alt="" style="width:150px; height:70px;"></a>
@@ -183,10 +191,11 @@
 					
 				</form>
 			</div>
-			
+			<sec:authorize access="isAuthenticated()">
 				<div class= "fr">
 						<input type="button" class="written" onclick="location.href = '/board/beforeWriteBoard'" value="글쓰기"  name="write">
 				</div>
+			</sec:authorize>	
 			
 		</div>
 		</tr>

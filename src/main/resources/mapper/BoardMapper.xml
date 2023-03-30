@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lcomputerstudy.example.mapper.BoardMapper">
+	
 	<select id="selectBoardList" parameterType="Pagination" resultType="Board" >
 		SELECT @ROWNUM := @ROWNUM -1 AS ROWNUM,
 			   ta.*
@@ -15,6 +16,7 @@
 						b_title as bTitle,
 						b_content as bContent,
 						b_writer as bWriter,
+						u_id as bId,
 						b_category as bCategory,
 						b_hits as bHits,
 						b_group as bGroup,

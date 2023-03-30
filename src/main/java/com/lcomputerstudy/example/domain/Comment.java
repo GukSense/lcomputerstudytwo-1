@@ -4,6 +4,7 @@ public class Comment {
 	private String cContent;
 	private String cId;
 	private String cDateTime;
+	private String cName;
 	private int cIdx;
 	private int cBidx;
 	private int cOrder;
@@ -12,6 +13,12 @@ public class Comment {
 	private User user;
 	
 	
+	public String getcName() {
+		return cName;
+	}
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
 	public User getUser() {
 		return user;
 	}

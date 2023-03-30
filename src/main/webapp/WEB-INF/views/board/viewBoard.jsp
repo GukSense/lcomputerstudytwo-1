@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +23,18 @@
 	</style>
 </head>
 <body>
-	<h1>view The Board</h1>
-	
+	<!-- 로그인 기능 -->
+	<sec:authorize access="isAnonymous()">
+		<a href="/beforeSignUp" style="color:#1b5ac2; float: right;">회원가입</a> 
+		<a href="/login" style="color:#1b5ac2; float: right; padding-right:10px;">로그인</a>
+    </sec:authorize>
+    <!-- 로그아웃 기능 -->
+    <sec:authorize access="isAuthenticated()">
+		<a href="/logout" style="color:#1b5ac2; float: right; padding-right:10px;">로그아웃</a>
+	</sec:authorize>
+	<br><h1>view The Board</h1>
+	<sec:authentication property="principal" var="principal"/>
+	${principal}
 	<table>
 		<tr>
 			<th><h3>제목: ${board.bTitle }</h3></th>
@@ -35,8 +47,12 @@
 		</tr>
 		<tr>
 			<td>Check -> Order :${board.bOrder } Group:${board.bGroup } Depth:${board.bDepth }</td>
-			<td><a href="/board/beforeEditBoard/${board.bIdx }">수정</a></td>
-			<td><a href="/board/deleteBoard/${board.bIdx }">삭제</a></td>
+			<sec:authorize access="isAuthenticated()">
+			<c:if test="${principal.username == board.bId || sec:authorize(`hasRole('ROLE_ADMIN')`}"> 
+				<td><a href="/board/beforeEditBoard/${board.bIdx }">수정</a></td>
+				<td><a href="/board/deleteBoard/${board.bIdx }">삭제</a></td>
+			</c:if>
+			</sec:authorize>
 			<td><a href="/board/beforeReplyBoard/${board.bOrder }&${board.bGroup }&${board.bDepth }">답글</a></td>
 		</tr>
 	</table>
@@ -46,18 +62,24 @@
 	<ul id="commentList">
 		<c:forEach items="${list}" var="comment">		
 		<li>
-			<div>
-				<a>id</a>
-				<span>~전</span>
+			<div>				
+				<a>${comment.cName }</a>
+				<span>시간: ~전</span>
+				${principal.authorities }
 			</div>
-			<div class="cont">${comment.cContent }</div>
+				<div class="cont">${comment.cContent }</div>
 			<div>
+				<br>
 				<span></span>
 				<input type="hidden" name=cBidx value="${board.bIdx }">
 				<input type="hidden" name="cIdx" value="${comment.cIdx }">
-				<button type="button" class="btnUpdateForm">수정</button>
-				<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+				<sec:authorize access="isAuthenticated()">
+					<c:if test="${principal.username == comment.cId}">
+						<button type="button" class="btnUpdateForm">수정</button>
+						<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+					</c:if>
 				<button type="button" class="btnReplyForm">답글</button>
+				</sec:authorize>
 			</div>
 		</li>
 		<li style="display: none;">
