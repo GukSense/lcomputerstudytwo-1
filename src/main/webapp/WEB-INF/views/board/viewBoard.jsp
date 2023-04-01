@@ -48,7 +48,7 @@
 		<tr>
 			<td>Check -> Order :${board.bOrder } Group:${board.bGroup } Depth:${board.bDepth }</td>
 			<sec:authorize access="isAuthenticated()">
-			<c:if test="${principal.username == board.bId || sec:authorize(`hasRole('ROLE_ADMIN')`}"> 
+			<c:if test="${principal.username == board.bId} (not empty sec:authorize access='hasRole(\'supervisor\')')"> 
 				<td><a href="/board/beforeEditBoard/${board.bIdx }">수정</a></td>
 				<td><a href="/board/deleteBoard/${board.bIdx }">삭제</a></td>
 			</c:if>
@@ -74,10 +74,16 @@
 				<input type="hidden" name=cBidx value="${board.bIdx }">
 				<input type="hidden" name="cIdx" value="${comment.cIdx }">
 				<sec:authorize access="isAuthenticated()">
-					<c:if test="${principal.username == comment.cId}">
+						<c:if test="${principal.username == comment.cId || principal.uName == comment.cName}">
+							<button type="button" class="btnUpdateForm">수정</button>
+							<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+						</c:if>
+					<!--  
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<button type="button" class="btnUpdateForm">수정</button>
 						<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
-					</c:if>
+					</sec:authorize>
+					-->
 				<button type="button" class="btnReplyForm">답글</button>
 				</sec:authorize>
 			</div>

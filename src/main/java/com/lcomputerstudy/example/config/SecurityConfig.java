@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -23,6 +25,9 @@ import com.lcomputerstudy.example.service.UserService;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
+	
+	
+	
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -45,13 +50,18 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 	      .formLogin()
 	            .loginPage("/login")
 	            .loginProcessingUrl("/loginPro")
-	            .defaultSuccessUrl("/", true)
+	            .successHandler(successHandler())
+	            //.defaultSuccessUrl("/", true)
 	            .permitAll()
 	            .and()
 //	      로그아웃 설정
 	      .logout()
 	         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-	         .logoutSuccessUrl("/")
+	         .logoutSuccessHandler((request, response, authentication) -> {
+	             String refererUrl = request.getHeader("Referer");
+	             response.sendRedirect(refererUrl);
+	         })
+	         //.logoutSuccessUrl("/")
 	         .invalidateHttpSession(true)
 	         .deleteCookies("JSESSIONID", "remember-me")
 	         .and()
@@ -89,4 +99,10 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 			.userDetailsService(userService)
 			.passwordEncoder(passwordEncoder());
 	}
+	
+	@Bean
+	public AuthenticationSuccessHandler successHandler() {
+		return new CustomAuthSuccessHandler();
+	}
+
 }
