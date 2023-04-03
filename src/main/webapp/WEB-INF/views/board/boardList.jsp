@@ -130,12 +130,16 @@
 <title>boardList</title>
 </head>
 <body>
+	<!-- 로그인 로그아웃 기능 -->
 	<sec:authorize access="isAnonymous()">
 		<a href="/beforeSignUp" style="color:#1b5ac2; float: right;">회원가입</a> 
 		<a href="/login" style="color:#1b5ac2; float: right; padding-right:10px;">로그인</a>
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
 		<a href="/logout" style="color:#1b5ac2; float: right; padding-right:10px;">로그아웃</a>
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<a href="/admin">관리자페이지</a>	
+		</sec:authorize>
 	</sec:authorize>	
 	<!--  로고 이미지 -->
 	<div class="logo">

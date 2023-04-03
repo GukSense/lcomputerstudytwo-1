@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.lcomputerstudy.example.domain.Pagination;
 import com.lcomputerstudy.example.domain.User;
 import com.lcomputerstudy.example.mapper.UserMapper;
 @Service
@@ -41,5 +42,13 @@ public class UserServiceImpl implements UserService {
 	public User readUser(String username) {
 		return userMapper.readUser(username);
 	}
-	
+	@Override
+	public List<User> selectUserList(Pagination pagination) {
+		System.out.println("pageNum: "+pagination.getPageNum());
+		return userMapper.selectUserList(pagination);
+	}
+	@Override
+	public int countUser() {
+		return userMapper.countUser();
+	}
 }

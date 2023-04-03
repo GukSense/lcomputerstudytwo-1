@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lcomputerstudy.example.mapper.UserMapper">
-<!-- 권한 읽기 -->
+	<!-- 권한 읽기 -->
 	<select id="readAuthorities" parameterType="String" resultType="org.springframework.security.core.authority.SimpleGrantedAuthority">
 		SELECT	u_auth
 		FROM	lc_auth
@@ -56,5 +56,22 @@
 		  UPDATE
 		  	u_id = #{username}	
 	</insert>	
+	
+	<!-- 유저리스트 -->
+	<select id="selectUserList" parameterType="Pagination" resultType="User">
+	SELECT			@ROWNUM := @ROWNUM -1 AS ROWNUM,
+					ta.u_name as uName,
+					ta.u_id as username,
+					ta.u_password as password,
+					ta.u_datetime as uDateTime
+	FROM			lc_user ta
+	INNER JOIN		(SELECT @rownum := (SELECT COUNT(*)-#{pageNum}+1  FROM lc_user)) tb ON 1=1
+	LIMIT			#{pageNum}, #{perPage}
+	</select>
+	<!-- 유저카운트 -->
+	<select id="countUser" resultType="int">
+		SELECT	COUNT(*)
+		FROM	lc_user
+	</select>
 </mapper>
 

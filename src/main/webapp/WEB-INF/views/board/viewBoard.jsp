@@ -65,7 +65,6 @@
 			<div>				
 				<a>${comment.cName }</a>
 				<span>시간: ~전</span>
-				${principal.authorities }
 			</div>
 				<div class="cont">${comment.cContent }</div>
 			<div>
@@ -73,19 +72,19 @@
 				<span></span>
 				<input type="hidden" name=cBidx value="${board.bIdx }">
 				<input type="hidden" name="cIdx" value="${comment.cIdx }">
-				<sec:authorize access="isAuthenticated()">
-						<c:if test="${principal.username == comment.cId || principal.uName == comment.cName}">
-							<button type="button" class="btnUpdateForm">수정</button>
-							<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
-						</c:if>
-					<!--  
+				
+					
+					<c:if test="${principal.username == comment.cId}">
+						<button type="button" class="btnUpdateForm">수정</button>
+						<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+					</c:if>
+					
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<button type="button" class="btnUpdateForm">수정</button>
 						<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
 					</sec:authorize>
-					-->
 				<button type="button" class="btnReplyForm">답글</button>
-				</sec:authorize>
+				
 			</div>
 		</li>
 		<li style="display: none;">

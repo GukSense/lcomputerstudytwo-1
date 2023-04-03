@@ -38,6 +38,23 @@ public class UserController {
 		return "/index";
 	}
 	
+	@RequestMapping("/user/userList")
+	public String userList(Model model, Pagination pagination, Search search) {
+		
+		
+		Pagination pagi = new Pagination();
+		pagi.setCount(userservice.countUser());
+		pagi.setPage(pagination.getPage());
+		pagi.init();
+		
+		List<User> list = userservice.selectUserList(pagi);
+
+		model.addAttribute("list", list);
+		model.addAttribute("pagination", pagi);
+		
+		return "/user/userList";
+	}
+	
 	@RequestMapping("/beforeSignUp")
 	public String beforeSignUp() {
 		return "/signup";
@@ -62,6 +79,12 @@ public class UserController {
 		return "/login";
 	
 	}
+	@RequestMapping("/TMP")
+	public String authorityUpdate() {
+		return "";
+	}
+	
+	
 	
 	@RequestMapping(value="/login")
 	public String beforeLogin(HttpServletRequest request, Model model) {

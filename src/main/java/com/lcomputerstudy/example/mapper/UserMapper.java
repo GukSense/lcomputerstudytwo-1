@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.security.core.GrantedAuthority;
+
+import com.lcomputerstudy.example.domain.Pagination;
 import com.lcomputerstudy.example.domain.User;
 
 @Mapper
@@ -19,4 +21,10 @@ public interface UserMapper {
 	
 	//권한생성
 	public void createAuthority(User user);
+	
+	//유저리스트
+	public List<User> selectUserList(Pagination pagination);
+	
+	//유저카운트
+	public int countUser();
 }
