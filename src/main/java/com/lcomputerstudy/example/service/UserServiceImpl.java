@@ -51,4 +51,19 @@ public class UserServiceImpl implements UserService {
 	public int countUser() {
 		return userMapper.countUser();
 	}
+	@Override
+	public User userDetail(User user) {
+		return userMapper.userDetail(user);
+	}
+	@Override
+	public void userDelete(User user) {
+		userMapper.userDelete(user);
+	}
+	@Override
+	public void userEdit(User user) {
+		userMapper.deleteAuthority(user);
+		userMapper.createAuthority(user);
+		userMapper.userEdit(user);
+	}
+	
 }

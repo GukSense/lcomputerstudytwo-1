@@ -33,11 +33,11 @@
 <table>
 	<tr>
 		<td>회원 ID</td>
-		<td>${user.u_id }</td>
+		<td>${user.username }</td>
 	</tr>
 	<tr>
 		<td>회원 이름</td>
-		<td>${user.u_name }</td>
+		<td>${user.uName}</td>
 	</tr>	
 	<tr>
 		<td>회원 레벨</td>
@@ -45,14 +45,14 @@
 	</tr>
 	<tr>
 		<td>회원 가입일</td>
-		<td>${user.u_name }</td>
+		<td>${user.uDateTime }</td>
 	</tr>
 	<tr style = "height:50px">	
 		<td style="border:none;">	
-			<a href="/lcomputerstudy/user-edit.do?u_idx=${user.u_idx}" style="width:70%;font-weight:700;background-color:#818181;color:#fff;">수정</a>
+			<a href="/user/beforeEditUser/${user.username}" style="width:70%;font-weight:700;background-color:#818181;color:#fff;">수정</a>
 		</td>
 		<td style="border:none;">
-			<a href="/lcomputerstudy/user-delete.do?u_idx=${user.u_idx}" style="width:70%;font-weight:700;background-color:red;color:#fff;">삭제</a>
+			<a href="/user/userDelete/${user.username}" style="width:70%;font-weight:700;background-color:red;color:#fff;">삭제</a>
 		</td>
 	</tr>
 </table>	

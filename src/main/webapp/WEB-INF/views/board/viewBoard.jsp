@@ -46,13 +46,11 @@
 			<td><h1>${board.bContent}</h1> </td>
 		</tr>
 		<tr>
-			<td>Check -> Order :${board.bOrder } Group:${board.bGroup } Depth:${board.bDepth }</td>
-			<sec:authorize access="isAuthenticated()">
-			<c:if test="${principal.username == board.bId} (not empty sec:authorize access='hasRole(\'supervisor\')')"> 
-				<td><a href="/board/beforeEditBoard/${board.bIdx }">수정</a></td>
-				<td><a href="/board/deleteBoard/${board.bIdx }">삭제</a></td>
-			</c:if>
-			</sec:authorize>
+			<td>Check -> Order :${board.bOrder } Group:${board.bGroup } Depth:${board.bDepth }</td>			
+				<c:if test="${principal.username == board.bId }"> 
+					<td><a href="/board/beforeEditBoard/${board.bIdx }">수정</a></td>
+					<td><a href="/board/deleteBoard/${board.bIdx }">삭제</a></td>
+				</c:if>			
 			<td><a href="/board/beforeReplyBoard/${board.bOrder }&${board.bGroup }&${board.bDepth }">답글</a></td>
 		</tr>
 	</table>

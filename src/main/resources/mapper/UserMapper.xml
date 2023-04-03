@@ -73,5 +73,35 @@
 		SELECT	COUNT(*)
 		FROM	lc_user
 	</select>
+	
+	<!-- 유저상세정보 -->
+	<select id="userDetail" resultType="User">
+		SELECT		u_id as username,
+					u_password as password,
+					u_name as uName,
+					u_datetime as uDateTime
+		FROM		lc_user
+		WHERE		u_id = #{username}
+	</select>
+	<!-- 	유저 삭제	 -->
+	<delete id="userDelete" parameterType="User">
+		DELETE 	
+		FROM	lc_user
+		WHERE	u_id = #{username}
+	</delete>
+	<!-- 유저 정보 수정 -->
+	<update id="userEdit">
+		UPDATE		lc_user
+		SET			u_name = #{uName},
+					u_password = #{password}
+		WHERE		u_id = #{username}
+	</update>
+	<!--  -->
+	<delete id="deleteAuthority" parameterType="User">
+		DELETE 	
+		FROM	lc_auth
+		WHERE	u_id = #{username}
+	</delete>
+	
 </mapper>
 

@@ -22,4 +22,10 @@ public interface UserService extends UserDetailsService {
 	public List<User> selectUserList(Pagination pagination);
 	//유저 카운트
 	public int countUser();
+	//유저상세정보
+	public User userDetail(User user);
+	//유저삭제
+	public void userDelete(User user);
+	//유저수정
+	public void userEdit(User user);
 }

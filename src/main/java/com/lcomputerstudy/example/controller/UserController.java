@@ -28,7 +28,7 @@ public class UserController {
 	@Autowired PasswordEncoder encoder;
 
 	@RequestMapping("/")
-	public String home(Model model, Pagination pagination, Search search) {
+	public String home(Model model, Pagination pagination, Search search) {	//홈
 		pagination.setSearch(search);
 		List<Board> list = boardservice.selectBoardList(pagination );
 		model.addAttribute("list", list);
@@ -39,7 +39,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/user/userList")
-	public String userList(Model model, Pagination pagination, Search search) {
+	public String userList(Model model, Pagination pagination, Search search) {	//유저리스트
 		
 		
 		Pagination pagi = new Pagination();
@@ -54,9 +54,17 @@ public class UserController {
 		
 		return "/user/userList";
 	}
-	
+	@RequestMapping("/user/userDetail/{username}")
+	public String userDetail(User user, Model model) {
+		user = userservice.userDetail(user);
+		System.out.println("user : " + user);
+		
+		model.addAttribute("user", user);
+
+		return "/user/userDetail";
+	}
 	@RequestMapping("/beforeSignUp")
-	public String beforeSignUp() {
+	public String beforeSignUp() {	//유저등록
 		return "/signup";
 	}
 	@RequestMapping("/signup")
@@ -79,13 +87,39 @@ public class UserController {
 		return "/login";
 	
 	}
-	@RequestMapping("/TMP")
-	public String authorityUpdate() {
-		return "";
+	@RequestMapping("/user/userDelete/{username}")
+	public String userDelete(User user) {
+		System.out.println("삭제: "+user);
+		userservice.userDelete(user);		
+		return "/user/userDelete";
 	}
-	
-	
-	
+	@RequestMapping("/user/beforeEditUser/{username}")
+	public String beforeUserEdit(User user, Model model) {
+		System.out.println("수정-> "+user);
+		model.addAttribute("user", user);
+		
+		return "/user/userEdit";
+	}
+	@RequestMapping("/user/userEdit")
+	public String userEdit(User user) {
+		System.out.println("수정본: " + user);
+		System.out.println("선택된권한: " + user.getOneofthetwoAuthority());
+				
+		//비밀번호 암호화
+		String encodePassword = encoder.encode(user.getPassword());
+		
+		//유저 데이터 세팅
+		user.setPassword(encodePassword);
+		user.setAccountNonExpired(true);
+		user.setEnabled(true);
+		user.setAccountNonLocked(true);
+		user.setCredentialsNonExpired(true);
+		user.setAuthorities(AuthorityUtils.createAuthorityList(user.getOneofthetwoAuthority()));
+		
+		
+		userservice.userEdit(user);
+		return "/user/userEditResult";
+	}
 	@RequestMapping(value="/login")
 	public String beforeLogin(HttpServletRequest request, Model model) {
 		

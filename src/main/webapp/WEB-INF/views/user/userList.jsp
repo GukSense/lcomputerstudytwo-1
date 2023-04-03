@@ -57,7 +57,7 @@
 		</tr>
 		<c:forEach items="${list}" var="user">
 			 <tr>
-				<td>${user.username}</td>
+				<td><a href="/user/userDetail/${user.username}">${user.username}</a></td>
 				<td>${user.uName}</td>
 		     <tr>
 		</c:forEach>

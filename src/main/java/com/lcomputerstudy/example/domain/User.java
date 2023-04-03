@@ -14,7 +14,7 @@ public class User implements UserDetails {
 	private String password;		//u_password
 	private String uName;			//u_name
 	private String uDateTime;		//u_datetime
-	
+	private String OneofthetwoAuthority;
 	
 	// security 관련
 	
@@ -25,6 +25,21 @@ public class User implements UserDetails {
 	private boolean isCredentialsNonExpired;
 	private boolean isEnabled;
 	
+	
+	
+	
+
+
+	public String getOneofthetwoAuthority() {
+		return OneofthetwoAuthority;
+	}
+
+
+	public void setOneofthetwoAuthority(String oneofthetwoAuthority) {
+		OneofthetwoAuthority = oneofthetwoAuthority;
+	}
+
+
 	public String getuName() {
 		return uName;
 	}

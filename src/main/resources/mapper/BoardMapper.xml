@@ -125,6 +125,7 @@
 	<!--  	글 보기 	  -->
 	<select id="viewBoard" resultType="Board">
 		SELECT 		b_idx as bIdx,
+					u_id as bId,
 					b_title as bTitle,
 					b_content as bContent,
 					b_writer as bWriter,
