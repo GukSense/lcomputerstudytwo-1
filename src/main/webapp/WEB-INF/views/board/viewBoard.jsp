@@ -47,6 +47,7 @@
 		</tr>
 		<tr>
 			<td>Check -> Order :${board.bOrder } Group:${board.bGroup } Depth:${board.bDepth }</td>	
+			<td>
 				<sec:authorize access="isAuthenticated()">		<!-- 댓글의 수정 삭제는 글작성자 이거나 관리자일때만 보이게설정 -->
 						<c:choose>
 							<c:when test="${principal.username == comment.cId}">	<!-- 관리자o && 작성자o -->
@@ -65,8 +66,9 @@
 								</sec:authorize>					
 							</c:when>
 						</c:choose>						
-					</sec:authorize>		
-			<td><a href="/board/beforeReplyBoard/${board.bOrder }&${board.bGroup }&${board.bDepth }">답글</a></td>
+				</sec:authorize>		
+				<a href="/board/beforeReplyBoard/${board.bOrder }&${board.bGroup }&${board.bDepth }">답글</a>
+			</td>
 		</tr>
 	</table>
 	
