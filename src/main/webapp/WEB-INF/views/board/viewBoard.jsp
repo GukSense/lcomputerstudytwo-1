@@ -47,12 +47,25 @@
 		</tr>
 		<tr>
 			<td>Check -> Order :${board.bOrder } Group:${board.bGroup } Depth:${board.bDepth }</td>	
-				<sec:authorize access="isAuthenticated()">		<!-- 글의 수정 삭제는 글작성자 이거나 관리자일때만 보이게설정 -->
-					<c:if test="${principal.username == board.bId }"> 
-						<td><a href="/board/beforeEditBoard/${board.bIdx }">수정</a></td>
-						<td><a href="/board/deleteBoard/${board.bIdx }">삭제</a></td>
-					</c:if>		
-				</sec:authorize>		
+				<sec:authorize access="isAuthenticated()">		<!-- 댓글의 수정 삭제는 글작성자 이거나 관리자일때만 보이게설정 -->
+						<c:choose>
+							<c:when test="${principal.username == comment.cId}">	<!-- 관리자o && 작성자o -->
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+									<button type="button" class="btnUpdateForm">수정</button>
+									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+								</sec:authorize>		
+							</c:when>
+							<c:when test="${principal.username != comment.cId}">	<!-- 관리자x && 작성자o -->
+								<sec:authorize access="hasRole('ROLE_USER')">
+									<button type="button" class="btnUpdateForm">수정</button>
+									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+								</sec:authorize>					
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+								</sec:authorize>					
+							</c:when>
+						</c:choose>						
+					</sec:authorize>		
 			<td><a href="/board/beforeReplyBoard/${board.bOrder }&${board.bGroup }&${board.bDepth }">답글</a></td>
 		</tr>
 	</table>
@@ -70,8 +83,7 @@
 				<br>
 				<span></span>
 				<input type="hidden" name=cBidx value="${board.bIdx }">
-				<input type="hidden" name="cIdx" value="${comment.cIdx }">
-				
+				<input type="hidden" name="cIdx" value="${comment.cIdx }">				
 					<sec:authorize access="isAuthenticated()">		<!-- 댓글의 수정 삭제는 글작성자 이거나 관리자일때만 보이게설정 -->
 						<c:choose>
 							<c:when test="${principal.username == comment.cId}">	<!-- 관리자o && 작성자o -->
