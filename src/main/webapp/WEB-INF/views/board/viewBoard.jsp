@@ -34,7 +34,7 @@
 	</sec:authorize>
 	<br><h1>view The Board</h1>
 	<sec:authentication property="principal" var="principal"/>
-	${principal}
+	현재접속자상태 -> ${principal}
 	<table>
 		<tr>
 			<th><h3>제목: ${board.bTitle }</h3></th>
@@ -46,17 +46,18 @@
 			<td><h1>${board.bContent}</h1> </td>
 		</tr>
 		<tr>
-			<td>Check -> Order :${board.bOrder } Group:${board.bGroup } Depth:${board.bDepth }</td>			
-				<c:if test="${principal.username == board.bId }"> 
-					<td><a href="/board/beforeEditBoard/${board.bIdx }">수정</a></td>
-					<td><a href="/board/deleteBoard/${board.bIdx }">삭제</a></td>
-				</c:if>			
+			<td>Check -> Order :${board.bOrder } Group:${board.bGroup } Depth:${board.bDepth }</td>	
+				<sec:authorize access="isAuthenticated()">		<!-- 글의 수정 삭제는 글작성자 이거나 관리자일때만 보이게설정 -->
+					<c:if test="${principal.username == board.bId }"> 
+						<td><a href="/board/beforeEditBoard/${board.bIdx }">수정</a></td>
+						<td><a href="/board/deleteBoard/${board.bIdx }">삭제</a></td>
+					</c:if>		
+				</sec:authorize>		
 			<td><a href="/board/beforeReplyBoard/${board.bOrder }&${board.bGroup }&${board.bDepth }">답글</a></td>
 		</tr>
 	</table>
 	
-	<!-- 댓글코멘트 -->
-	
+<!-- 댓글코멘트 -->	
 	<ul id="commentList">
 		<c:forEach items="${list}" var="comment">		
 		<li>
@@ -71,15 +72,24 @@
 				<input type="hidden" name=cBidx value="${board.bIdx }">
 				<input type="hidden" name="cIdx" value="${comment.cIdx }">
 				
-					
-					<c:if test="${principal.username == comment.cId}">
-						<button type="button" class="btnUpdateForm">수정</button>
-						<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
-					</c:if>
-					
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<button type="button" class="btnUpdateForm">수정</button>
-						<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+					<sec:authorize access="isAuthenticated()">		<!-- 댓글의 수정 삭제는 글작성자 이거나 관리자일때만 보이게설정 -->
+						<c:choose>
+							<c:when test="${principal.username == comment.cId}">	<!-- 관리자o && 작성자o -->
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+									<button type="button" class="btnUpdateForm">수정</button>
+									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+								</sec:authorize>		
+							</c:when>
+							<c:when test="${principal.username != comment.cId}">	<!-- 관리자x && 작성자o -->
+								<sec:authorize access="hasRole('ROLE_USER')">
+									<button type="button" class="btnUpdateForm">수정</button>
+									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+								</sec:authorize>					
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+								</sec:authorize>					
+							</c:when>
+						</c:choose>						
 					</sec:authorize>
 				<button type="button" class="btnReplyForm">답글</button>
 				
