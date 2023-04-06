@@ -103,7 +103,10 @@ public class UserController {
 	@RequestMapping("/user/userEdit")
 	public String userEdit(User user) {
 		System.out.println("수정본: " + user);
-		
+		/*
+		 * 어드민이 넘어오면 role_admin 을 호출 스위치케이스문으로
+		 * 
+		 * */
 		if(user.getCheckedAuthorities() != null && user.getCheckedAuthorities().contains(",")) {
 			String[] filter = user.getCheckedAuthorities().split(",");
 			user.setAuthorities(AuthorityUtils.createAuthorityList(filter[0], filter[1]));

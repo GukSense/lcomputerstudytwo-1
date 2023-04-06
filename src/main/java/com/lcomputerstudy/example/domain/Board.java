@@ -13,8 +13,23 @@ public class Board {
 	private int bOrder;
 	private int bDepth;
 	private int bGroup;
+	private String fileName;
+	private String filePath;
 	
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public String getbId() {
 		return bId;
 	}

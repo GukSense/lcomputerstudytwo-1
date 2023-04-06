@@ -64,7 +64,7 @@
 			    		</tr>
 			    	</tbody>
 			    	<tr>
-			    		<td><input type="file" name="fileName" class= "fileBtn"></td>
+			    		<td><input type="file" name="file" class= "fileBtn"></td>
 			    		<td><input type="submit" class="btn" value="글쓰기" ></td></tr>
     	    	</table>
     </form>

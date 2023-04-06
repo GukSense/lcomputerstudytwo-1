@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.lcomputerstudy.example.domain.Board;
 import com.lcomputerstudy.example.domain.Comment;
@@ -53,10 +54,12 @@ public class BoardController {
 	
 	
 	@RequestMapping("/board/writeBoard")
-	public String insertBoard(Board board) {
+	public String insertBoard(Board board, MultipartFile file, Model model) throws Exception {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		board.setUser(user);
-		boardService.insertBoard(board);
+		boardService.insertBoard(board, file);
+		
+		model.addAttribute("board", board);
 		return "/board/boardList";
 	}
 	@GetMapping("/board/viewBoard/{bIdx}")

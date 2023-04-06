@@ -43,26 +43,21 @@
 			<td>날짜: ${board.bDateTime }	조회수: ${board.bHits }	작성자: ${board.bWriter }</td>
 		</tr>
 		<tr>
-			<td><h1>${board.bContent}</h1> </td>
+			<td><h1>${board.bContent}</h1> </td>			
 		</tr>
 		<tr>
-			<td>Check -> Order :${board.bOrder } Group:${board.bGroup } Depth:${board.bDepth }</td>	
 			<td>
 				<sec:authorize access="isAuthenticated()">		<!-- 댓글의 수정 삭제는 글작성자 이거나 관리자일때만 보이게설정 -->
 						<c:choose>
-							<c:when test="${principal.username == comment.cId}">	<!-- 관리자o && 작성자o -->
-								<sec:authorize access="hasRole('ROLE_ADMIN')">
-									<button type="button" class="btnUpdateForm">수정</button>
-									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+							<c:when test="${principal.username == board.bId}">	
+								<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">	<!-- 관리자o && 작성자o && 관리자x 작성자o-->
+									<a href="/board/beforeEditBoard/${board.bIdx }">수정</a>
+									<a href="/board/deleteBoard/${board.bIdx }">삭제</a>
 								</sec:authorize>		
 							</c:when>
-							<c:when test="${principal.username != comment.cId}">	<!-- 관리자x && 작성자o -->
-								<sec:authorize access="hasRole('ROLE_USER')">
-									<button type="button" class="btnUpdateForm">수정</button>
-									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
-								</sec:authorize>					
-								<sec:authorize access="hasRole('ROLE_ADMIN')">
-									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+							<c:when test="${principal.username != board.bId}">													
+								<sec:authorize access="hasRole('ROLE_ADMIN')"> <!-- 관리자o && 작성자x -->
+									<a href="/board/deleteBoard/${board.bIdx }">삭제</a>
 								</sec:authorize>					
 							</c:when>
 						</c:choose>						
@@ -70,7 +65,9 @@
 				<a href="/board/beforeReplyBoard/${board.bOrder }&${board.bGroup }&${board.bDepth }">답글</a>
 			</td>
 		</tr>
+		<tr><td><img src="/file/${board.filePath }"></td></tr>
 	</table>
+			<br><a href="/file/${board.filePath }">다운로드</a>
 	
 <!-- 댓글코멘트 -->	
 	<ul id="commentList">
@@ -94,11 +91,7 @@
 									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
 								</sec:authorize>		
 							</c:when>
-							<c:when test="${principal.username != comment.cId}">	<!-- 관리자x && 작성자o -->
-								<sec:authorize access="hasRole('ROLE_USER')">
-									<button type="button" class="btnUpdateForm">수정</button>
-									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
-								</sec:authorize>					
+							<c:when test="${principal.username != comment.cId}">	<!-- 관리자o && 작성자x -->													
 								<sec:authorize access="hasRole('ROLE_ADMIN')">
 									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
 								</sec:authorize>					

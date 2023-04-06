@@ -63,7 +63,9 @@
 			b_title,
 			b_content,
 			b_writer,
-			u_id						
+			u_id,
+			b_fileName,
+			b_filePath						
 		)
 		VALUES(
 			NOW(),
@@ -71,7 +73,9 @@
 			#{bTitle},
 			#{bContent},
 			#{user.uName},
-			#{user.username}			
+			#{user.username},
+			#{fileName},
+			#{filePath}			
 		)		
 		<selectKey resultType="int" keyProperty="bIdx" order="AFTER">
 			SELECT LAST_INSERT_ID()
@@ -134,7 +138,8 @@
 					b_hits as bHits,
 					b_order as bOrder,
 					b_depth as bDepth,
-					b_group as bGroup
+					b_group as bGroup,
+					b_filePath as filePath
 					
 		FROM		lc_board
 		WHERE 		b_idx	=	#{bIdx}		
