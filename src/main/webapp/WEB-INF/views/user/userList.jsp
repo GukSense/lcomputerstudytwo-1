@@ -46,6 +46,7 @@
 </style>
 </head>
 <body>
+	<a href="/board/boardList">게시판 돌아가기</a>	
 	<h1>회원목록</h1>
 	<table>
 		<tr>

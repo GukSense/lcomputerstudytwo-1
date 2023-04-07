@@ -145,6 +145,7 @@
 	<div class="logo">
 		<a href="/board/boardList"><img src="/img/logo.jpg" alt="" style="width:150px; height:70px;"></a>
 		<a href="/board/boardList"><img src="/img/logo_title.jpg" alt="" style="width:400px; height:70px;"></a>
+		<a href="/survey/question"><img src="/img/survey.png" style="border-radius:40px width:40px height:40px;height: 70px;"></a>
 	</div>
 	<table>
 	<tr>

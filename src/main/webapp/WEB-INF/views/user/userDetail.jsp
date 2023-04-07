@@ -29,6 +29,7 @@
 </style>
 </head>
 <body>
+<a href="/user/userList">유저 리스트</a>	
 <h1><br>회원상세정보</h1>
 <table>
 	<tr>

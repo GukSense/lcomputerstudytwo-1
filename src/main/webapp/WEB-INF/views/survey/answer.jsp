@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>관리자 페이지</h1>
-	<a href="/user/userList">유저</a>
-	<a href="/board/boardList">게시판</a>	
+
 </body>
 </html>

@@ -60,7 +60,7 @@ public class BoardController {
 		boardService.insertBoard(board, file);
 		
 		model.addAttribute("board", board);
-		return "/board/boardList";
+		return "redirect:/board/boardList";
 	}
 	@GetMapping("/board/viewBoard/{bIdx}")
 	public String viewBoard(Model model, Board board, Comment comment) {
@@ -87,13 +87,13 @@ public class BoardController {
 		return "/board/replyBoard";
 	} 
 	@PostMapping("/board/replyBoard")
-	public String replyBoard(Board board) {
+	public String replyBoard(Board board, MultipartFile file) {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		board.setUser(user);
 		System.out.println(board.getbIdx() + "  " + board.getbGroup() + "  " + board.getbDepth() + "  " + board.getbOrder() );
 		board.setbOrder(board.getbOrder() + 1);
-		boardService.replyBoard(board); 
-		return "/board/boardList";
+		boardService.replyBoard(board, file); 
+		return "redirect:/board/boardList";
 	}
 	@RequestMapping("/board/beforeEditBoard/{bIdx}")
 	public String beforeEditBoard(Model model, Board board) {
@@ -102,13 +102,13 @@ public class BoardController {
 		return "/board/editBoard";
 	}
 	@RequestMapping("/board/editBoard")
-	public String editBoard(Board board) {
-		boardService.editBoard(board);
+	public String editBoard(Board board, MultipartFile file) {
+		boardService.editBoard(board, file);
 		return "/board/editResult";
 	}
 	@RequestMapping("/board/deleteBoard/{bIdx}")
 	public String deleteBoard(Board board) {
 		boardService.deleteBoard(board);
-		return "/board/deleteBoard";
+		return "redirect:/board/boardList";
 	}
 }

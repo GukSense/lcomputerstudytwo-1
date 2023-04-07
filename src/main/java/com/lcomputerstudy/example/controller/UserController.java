@@ -91,7 +91,7 @@ public class UserController {
 	public String userDelete(User user) {
 		System.out.println("삭제: "+user);
 		userservice.userDelete(user);		
-		return "/user/userDelete";
+		return "redirect:/user/userList";
 	}
 	@RequestMapping("/user/beforeEditUser/{username}")
 	public String beforeUserEdit(User user, Model model) {
@@ -128,7 +128,7 @@ public class UserController {
 		
 		
 		userservice.userEdit(user);
-		return "/user/userEditResult";
+		return "redirect:/user/userList";
 	}
 	@RequestMapping(value="/login")
 	public String beforeLogin(HttpServletRequest request, Model model) {

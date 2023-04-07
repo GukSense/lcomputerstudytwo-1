@@ -28,21 +28,23 @@ public class BoardServiceImpl implements BoardService{
 	}
 	@Override
 	public void insertBoard(Board board, MultipartFile file) throws Exception {
+		
 		String path = System.getProperty("user.dir") + "/src/main/resources/static/file/";
 		/*식별자 랜덤.생성*/
 		UUID uuid = UUID.randomUUID();
 		/*랜덤식별자 _ 원래파일이름 = 저장될 파일이름 지정*/
 		String fileName = uuid + "_" + file.getOriginalFilename();
 		 /*빈 껍데기 생성*/
-        /*File을 생성할건데, 이름은 "name" 으로할거고, projectPath 라는 경로에 담긴다는 뜻*/
+        /*File을 생성할건데, 이름은 "fileName" 으로할거고, Path 라는 경로에 담긴다는 뜻*/
 		File savaFile = new File(path, fileName);
-		
-		file.transferTo(savaFile);
-		/*디비에 파일 넣기*/
-		board.setFileName(fileName);
-		 /*저장되는 경로*/
-		board.setFilePath(fileName); /*저장된파일의이름,저장된파일의경로*/
-		 /*파일 저장*/
+		if(file.getOriginalFilename()!= null) {
+			file.transferTo(savaFile);
+			/*디비에 파일 넣기*/
+			board.setFileName(fileName);
+			 /*저장되는 경로*/
+			board.setFilePath(fileName); /*저장된파일의이름,저장된파일의경로*/
+			 /*파일 저장*/
+		}
 		
 		boardmapper.insertBoard(board);
 		System.out.println(board.getbIdx());	//bIDx check
@@ -50,7 +52,8 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 	@Override
-	public void replyBoard(Board board) {
+	public void replyBoard(Board board, MultipartFile file) {
+		
 		boardmapper.replyInsertBoard(board);
 		System.out.println(board.getbIdx() + "  " + board.getbGroup() + "  " + board.getbDepth() + "  " + board.getbOrder() );
 		boardmapper.depthGroupUpdate(board);
@@ -69,7 +72,7 @@ public class BoardServiceImpl implements BoardService{
 		boardmapper.deleteBoard(board);
 	}
 	@Override
-	public void editBoard(Board board) {
+	public void editBoard(Board board, MultipartFile file) {
 		boardmapper.editBoard(board);
 	}
 	@Override
