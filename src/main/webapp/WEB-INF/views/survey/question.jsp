@@ -21,7 +21,10 @@
 	}
 	input:focus {
 		outline:none;
-	}	
+	}
+	select:focus {
+		outline:none;
+	}
 </style>
 
 </head>
@@ -37,7 +40,7 @@
 	 		<div class="col"></div>
     		<div class="col-6">
     			<div class="mb-3">
- 					 <label for="floatingInput	">설문지 타이틀 </label>
+ 					 <label for="floatingInput	">설문지</label>
   					 <input type="text" class="form-control" id="floatingInput" placeholder="제목없는 설문지">
 				</div>
 				<div class="mb-3">
@@ -51,21 +54,16 @@
 	    	<div class="col-6" style="
 	    							border: 1px solid #bcbcbc;
 	    							width:640px;
-	    							height:600px;">
+	    							height:500px;">
 	    		<div class="row">
-		    		<div class="col-md-8"><input type="text" placeholder="질문타이틀" style="border-bottom: 1px solid #bcbcbc;border-left:0;border-right:0;border-top:0;width:100%;height:56px;"></div>
+		    		<div class="col-md-8">
+		    			<input type="text" placeholder="질문타이틀" style="border-bottom: 1px solid #bcbcbc;border-left:0;border-right:0;border-top:0;width:100%;height:56px;"></div>
 		    		<div class="col-6 col-md-4">
-		    			<div class="dropdown">
-						  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-						  style="background-color:#ffffff; color:gray;border:none;width:100%;height:56px;">
-						    설문방식
-						  </button>
-						  <ul class="dropdown-menu">
-						    <li><a class="dropdown-item" href="#">객관식 질문</a></li>
-						    <li><a class="dropdown-item" href="#">체크박스</a></li>
-						    <li><a class="dropdown-item" href="#">드롭다운</a></li>
-						  </ul>
-						</div>
+		    			<select class="form-select" aria-label="Default select example" style="background-color:#ffffff; color:gray;border:none;width:100%;height:56px;">
+						  <option selected>설문방식</option>
+						  <option value="1">주관식</option>
+						  <option value="2">객관식</option>						  
+						</select>
 		    		</div>					
 	    		</div>
 	    		<div class="row" id="optionDiv" style="padding:15px;">
@@ -74,25 +72,24 @@
 							<input id="option" type="text" placeholder="Option">
 			    		</div>
 						<div class="col-4" style="padding:10px;">
-			    			<button type="button" class="btn-close" aria-label="Close" style="float:left;"></button>
-						</div>
-<div class="col-8" id="tmp" style="padding:10px;"> 
-							<input id="option" type="text" placeholder="Option">
-			    		</div>
-						<div class="col-4" style="padding:10px;">
-			    			<button type="button" class="btn-close" aria-label="Close" style="float:left;"></button>
-						</div>											
+			    			<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>
+						</div>																
 		    		</div>
+		    		
 	    		</div>
 	    		<div class="d-flex justify-content-start" style="padding-left:15px;">
 	    			<button  type="button" class="btn btn-light" id="plusOption">옵션 추가</button>
 	    			<button  type="button" class="btn btn-link"> '기타'추가</button>		    			
 	    		</div>		    		
 	    	</div>
-	    	<div class="col">-</div>	
+	    	<div class="col align-self-end">		    
+			    	<div class="col">
+			    		<button type="button" class="btn btn-light" id="btn_survey">제출</button>
+			    	</div>			      	
+	    	</div>	
 	    </div>
-	</div>
-	
+	</div>	 
+	-------s
 	<script src="/javascript/surveyQuestion.js"></script>
 </body>
 
