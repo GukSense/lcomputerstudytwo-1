@@ -11,7 +11,18 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <title>Insert title here</title>
-
+<style>
+	#option {
+		border-right:0;
+		border-left:0;
+		border-top:0;
+		border-bottom:1px solid #bcbcbc;
+		width:100%;
+	}
+	input:focus {
+		outline:none;
+	}	
+</style>
 
 </head>
 <body>
@@ -36,10 +47,54 @@
 	    	<div class="col"></div>	 	
 	    </div>
 	    <div class="row">
-	    	<div class="col"></div>
-	    	<div class="col-6">설문지내용</div>
-	    	<div class="col"></div>	
+	    	<div class="col">-</div>
+	    	<div class="col-6" style="
+	    							border: 1px solid #bcbcbc;
+	    							width:640px;
+	    							height:600px;">
+	    		<div class="row">
+		    		<div class="col-md-8"><input type="text" placeholder="질문타이틀" style="border-bottom: 1px solid #bcbcbc;border-left:0;border-right:0;border-top:0;width:100%;height:56px;"></div>
+		    		<div class="col-6 col-md-4">
+		    			<div class="dropdown">
+						  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+						  style="background-color:#ffffff; color:gray;border:none;width:100%;height:56px;">
+						    설문방식
+						  </button>
+						  <ul class="dropdown-menu">
+						    <li><a class="dropdown-item" href="#">객관식 질문</a></li>
+						    <li><a class="dropdown-item" href="#">체크박스</a></li>
+						    <li><a class="dropdown-item" href="#">드롭다운</a></li>
+						  </ul>
+						</div>
+		    		</div>					
+	    		</div>
+	    		<div class="row" id="optionDiv" style="padding:15px;">
+		    		<div class="row" id="targetOption">
+			    		<div class="col-8" id="tmp" style="padding:10px;"> 
+							<input id="option" type="text" placeholder="Option">
+			    		</div>
+						<div class="col-4" style="padding:10px;">
+			    			<button type="button" class="btn-close" aria-label="Close" style="float:left;"></button>
+						</div>
+<div class="col-8" id="tmp" style="padding:10px;"> 
+							<input id="option" type="text" placeholder="Option">
+			    		</div>
+						<div class="col-4" style="padding:10px;">
+			    			<button type="button" class="btn-close" aria-label="Close" style="float:left;"></button>
+						</div>											
+		    		</div>
+	    		</div>
+	    		<div class="d-flex justify-content-start" style="padding-left:15px;">
+	    			<button  type="button" class="btn btn-light" id="plusOption">옵션 추가</button>
+	    			<button  type="button" class="btn btn-link"> '기타'추가</button>		    			
+	    		</div>		    		
+	    	</div>
+	    	<div class="col">-</div>	
 	    </div>
 	</div>
+	
+	<script src="/javascript/surveyQuestion.js"></script>
 </body>
+
+
 </html>

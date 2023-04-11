@@ -13,5 +13,11 @@ public class SurveyController {
 		return "/survey/question";
 	}
 	
+	@RequestMapping("/survey/plusOption")
+	public String plusOption() {
+		
+		
+		return "/survey/question";
+	}
 	
 }
