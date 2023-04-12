@@ -12,7 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 <style>
-	#option {
+	.option {
 		border-right:0;
 		border-left:0;
 		border-top:0;
@@ -40,11 +40,11 @@
 	 	<div class="row" style="background-color: #fffff;" >
 	 		<div class="col"></div>
     		<div class="col-6">
-    			<div class="mb-3">
+    			<div class="mb-3 tmp" >
  					<input type="text" class="form-control surveyTitle" id="floatingInput" placeholder="제목없는 설문지">
 				</div>
 				<div class="mb-3">
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="설문지내용"></textarea>
+					<textarea class="form-control survey_content" id="exampleFormControlTextarea1" rows="2" placeholder="설문지내용"></textarea>
 				</div>
     		</div>
 	    	<div class="col"><button type="button" class="btn btn-light" id="btn_survey" style="text-align:center;">제출</button></div>	 	
@@ -54,25 +54,25 @@
 	    	<div class="col-6" style="border: 1px solid #bcbcbc; width:640px; height:500px;">
 	    		<div class="row">
 		    		<div class="col-md-8">
-		    			<input class="q_title" type="text" placeholder="질문타이틀" style="border-bottom: 1px solid #bcbcbc;border-left:0;border-right:0;border-top:0;width:100%;height:56px;"></div>
+		    			<input class="q_title" type="text" placeholder="질문타이틀" style="border-bottom: 1px solid #bcbcbc;border-left:0;border-right:0;border-top:0;width:100%;height:56px;">
+		    		</div>
 		    		<div class="col-6 col-md-4">
 		    			<select class="form-select q_type" aria-label="Default select example" style="background-color:#ffffff; color:gray;border:none;width:100%;height:56px;">
 						  <option selected>설문방식</option>
-						  <option value="1">주관식</option>
-						  <option value="2">객관식</option>						  
+						  <option value="long">주관식</option>
+						  <option value="multipleChoice">객관식</option>						  
 						</select>
 		    		</div>					
 	    		</div>
 	    		<div class="row" id="optionDiv" style="padding:15px;">
 		    		<div class="row" id="targetOption">
 			    		<div class="col-8" id="tmp" style="padding:10px;"> 
-							<input id="option" type="text" placeholder="Option">
+							<input class="option" type="text" placeholder="Option">
 			    		</div>
 						<div class="col-4" style="padding:10px;">
 			    			<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>
 						</div>																
-		    		</div>
-		    		
+		    		</div>		    				    		
 	    		</div>
 	    		<div class="d-flex justify-content-start" style="padding-left:15px;">
 	    			<button  type="button" class="btn btn-light" id="plusOption">옵션 추가</button>

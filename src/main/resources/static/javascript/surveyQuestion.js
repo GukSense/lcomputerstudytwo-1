@@ -3,7 +3,7 @@ $(document).on('click','#plusOption',function(){
 	//추가할 태그
 	let childTags = '<div class="row" id="targetOption">';
 	childTags += '		<div class="col-8" id="tmp" style="padding:10px;">';
-	childTags += '			<input id="option" type="text" placeholder="Option">';
+	childTags += '			<input class="option" type="text" placeholder="Option">';
 	childTags += '	 	</div>';
 	childTags += '	 	<div class="col-4" style="padding:10px;">';
 	childTags += '	 		<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
@@ -22,7 +22,7 @@ $(document).on('click','#plusEtc',function(){
 	//추가할태그
 	let plusEtc = '<div class="row" id="targetOption">';
 	plusEtc += '		<div class="col-8" id="tmp" style="padding:10px;">';
-	plusEtc += '			<input id="option" type="text" placeholder="기타" value="기타">';
+	plusEtc += '			<input class="option" type="text" placeholder="기타" value="기타">';
 	plusEtc += '	 	</div>';
 	plusEtc += '	 	<div class="col-4" style="padding:10px;">';
 	plusEtc += '	 		<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
@@ -41,19 +41,32 @@ $(document).on('click','#closeOption',function(){
 
 $(document).on('click', '#btn_survey', function () {
 	let questions = [];
-	$.each('.question', function () {	//jQuery를 사용해 배열을 관리하고자 할 때 사용하는 each()
-		let q_title = $(this).children().first().next().children().first().children().find('.q_title').val();
-		let q_type = $(this).children().first().next().children().first().next().children().find('.q_type').val();
-		let items = [];
+	$('.question').each(function( index ) {	//jQuery를 사용해 배열을 관리하고자 할 때 사용하는 each()
+		//질문타이틀
+		let q_title = $(this).children().first().next().children().first().children().find('.q_title').val();	
+		//질문타입
+		let q_type = $(this).children().first().next().children().first().children().first().next().find('.q_type').val();
+		let items = [];	//질문 리스트
 		
-		let option = $(this).children().first().next().children().first().children().children().first().val();
-		$.each(option, function () {
-			let item_content = option.val();
-			let item = {
-				content: item_content
-			};
-			items.push(item);
-		});
+		let opt = $(this).children().first().next().children().first().next().find('.option');
+		if(opt.hasClass("option") == true) {
+			$(opt).each(function ( index ) {
+				let item_content = opt.val();	// 질문콘텐츠
+				let item = {
+					content: item_content
+				};
+				items.push(item);
+				
+				opt = opt.parent().parent().next().find('.option');
+				
+				if(opt.hasClass("option")== false){
+					return false;
+				} 
+			});
+			
+		} else {
+			items.push(null);
+		}
 		let question = {
 			title: q_title,
 			type: q_type,
@@ -62,11 +75,19 @@ $(document).on('click', '#btn_survey', function () {
 		questions.push(question);
 	});
 	let survey = {
-		title: $(this).parent().children().first().next().children().fisrt().children().fisrt().val(),
-		//desc:
+		title: $(this).parent().find('.surveyTitle').val(),
+		contents: $(this).parent().find('.survey_content').val(),		
 		questions: questions
 	};
-	$.ajx(
-	data: survey
-	)
+	
+	let result = JSON.stringify(survey);
+	$.ajax({
+		method: "POST",
+		url: "/survey/adjust/process",
+		data: result,
+		contentType : "application/json",
+		success: function(data) {
+			alert('data' + data);
+		}
+	})	
 });

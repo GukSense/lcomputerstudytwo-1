@@ -13,8 +13,8 @@ public class SurveyController {
 		return "/survey/question";
 	}
 	
-	@RequestMapping("/survey/plusOption")
-	public String plusOption() {
+	@RequestMapping("/survey/adjust/process")
+	public String surveyAdjustProcess() {
 		
 		
 		return "/survey/question";
