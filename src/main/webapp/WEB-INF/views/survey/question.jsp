@@ -24,42 +24,39 @@
 	}
 	select:focus {
 		outline:none;
-	}
+	}	
 </style>
 
 </head>
 <body>
 		<div class="container text-center">
-			<div class="row justify-content-md-center border-bottom" >
+			<div class="row justify-content-md-center border-bottom border-top">
 		 		<div class="col col-lg-2">질문</div>
 		 		<div class="col-md-auto">응답</div>
 		 		<div class="col col-lg-2">설정</div>
+		 		<div class="col-md-auto"></div>    			
 		 	</div>
 	 	
 	 	<div class="row" style="background-color: #fffff;" >
 	 		<div class="col"></div>
     		<div class="col-6">
     			<div class="mb-3">
- 					 <label for="floatingInput	">설문지</label>
-  					 <input type="text" class="form-control" id="floatingInput" placeholder="제목없는 설문지">
+ 					<input type="text" class="form-control surveyTitle" id="floatingInput" placeholder="제목없는 설문지">
 				</div>
 				<div class="mb-3">
 					<textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="설문지내용"></textarea>
 				</div>
     		</div>
-	    	<div class="col"></div>	 	
+	    	<div class="col"><button type="button" class="btn btn-light" id="btn_survey" style="text-align:center;">제출</button></div>	 	
 	    </div>
-	    <div class="row">
-	    	<div class="col">-</div>
-	    	<div class="col-6" style="
-	    							border: 1px solid #bcbcbc;
-	    							width:640px;
-	    							height:500px;">
+	    <div class="row question">
+	    	<div class="col"></div>
+	    	<div class="col-6" style="border: 1px solid #bcbcbc; width:640px; height:500px;">
 	    		<div class="row">
 		    		<div class="col-md-8">
-		    			<input type="text" placeholder="질문타이틀" style="border-bottom: 1px solid #bcbcbc;border-left:0;border-right:0;border-top:0;width:100%;height:56px;"></div>
+		    			<input class="q_title" type="text" placeholder="질문타이틀" style="border-bottom: 1px solid #bcbcbc;border-left:0;border-right:0;border-top:0;width:100%;height:56px;"></div>
 		    		<div class="col-6 col-md-4">
-		    			<select class="form-select" aria-label="Default select example" style="background-color:#ffffff; color:gray;border:none;width:100%;height:56px;">
+		    			<select class="form-select q_type" aria-label="Default select example" style="background-color:#ffffff; color:gray;border:none;width:100%;height:56px;">
 						  <option selected>설문방식</option>
 						  <option value="1">주관식</option>
 						  <option value="2">객관식</option>						  
@@ -79,17 +76,15 @@
 	    		</div>
 	    		<div class="d-flex justify-content-start" style="padding-left:15px;">
 	    			<button  type="button" class="btn btn-light" id="plusOption">옵션 추가</button>
-	    			<button  type="button" class="btn btn-link"> '기타'추가</button>		    			
+	    			<button  type="button" class="btn btn-link" id="plusEtc"> '기타'추가</button>		    			
 	    		</div>		    		
-	    	</div>
-	    	<div class="col align-self-end">		    
-			    	<div class="col">
-			    		<button type="button" class="btn btn-light" id="btn_survey">제출</button>
-			    	</div>			      	
-	    	</div>	
+	    	</div>	    	    
+			    <div class="col">
+			    	
+			    </div>			      		    	
 	    </div>
-	</div>	 
-	-------s
+	    
+	</div>	 	
 	<script src="/javascript/surveyQuestion.js"></script>
 </body>
 
