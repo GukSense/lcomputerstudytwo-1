@@ -75,8 +75,8 @@ $(document).on('click', '#btn_survey', function () {
 		questions.push(question);
 	});
 	let survey = {
-		title: $(this).parent().find('.surveyTitle').val(),
-		contents: $(this).parent().find('.survey_content').val(),		
+		title: $(this).parent().parent().find('.surveyTitle').val(),
+		contents: $(this).parent().parent().find('.survey_content').val(),		
 		questions: questions
 	};
 	
