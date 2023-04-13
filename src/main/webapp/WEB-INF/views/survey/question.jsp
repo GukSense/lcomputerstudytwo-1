@@ -60,19 +60,22 @@
 		    			<select class="form-select q_type" aria-label="Default select example" style="background-color:#ffffff; color:gray;border:none;width:100%;height:56px;">
 						  <option selected>설문방식</option>
 						  <option value="long">주관식</option>
-						  <option value="multipleChoice">객관식</option>						  
+						  <option value="multipleChoice">객관식</option>
+						  <option value="check">체크박스</option>						  
 						</select>
 		    		</div>					
 	    		</div>
-	    		<div class="row" id="optionDiv" style="padding:15px;">
+	    		<div class="row optionDiv" id="optionDiv" style="padding:15px;">
 		    		<div class="row" id="targetOption">
-			    		<div class="col-8" id="tmp" style="padding:10px;"> 
-							<input class="option" type="text" placeholder="Option">
+			    		<div class="col-8 tmp" style="padding:10px;">
+			    		 	<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">							
+								<input class="option" type="text" placeholder="Option">	
+							</div>		    			
 			    		</div>
 						<div class="col-4" style="padding:10px;">
 			    			<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>
 						</div>																
-		    		</div>		    				    		
+		    		</div>		    				    				    		
 	    		</div>
 	    		<div class="d-flex justify-content-start" style="padding-left:15px;">
 	    			<button  type="button" class="btn btn-light" id="plusOption">옵션 추가</button>

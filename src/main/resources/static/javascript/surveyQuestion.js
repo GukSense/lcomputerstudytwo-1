@@ -1,27 +1,65 @@
+let multipleChoice = '';
+
+$(document).on('change','.q_type',function(){
+	$('.optionDiv').html('');
+	
+	if($(this).val()== 'multipleChoice') {
+		multipleChoice = '	<div class="row" id="targetOption">';
+		multipleChoice += 	'	<div class="col-8 tmp" style="padding:10px;">';
+		multipleChoice += 	'		<div class="form-check">';
+		multipleChoice +=	'			<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">';
+		multipleChoice +=	'			<input class="option" type="text" placeholder="Option">';
+		multipleChoice +=	'		</div>';
+		multipleChoice +=	'	</div>';
+		multipleChoice +=	'	<div class="col-4" style="padding:10px;">';
+		multipleChoice +=	'		<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
+		multipleChoice +=	'	</div>';
+		multipleChoice +=	'</div>';	
+		
+		$('#optionDiv').append(multipleChoice);
+		return 	multipleChoice;
+	} else {
+		'';
+	} 
+	/*
+	else if ($(this).val()== 'long'){
+		let long = 
+	} else if ($(this).val()== 'check'){
+		let check = 
+	}
+	*/
+})
+
+
+
 $(document).on('click','#plusOption',function(){
 	console.log('check');
-	//추가할 태그
-	let childTags = '<div class="row" id="targetOption">';
-	childTags += '		<div class="col-8" id="tmp" style="padding:10px;">';
-	childTags += '			<input class="option" type="text" placeholder="Option">';
-	childTags += '	 	</div>';
-	childTags += '	 	<div class="col-4" style="padding:10px;">';
-	childTags += '	 		<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
-	childTags += '	 	</div>';
-	childTags += '	 </div>';
-	console.log(childTags);
 	//추가할 위치
 	let targetTag = $('#optionDiv');
 	console.log(targetTag);
-	//선택한태그 추가
-	targetTag.append(childTags);	
+	
+	
+	if($('.q_type').val() == 'multipleChoice') {
+		targetTag.append(multipleChoice);		
+	} else {
+		//추가할 태그
+		let nomal = '<div class="row" id="targetOption">';
+		nomal += '		<div class="col-8 tmp" style="padding:10px;">';
+		nomal += '			<input class="option" type="text" placeholder="Option">';
+		nomal += '	 	</div>';
+		nomal += '	 	<div class="col-4" style="padding:10px;">';
+		nomal += '	 		<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
+		nomal += '	 	</div>';
+		nomal += '	 </div>';
+		console.log(nomal);
+		//선택한태그 추가
+		targetTag.append(nomal);				
+	}
 });
-
-
 $(document).on('click','#plusEtc',function(){
 	//추가할태그
 	let plusEtc = '<div class="row" id="targetOption">';
-	plusEtc += '		<div class="col-8" id="tmp" style="padding:10px;">';
+	plusEtc += '		<div class="col-8 tmp" style="padding:10px;">';
 	plusEtc += '			<input class="option" type="text" placeholder="기타" value="기타">';
 	plusEtc += '	 	</div>';
 	plusEtc += '	 	<div class="col-4" style="padding:10px;">';
