@@ -59,8 +59,8 @@
 		    		<div class="col-6 col-md-4">
 		    			<select class="form-select q_type" aria-label="Default select example" style="background-color:#ffffff; color:gray;border:none;width:100%;height:56px;">
 						  <option selected>설문방식</option>
-						  <option value="long">주관식</option>
 						  <option value="multipleChoice">객관식</option>
+						  <option value="long">주관식</option>
 						  <option value="check">체크박스</option>						  
 						</select>
 		    		</div>					
