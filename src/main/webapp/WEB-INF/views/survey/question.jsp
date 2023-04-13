@@ -29,7 +29,7 @@
 
 </head>
 <body>
-		<div class="container text-center">
+	<div class="container text-center">
 			<div class="row justify-content-md-center border-bottom border-top">
 		 		<div class="col col-lg-2">질문</div>
 		 		<div class="col-md-auto">응답</div>
@@ -47,11 +47,16 @@
 					<textarea class="form-control survey_content" id="exampleFormControlTextarea1" rows="2" placeholder="설문지내용"></textarea>
 				</div>
     		</div>
-	    	<div class="col"><button type="button" class="btn btn-light" id="btn_survey" style="text-align:center;">제출</button></div>	 	
-	    </div>
+	    	<div class="col d-flex flex-column mb-3">
+	    		<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+	    			<button type="button" class="btn btn-light" id="btn_survey">제출</button>
+	    			<button type="button" class="btn btn-light" id="plusQuestion">질문 추가</button>
+	    		</div>	 	
+	    	</div>
+	    </div>	
 	    <div class="row question">
 	    	<div class="col"></div>
-	    	<div class="col-6" style="border: 1px solid #bcbcbc; width:640px; height:500px;">
+	    	<div class="col-6" style="border: 1px solid #bcbcbc;">
 	    		<div class="row">
 		    		<div class="col-md-8">
 		    			<input class="q_title" type="text" placeholder="질문타이틀" style="border-bottom: 1px solid #bcbcbc;border-left:0;border-right:0;border-top:0;width:100%;height:56px;">
@@ -68,26 +73,22 @@
 	    		<div class="row optionDiv" id="optionDiv" style="padding:15px;">
 		    		<div class="row" id="targetOption">
 			    		<div class="col-8 tmp" style="padding:10px;">
-			    		 	<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">							
-								<input class="option" type="text" placeholder="Option">	
-							</div>		    			
+			    		 	<input class="option" type="text" placeholder="Option">		    			
 			    		</div>
 						<div class="col-4" style="padding:10px;">
 			    			<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>
 						</div>																
 		    		</div>		    				    				    		
 	    		</div>
-	    		<div class="d-flex justify-content-start" style="padding-left:15px;">
+	    		<div class="d-flex justify-content-start" style="padding-left:15px; padding-bottom:10px;">
 	    			<button  type="button" class="btn btn-light" id="plusOption">옵션 추가</button>
-	    			<button  type="button" class="btn btn-link" id="plusEtc"> '기타'추가</button>		    			
+	    			<button  type="button" class="btn btn-link" id="plusEtc"> '기타'추가</button>
+	    			<button type="button" class="btn btn-dark deleteQ">Delete</button>		    			
 	    		</div>		    		
 	    	</div>	    	    
-			    <div class="col">
-			    	
-			    </div>			      		    	
-	    </div>
-	    
-	</div>	 	
+			<div class="col"></div>			      		    	
+	    </div>	    			 
+	</div>	
 	<script src="/javascript/surveyQuestion.js"></script>
 </body>
 
