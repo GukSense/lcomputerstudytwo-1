@@ -80,10 +80,10 @@
 						</div>																
 		    		</div>		    				    				    		
 	    		</div>
-	    		<div class="d-flex justify-content-start" style="padding-left:15px; padding-bottom:10px;">
+	    		<div class="d-flex justify-content-start utilities" style="padding-left:15px; padding-bottom:10px; display: none;">
 	    			<button  type="button" class="btn btn-light" id="plusOption">옵션 추가</button>
 	    			<button  type="button" class="btn btn-link" id="plusEtc"> '기타'추가</button>
-	    			<button type="button" class="btn btn-dark deleteQ">Delete</button>		    			
+	    			<button type="button" class="btn btn-dark deleteQ ">Delete</button>		    			
 	    		</div>		    		
 	    	</div>	    	    
 			<div class="col"></div>			      		    	

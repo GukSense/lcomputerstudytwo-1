@@ -3,7 +3,7 @@ let long = '';
 let check = '';
 /*질문타입설정*/
 $(document).on('change','.q_type',function(){
-	$('.optionDiv').html('');
+	$(this).parent().parent().parent().find('.optionDiv').html('');	//
 	
 	if($(this).val()== 'multipleChoice') {
 		multipleChoice = '	<div class="row" id="targetOption">';
@@ -18,8 +18,14 @@ $(document).on('change','.q_type',function(){
 		multipleChoice +=	'	</div>';
 		multipleChoice +=	'</div>';	
 		
-		$('#optionDiv').append(multipleChoice);
+		if($(this).parent().parent().parent().find('#plusEtc').hasClass('visually-hidden')){
+			$(this).parent().parent().parent().find('#plusEtc').attr('class','btn btn-link');
+		};	//
+		if($(this).parent().parent().parent().find('#plusOption').hasClass('visually-hidden')){
+			$(this).parent().parent().parent().find('#plusOption').attr('class','btn btn-light');
+		};	//
 		
+		$(this).parent().parent().parent().find('.optionDiv').append(multipleChoice);	//
 	} else if($(this).val()== 'long'){
 		long = '	<div class="row" id="targetOption">';
 		long += 	'	<div class="col-8 tmp" style="padding:10px;">';
@@ -33,7 +39,9 @@ $(document).on('change','.q_type',function(){
 		long +=	'		</div>';
 		long +=	'	</div>';
 		
-		$('#optionDiv').append(long);
+		$(this).parent().parent().parent().find('.optionDiv').append(long);	//
+		$(this).parent().parent().parent().find('#plusEtc').addClass('visually-hidden');	//
+		$(this).parent().parent().parent().find('#plusOption').addClass('visually-hidden');	//
 			
 	} else if ($(this).val()== 'check') {
 		check = '	<div class="row" id="targetOption">';
@@ -48,23 +56,25 @@ $(document).on('change','.q_type',function(){
 		check +=	'	</div>';
 		check +=	'</div>';
 		
-		$('#optionDiv').append(check);			
+		if($(this).parent().parent().parent().find('#plusEtc').hasClass('visually-hidden')){
+			$(this).parent().parent().parent().find('#plusEtc').attr('class','btn btn-link');
+		};	//
+		if($(this).parent().parent().parent().find('#plusOption').hasClass('visually-hidden')){
+			$(this).parent().parent().parent().find('#plusOption').attr('class','btn btn-light');
+		};	//
+		
+		$(this).parent().parent().parent().find('.optionDiv').append(check);			
 	} 
 	
 })
 /*옵션추가*/
 $(document).on('click','#plusOption',function(){
-	console.log('check');
-	//추가할 위치
-	let targetTag = $('#optionDiv');
-	console.log(targetTag);
-	
-	
-	if($('.q_type').val() == 'multipleChoice') {
+	console.log('check');	
+	let targetTag = $(this).parent().parent().find('.optionDiv');			
+	if($(this).parent().parent().find('.q_type').val() == 'multipleChoice') {
 		targetTag.append(multipleChoice);		
-	} else if ($('.q_type').val() == 'long') {
-		targetTag.append(long);
-	} else if ($('.q_type').val() == 'check') {
+	} else if ($(this).parent().parent().find('.q_type').val() == 'check') {
+		console.log('get the checkbox');
 		targetTag.append(check);
 	} else {
 		//추가할 태그
@@ -83,20 +93,32 @@ $(document).on('click','#plusOption',function(){
 });
 /*기타옵션추가*/
 $(document).on('click','#plusEtc',function(){
+	console.log('check');	
+	let targetTag = $(this).parent().parent().find('.optionDiv');//추가할 위치
 	//추가할태그
-	let plusEtc = '<div class="row" id="targetOption">';
-	plusEtc += '		<div class="col-8 tmp" style="padding:10px;">';
-	plusEtc += '			<input class="option" type="text" placeholder="기타" value="기타">';
-	plusEtc += '	 	</div>';
-	plusEtc += '	 	<div class="col-4" style="padding:10px;">';
-	plusEtc += '	 		<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
-	plusEtc += '	 	</div>';
-	plusEtc += '   </div>';
+	if($(this).parent().parent().find('.q_type').val() == 'multipleChoice') {
+		multipleChoice = multipleChoice.replace('<input class="option" type="text" placeholder="Option">','<input class="option" type="text" placeholder="etc" value="etc..">' );
+		targetTag.append(multipleChoice);
+	} else if ($(this).parent().parent().find('.q_type').val() == 'check') {
+		console.log('get the checkbox');
+		check = check.replace('<input class="option" type="text" placeholder="Option">','<input class="option" type="text" placeholder="etc" value="etc..">' );
+		targetTag.append(check);
+	} else {		
+		let nomal = '<div class="row" id="targetOption">';
+		nomal += '		<div class="col-8 tmp" style="padding:10px;">';
+		nomal += '			<input class="option" type="text" placeholder="Option">';
+		nomal += '	 	</div>';
+		nomal += '	 	<div class="col-4" style="padding:10px;">';
+		nomal += '	 		<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
+		nomal += '	 	</div>';
+		nomal += '	 </div>';
+		
+		nomal = nomal.replace('<input class="option" type="text" placeholder="Option">','<input class="option" type="text" placeholder="etc" value="etc..">' );		
+		targetTag.append(nomal);
+		$(this).parent().parent().find("input[value='기타']").prop('value', '기타아님');				
+	}	
 	
-	//추가할 위치
-	let targetTag = $('#optionDiv');
-	//선택한태그 추가
-	targetTag.append(plusEtc);
+	//$(this).parent().parent().find("input[value='기타']").prop('value', '기타아님');
 });
 /*옵션닫기*/
 $(document).on('click','#closeOption',function(){
