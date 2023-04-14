@@ -3,15 +3,15 @@ package com.lcomputerstudy.example.domain;
 import java.util.List;
 
 public class Question {
-	private int type;
+	private String type;
 	private String value;
 	private List<item> items;
 	
 	
-	public int getType() {
+	public String getType() {
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	public String getValue() {
