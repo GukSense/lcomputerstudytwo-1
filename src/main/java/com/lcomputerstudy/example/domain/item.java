@@ -11,5 +11,11 @@ public class item {
 		this.content = content;
 	}
 
+	@Override
+	public String toString() {
+		return "item [content=" + content + "]";
+	}
+
+	
 	
 }

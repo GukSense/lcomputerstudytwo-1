@@ -195,15 +195,15 @@ $(document).on('click', '#btn_survey', function () {
 			items.push(null);
 		}
 		let question = {
-			title: q_title,
-			type: q_type,
+			qTitle: q_title,
+			qType: q_type,
 			items: items
 		}
 		questions.push(question);
 	});
 	let survey = {
-		title: $(this).parent().parent().parent().find('.surveyTitle').val(),
-		contents: $(this).parent().parent().parent().find('.survey_content').val(),		
+		sTitle: $(this).parent().parent().parent().find('.surveyTitle').val(),
+		sDescription: $(this).parent().parent().parent().find('.survey_content').val(),		
 		questions: questions
 	};
 	

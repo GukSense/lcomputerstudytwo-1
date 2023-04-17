@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcomputerstudy.example.mapper.SurveyMapper">
+	<insert id="saveSurvey" parameterType="Survey">
+		INSERT INTO	lc_survey
+		(
+			s_title,
+			s_description,
+			s_user,
+			s_datetime
+		)
+		VALUES (
+			#{sTitle},
+			#{sDescription},
+			#{user.username},
+			NOW()
+		)
+	</insert>
+
+	<insert id="saveQuestion" parameterType="Survey">
+		INSERT INTO	lc_question
+		(
+			q_title,
+			q_type,
+			q_sIdx			
+		)
+		VALUES 
+		<foreach collection="listname" item="listtype" index="index" separator=" , ">
+			(
+				#{item.question.qTitle},
+				#{item.question.qType},
+				(	SELECT 		s_idx
+					FROM		lc_survey
+					ORDER BY	s_idx DESC
+					LIMIT 1
+				)
+			)			
+		</foreach>				
+	</insert>
+	
+</mapper>
