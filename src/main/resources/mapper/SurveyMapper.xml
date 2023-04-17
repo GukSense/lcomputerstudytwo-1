@@ -15,27 +15,37 @@
 			#{user.username},
 			NOW()
 		)
+		<selectKey resultType="int" keyProperty="sIdx" order="AFTER">
+				SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>
-
-	<insert id="saveQuestion" parameterType="Survey">
+	<insert id="saveQuestion" parameterType="Question">
 		INSERT INTO	lc_question
 		(
 			q_title,
 			q_type,
 			q_sIdx			
 		)
-		VALUES 
-		<foreach collection="listname" item="listtype" index="index" separator=" , ">
-			(
-				#{item.question.qTitle},
-				#{item.question.qType},
-				(	SELECT 		s_idx
-					FROM		lc_survey
-					ORDER BY	s_idx DESC
-					LIMIT 1
-				)
-			)			
-		</foreach>				
+		VALUES (
+			#{qTitle},
+			#{qType},
+			#{survey.sIdx}
+		)
+		<selectKey resultType="int" keyProperty="qIdx" order="AFTER">
+				SELECT LAST_INSERT_ID()
+		</selectKey>				 					
+	</insert>
+	<insert id="saveItem" parameterType="Question">
+		INSERT INTO lc_item (
+			i_sIdx,
+			i_qIdx
+			
+		)
+		VALUES (
+			#{survey.sIdx},
+			#{qIdx}
+			
+		)
 	</insert>
 	
 </mapper>

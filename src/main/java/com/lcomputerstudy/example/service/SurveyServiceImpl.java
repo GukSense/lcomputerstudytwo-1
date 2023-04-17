@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lcomputerstudy.example.domain.Question;
 import com.lcomputerstudy.example.domain.Survey;
 import com.lcomputerstudy.example.domain.User;
 import com.lcomputerstudy.example.mapper.SurveyMapper;
@@ -16,10 +17,16 @@ public class SurveyServiceImpl implements SurveyService {
 	
 	@Override
 	public void saveSurvey(Survey survey) {
-		surveymapper.saveSurvey(survey);	//last insert key 얻어오기
-		//question forach in java
-		surveymapper.saveQuestion(survey);
-//		surveymapper.saveItem(survey);	//xml item foreach
+		surveymapper.saveSurvey(survey);		
+		
+		for(Question q: survey.getQuestions()) {
+			q.setSurvey(survey);
+			surveymapper.saveQuestion(q);
+			surveymapper.saveItem(q);	//xml item foreach
+			System.out.println("DATA ->>>"+q);
+		}
+		
+		
 		
 	}		
 	@Override

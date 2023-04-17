@@ -3,10 +3,26 @@ package com.lcomputerstudy.example.domain;
 import java.util.List;
 
 public class Question {
+	private int qIdx;
 	private String qType;
 	private String qTitle;
+	private Survey survey;
 	private List<item> items;
 	
+	
+	
+	public int getqIdx() {
+		return qIdx;
+	}
+	public void setqIdx(int qIdx) {
+		this.qIdx = qIdx;
+	}
+	public Survey getSurvey() {
+		return survey;
+	}
+	public void setSurvey(Survey survey) {
+		this.survey = survey;
+	}
 	public String getqType() {
 		return qType;
 	}
