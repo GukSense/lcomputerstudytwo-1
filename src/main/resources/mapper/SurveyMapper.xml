@@ -24,12 +24,12 @@
 		(
 			q_title,
 			q_type,
-			q_sIdx			
+			sIdx			
 		)
 		VALUES (
 			#{qTitle},
 			#{qType},
-			#{survey.sIdx}
+			#{sIdx}
 		)
 		<selectKey resultType="int" keyProperty="qIdx" order="AFTER">
 				SELECT LAST_INSERT_ID()
@@ -37,15 +37,18 @@
 	</insert>
 	<insert id="saveItem" parameterType="Question">
 		INSERT INTO lc_item (
-			i_sIdx,
-			i_qIdx
-			
+			sIdx,
+			qIdx,
+			content
 		)
-		VALUES (
-			#{survey.sIdx},
-			#{qIdx}
-			
-		)
+		VALUES 
+			<foreach collection="items" item="item" index="index" separator=",">
+			(
+				#{sIdx},
+				#{qIdx},
+				#{item.content}
+			)
+			</foreach>
 	</insert>
 	
 </mapper>

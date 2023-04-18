@@ -20,10 +20,9 @@ public class SurveyServiceImpl implements SurveyService {
 		surveymapper.saveSurvey(survey);		
 		
 		for(Question q: survey.getQuestions()) {
-			q.setSurvey(survey);
+			q.setsIdx(survey.getsIdx());
 			surveymapper.saveQuestion(q);
-			surveymapper.saveItem(q);	//xml item foreach
-			System.out.println("DATA ->>>"+q);
+			surveymapper.saveItem(q);				
 		}
 		
 		

@@ -6,45 +6,53 @@ $(document).on('change','.q_type',function(){
 	$(this).parent().parent().parent().find('.optionDiv').html('');	//
 	
 	if($(this).val()== 'multipleChoice') {
-		multipleChoice = '	<div class="row" id="targetOption">';
+		let inputName = $(this).parent().parent().parent().find("input[name='flexRadioDefault']");
+		multipleChoice = '	<div class="row targetOption">';
 		multipleChoice += 	'	<div class="col-8 tmp" style="padding:10px;">';
 		multipleChoice += 	'		<div class="form-check">';
-		multipleChoice +=	'			<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">';
+		multipleChoice +=	'			<input class="form-check-input" type="radio" name="flexRadioDefault">';
 		multipleChoice +=	'			<input class="option" type="text" placeholder="Option">';
 		multipleChoice +=	'		</div>';
 		multipleChoice +=	'	</div>';
 		multipleChoice +=	'	<div class="col-4" style="padding:10px;">';
-		multipleChoice +=	'		<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
+		multipleChoice +=	'		<button type="button" class="btn-close closeOption" aria-label="Close" style="float:left;"></button>';
 		multipleChoice +=	'	</div>';
 		multipleChoice +=	'</div>';	
 		
-		if($(this).parent().parent().parent().find('#plusEtc').hasClass('visually-hidden')){
-			$(this).parent().parent().parent().find('#plusEtc').attr('class','btn btn-link');
+		if($(this).parent().parent().parent().find('.plusEtc').hasClass('visually-hidden')){
+			$(this).parent().parent().parent().find('.plusEtc').attr('class','btn btn-link plusEtc');
 		};	//
-		if($(this).parent().parent().parent().find('#plusOption').hasClass('visually-hidden')){
-			$(this).parent().parent().parent().find('#plusOption').attr('class','btn btn-light');
+		if($(this).parent().parent().parent().find('.plusOption').hasClass('visually-hidden')){
+			$(this).parent().parent().parent().find('.plusOption').attr('class','btn btn-light plusOption');
 		};	//
 		
+		
 		$(this).parent().parent().parent().find('.optionDiv').append(multipleChoice);	//
+
+		$(inputName).each(function(){
+			let currentName = inputName.attr('name');
+			let newName = currentName + 1;
+			inputName.attr('name', newName);
+		})
 	} else if($(this).val()== 'long'){
-		long = '	<div class="row" id="targetOption">';
+		long = '	<div class="row targetOption">';
 		long += 	'	<div class="col-8 tmp" style="padding:10px;">';
 		long += 	'		<div class="form-floating">';
-		long +=	'				<textarea class="form-control option" placeholder="주관식" id="floatingTextarea2" style="height: 100px"></textarea>';
+		long +=	'				<textarea class="form-control option" placeholder="주관식" style="height: 100px"></textarea>';
 		long +=	'				<label for="floatingTextarea2">Comments</label>';
 		long +=	'			</div>';
 		long +=	'		</div>';
 		long +=	'		<div class="col-4" style="padding:10px;">';
-		long +=	'			<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
+		long +=	'			<button type="button" class="btn-close closeOption" aria-label="Close" style="float:left;"></button>';
 		long +=	'		</div>';
 		long +=	'	</div>';
 		
 		$(this).parent().parent().parent().find('.optionDiv').append(long);	//
-		$(this).parent().parent().parent().find('#plusEtc').addClass('visually-hidden');	//
-		$(this).parent().parent().parent().find('#plusOption').addClass('visually-hidden');	//
+		$(this).parent().parent().parent().find('.plusEtc').addClass('visually-hidden');	//
+		$(this).parent().parent().parent().find('.plusOption').addClass('visually-hidden');	//
 			
 	} else if ($(this).val()== 'check') {
-		check = '	<div class="row" id="targetOption">';
+		check = '	<div class="row targetOption">';
 		check += 	'	<div class="col-8 tmp" style="padding:10px;">';
 		check += 	'		<div class="form-check">';
 		check +=	'			<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">';
@@ -52,15 +60,15 @@ $(document).on('change','.q_type',function(){
 		check +=	'		</div>';
 		check +=	'	</div>';
 		check +=	'	<div class="col-4" style="padding:10px;">';
-		check +=	'		<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
+		check +=	'		<button type="button" class="btn-close closeOption" aria-label="Close" style="float:left;"></button>';
 		check +=	'	</div>';
 		check +=	'</div>';
 		
-		if($(this).parent().parent().parent().find('#plusEtc').hasClass('visually-hidden')){
-			$(this).parent().parent().parent().find('#plusEtc').attr('class','btn btn-link');
+		if($(this).parent().parent().parent().find('.plusEtc').hasClass('visually-hidden')){
+			$(this).parent().parent().parent().find('.plusEtc').attr('class','btn btn-linkbtn btn-link plusEtc');
 		};	//
-		if($(this).parent().parent().parent().find('#plusOption').hasClass('visually-hidden')){
-			$(this).parent().parent().parent().find('#plusOption').attr('class','btn btn-light');
+		if($(this).parent().parent().parent().find('.plusOption').hasClass('visually-hidden')){
+			$(this).parent().parent().parent().find('.plusOption').attr('class','btn btn-light plusOption');
 		};	//
 		
 		$(this).parent().parent().parent().find('.optionDiv').append(check);			
@@ -68,7 +76,7 @@ $(document).on('change','.q_type',function(){
 	
 })
 /*옵션추가*/
-$(document).on('click','#plusOption',function(){
+$(document).on('click','.plusOption',function(){
 	console.log('check');	
 	let targetTag = $(this).parent().parent().find('.optionDiv');			
 	if($(this).parent().parent().find('.q_type').val() == 'multipleChoice') {
@@ -78,12 +86,12 @@ $(document).on('click','#plusOption',function(){
 		targetTag.append(check);
 	} else {
 		//추가할 태그
-		let nomal = '<div class="row" id="targetOption">';
+		let nomal = '<div class="row targetOption">';
 		nomal += '		<div class="col-8 tmp" style="padding:10px;">';
 		nomal += '			<input class="option" type="text" placeholder="Option">';
 		nomal += '	 	</div>';
 		nomal += '	 	<div class="col-4" style="padding:10px;">';
-		nomal += '	 		<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
+		nomal += '	 		<button type="button" class="btn-close closeOption" aria-label="Close" style="float:left;"></button>';
 		nomal += '	 	</div>';
 		nomal += '	 </div>';
 		console.log(nomal);
@@ -92,7 +100,7 @@ $(document).on('click','#plusOption',function(){
 	}
 });
 /*기타옵션추가*/
-$(document).on('click','#plusEtc',function(){
+$(document).on('click','.plusEtc',function(){
 	console.log('check');	
 	let targetTag = $(this).parent().parent().find('.optionDiv');//추가할 위치
 	//추가할태그
@@ -104,24 +112,22 @@ $(document).on('click','#plusEtc',function(){
 		check = check.replace('<input class="option" type="text" placeholder="Option">','<input class="option" type="text" placeholder="etc" value="etc..">' );
 		targetTag.append(check);
 	} else {		
-		let nomal = '<div class="row" id="targetOption">';
+		let nomal = '<div class="row targetOption">';
 		nomal += '		<div class="col-8 tmp" style="padding:10px;">';
 		nomal += '			<input class="option" type="text" placeholder="Option">';
 		nomal += '	 	</div>';
 		nomal += '	 	<div class="col-4" style="padding:10px;">';
-		nomal += '	 		<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
+		nomal += '	 		<button type="button" class="btn-close closeOption" aria-label="Close" style="float:left;"></button>';
 		nomal += '	 	</div>';
 		nomal += '	 </div>';
 		
 		nomal = nomal.replace('<input class="option" type="text" placeholder="Option">','<input class="option" type="text" placeholder="etc" value="etc..">' );		
 		targetTag.append(nomal);
 		$(this).parent().parent().find("input[value='기타']").prop('value', '기타아님');				
-	}	
-	
-	//$(this).parent().parent().find("input[value='기타']").prop('value', '기타아님');
+	}			
 });
 /*옵션닫기*/
-$(document).on('click','#closeOption',function(){
+$(document).on('click','.closeOption',function(){
 	$(this).parent().parent().remove();			
 })
 /*질문폼추가*/
@@ -141,18 +147,18 @@ $(document).on('click','#plusQuestion',function(){
 	plusQuestion += '					</select>';
 	plusQuestion += '				</div>';
 	plusQuestion += '			</div>';
-	plusQuestion += '			<div class="row optionDiv" id="optionDiv" style="padding:15px;">';
-	plusQuestion += '				<div class="row" id="targetOption">';
+	plusQuestion += '			<div class="row optionDiv" style="padding:15px;">';
+	plusQuestion += '				<div class="row targetOption">';
 	plusQuestion += '					<div class="col-8 tmp" style="padding:10px;">';
 	plusQuestion += '						<input class="option" type="text" placeholder="Option">';
 	plusQuestion += '					</div>';
 	plusQuestion += '					<div class="col-4" style="padding:10px;">';
-	plusQuestion += '						<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>';
+	plusQuestion += '						<button type="button" class="btn-close closeOption" aria-label="Close" style="float:left;"></button>';
 	plusQuestion += '					</div>';
 	plusQuestion += '				</div>';
 	plusQuestion += '			</div>';
 	plusQuestion += '			<div class="d-flex justify-content-start" style="padding-left:15px;">';
-	plusQuestion += '				<button  type="button" class="btn btn-light" id="plusOption">옵션 추가</button><button  type="button" class="btn btn-link" id="plusEtc"> "기타"추가</button><button type="button" class="btn btn-dark deleteQ">Delete</button>';
+	plusQuestion += '				<button  type="button" class="btn btn-light plusOption">옵션 추가</button><button  type="button" class="btn btn-link plusEtc"> "기타"추가</button><button type="button" class="btn btn-dark deleteQ">Delete</button>';
 	plusQuestion += '			</div>';
 	plusQuestion += '		</div>';
 	plusQuestion += '	<div class="col"></div>';

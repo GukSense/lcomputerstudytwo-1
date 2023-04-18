@@ -6,7 +6,7 @@ public class Question {
 	private int qIdx;
 	private String qType;
 	private String qTitle;
-	private Survey survey;
+	private int sIdx;
 	private List<item> items;
 	
 	
@@ -17,11 +17,12 @@ public class Question {
 	public void setqIdx(int qIdx) {
 		this.qIdx = qIdx;
 	}
-	public Survey getSurvey() {
-		return survey;
+	
+	public int getsIdx() {
+		return sIdx;
 	}
-	public void setSurvey(Survey survey) {
-		this.survey = survey;
+	public void setsIdx(int sIdx) {
+		this.sIdx = sIdx;
 	}
 	public String getqType() {
 		return qType;

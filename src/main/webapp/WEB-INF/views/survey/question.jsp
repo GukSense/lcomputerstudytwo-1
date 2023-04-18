@@ -70,19 +70,20 @@
 						</select>
 		    		</div>					
 	    		</div>
-	    		<div class="row optionDiv" id="optionDiv" style="padding:15px;">
-		    		<div class="row" id="targetOption">
+	    		<div class="row optionDiv" style="padding:15px;">
+		    		<div class="row targetOption">
 			    		<div class="col-8 tmp" style="padding:10px;">
+			    			<!-- 옵션위치 -->
 			    		 	<input class="option" type="text" placeholder="Option">		    			
 			    		</div>
 						<div class="col-4" style="padding:10px;">
-			    			<button type="button" class="btn-close" id="closeOption" aria-label="Close" style="float:left;"></button>
+			    			<button type="button" class="btn-close closeOption" aria-label="Close" style="float:left;"></button>
 						</div>																
 		    		</div>		    				    				    		
 	    		</div>
 	    		<div class="d-flex justify-content-start utilities" style="padding-left:15px; padding-bottom:10px; display: none;">
-	    			<button  type="button" class="btn btn-light" id="plusOption">옵션 추가</button>
-	    			<button  type="button" class="btn btn-link" id="plusEtc"> '기타'추가</button>
+	    			<button  type="button" class="btn btn-light plusOption">옵션 추가</button>
+	    			<button  type="button" class="btn btn-link plusEtc"> '기타'추가</button>
 	    			<button type="button" class="btn btn-dark deleteQ ">Delete</button>		    			
 	    		</div>		    		
 	    	</div>	    	    
