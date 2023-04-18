@@ -23,7 +23,7 @@ $(document).on('change','.q_type',function(){
 		multipleChoice +=	'		<button type="button" class="btn-close closeOption" aria-label="Close" style="float:left;"></button>';
 		multipleChoice +=	'	</div>';
 		multipleChoice +=	'</div>';	
-		
+		/*객관식 & 체크박스 옵션추가 기타추가 보이게 설정*/
 		if($(this).parent().parent().parent().find('.plusEtc').hasClass('visually-hidden')){
 			$(this).parent().parent().parent().find('.plusEtc').attr('class','btn btn-link plusEtc');
 		};	//
@@ -81,7 +81,7 @@ $(document).on('click','.plusOption',function(){
 		/*name 값 생성*/
 		let tmp = $(this).parent().parent().parent().attr('class');
 		let newName = 'flexRadioDefault'+ tmp.charAt(tmp.length - 1);				
-		
+		multipleChoice = multipleChoice.replace('<input class="option" type="text" placeholder="etc" value="etc..">','<input class="option" type="text" placeholder="Option">');
 		targetTag.append(multipleChoice);
 		/*name 값을 question에 맞춰서 변경 */				
 		$(this).parent().parent().parent().find('input[name*="flexRadioDefault"]').attr('name', newName);
@@ -109,8 +109,14 @@ $(document).on('click','.plusEtc',function(){
 	let targetTag = $(this).parent().parent().find('.optionDiv');//추가할 위치
 	//추가할태그
 	if($(this).parent().parent().find('.q_type').val() == 'multipleChoice') {
+		/*name 값 생성*/
+		let tmp = $(this).parent().parent().parent().attr('class');
+		let newName = 'flexRadioDefault'+ tmp.charAt(tmp.length - 1);
+		
 		multipleChoice = multipleChoice.replace('<input class="option" type="text" placeholder="Option">','<input class="option" type="text" placeholder="etc" value="etc..">' );
 		targetTag.append(multipleChoice);
+		/*name 값을 question에 맞춰서 변경 */				
+		$(this).parent().parent().parent().find('input[name*="flexRadioDefault"]').attr('name', newName);
 	} else if ($(this).parent().parent().find('.q_type').val() == 'check') {
 		console.log('get the checkbox');
 		check = check.replace('<input class="option" type="text" placeholder="Option">','<input class="option" type="text" placeholder="etc" value="etc..">' );
