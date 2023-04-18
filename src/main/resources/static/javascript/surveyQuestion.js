@@ -83,6 +83,8 @@ $(document).on('click','.plusOption',function(){
 		console.log(tmp2);
 		let whi = $(this).parent().parent().parent().find('.tmp').children().first();
 		console.log(whi.html());
+		
+		// multipleChoice 의 스트링값중 input name 부분만 바꿀수있는방법 구색해보기
 		targetTag.append(multipleChoice);		
 	} else if ($(this).parent().parent().find('.q_type').val() == 'check') {
 		console.log('get the checkbox');
