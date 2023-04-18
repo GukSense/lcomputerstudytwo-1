@@ -78,14 +78,13 @@ $(document).on('click','.plusOption',function(){
 	console.log('check');	
 	let targetTag = $(this).parent().parent().find('.optionDiv');			
 	if($(this).parent().parent().find('.q_type').val() == 'multipleChoice') {
+		/*name 값 생성*/
 		let tmp = $(this).parent().parent().parent().attr('class');
-		let tmp2 = tmp.charAt(tmp.length - 1);
-		console.log(tmp2);
-		let whi = $(this).parent().parent().parent().find('.tmp').children().first();
-		console.log(whi.html());
+		let newName = 'flexRadioDefault'+ tmp.charAt(tmp.length - 1);				
 		
-		// multipleChoice 의 스트링값중 input name 부분만 바꿀수있는방법 구색해보기
-		targetTag.append(multipleChoice);		
+		targetTag.append(multipleChoice);
+		/*name 값을 question에 맞춰서 변경 */				
+		$(this).parent().parent().parent().find('input[name*="flexRadioDefault"]').attr('name', newName);
 	} else if ($(this).parent().parent().find('.q_type').val() == 'check') {
 		console.log('get the checkbox');
 		targetTag.append(check);
