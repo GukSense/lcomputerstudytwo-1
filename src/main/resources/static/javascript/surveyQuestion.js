@@ -1,16 +1,16 @@
 let multipleChoice = '';
 let long = '';
 let check = '';
+let c = '1';	// name 값 구분을 하기위한 장치
 /*질문타입설정*/
 $(document).on('change','.q_type',function(){
 	$(this).parent().parent().parent().find('.optionDiv').html('');	//
 	
 	if($(this).val()== 'multipleChoice') {
-		let inputName = $(this).parent().parent().parent().find("input[name='flexRadioDefault']");
 		multipleChoice = '	<div class="row targetOption">';
 		multipleChoice += 	'	<div class="col-8 tmp" style="padding:10px;">';
 		multipleChoice += 	'		<div class="form-check">';
-		multipleChoice +=	'			<input class="form-check-input" type="radio" name="flexRadioDefault">';
+		multipleChoice +=	'			<input class="form-check-input tmp" type="radio" name="flexRadioDefault'+c+'">';
 		multipleChoice +=	'			<input class="option" type="text" placeholder="Option">';
 		multipleChoice +=	'		</div>';
 		multipleChoice +=	'	</div>';
@@ -24,16 +24,10 @@ $(document).on('change','.q_type',function(){
 		};	//
 		if($(this).parent().parent().parent().find('.plusOption').hasClass('visually-hidden')){
 			$(this).parent().parent().parent().find('.plusOption').attr('class','btn btn-light plusOption');
-		};	//
-		
+		};	//		
 		
 		$(this).parent().parent().parent().find('.optionDiv').append(multipleChoice);	//
-
-		$(inputName).each(function(){
-			let currentName = inputName.attr('name');
-			let newName = currentName + 1;
-			inputName.attr('name', newName);
-		})
+	
 	} else if($(this).val()== 'long'){
 		long = '	<div class="row targetOption">';
 		long += 	'	<div class="col-8 tmp" style="padding:10px;">';
@@ -133,8 +127,7 @@ $(document).on('click','.closeOption',function(){
 /*질문폼추가*/
 $(document).on('click','#plusQuestion',function(){
 	let targetTag = $('.question');
-	
-	let plusQuestion = '<div class="row question">';
+	let plusQuestion = '<div class="row question' + c + '">';
 	plusQuestion += '		<div class="col"></div>';
 	plusQuestion += '		<div class="col-6" style="border: 1px solid #bcbcbc;">';
 	plusQuestion += '			<div class="row">';
@@ -165,6 +158,7 @@ $(document).on('click','#plusQuestion',function(){
 	plusQuestion += '</div>';
 	
 	targetTag.parent().append(plusQuestion);
+	c++;	// name 값 구분을 하기위한 장치
 });
 /*질문폼닫기*/
 $(document).on('click','.deleteQ',function(){

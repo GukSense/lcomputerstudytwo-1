@@ -30,13 +30,12 @@
 </head>
 <body>
 	<div class="container text-center">
-			<div class="row justify-content-md-center border-bottom border-top">
-		 		<div class="col col-lg-2">질문</div>
-		 		<div class="col-md-auto">응답</div>
-		 		<div class="col col-lg-2">설정</div>
-		 		<div class="col-md-auto"></div>    			
-		 	</div>
-	 	
+		<div class="row justify-content-md-center border-bottom border-top">
+	 		<div class="col col-lg-2">질문</div>
+	 		<div class="col-md-auto">응답</div>
+	 		<div class="col col-lg-2">설정</div>
+	 		<div class="col-md-auto"></div>    			
+	 	</div>	 	
 	 	<div class="row" style="background-color: #fffff;" >
 	 		<div class="col"></div>
     		<div class="col-6">
