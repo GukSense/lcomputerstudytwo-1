@@ -1,16 +1,21 @@
 let multipleChoice = '';
 let long = '';
 let check = '';
-let c = '1';	// name 값 구분을 하기위한 장치
+let c = '2';	// name 값 구분을 하기위한 장치
 /*질문타입설정*/
 $(document).on('change','.q_type',function(){
 	$(this).parent().parent().parent().find('.optionDiv').html('');	//
-	
+		
 	if($(this).val()== 'multipleChoice') {
+		
+		let tmp = $(this).parent().parent().parent().parent().attr('class');
+		let tmp2 = tmp.charAt(tmp.length - 1);
+		console.log(tmp2);
+		
 		multipleChoice = '	<div class="row targetOption">';
 		multipleChoice += 	'	<div class="col-8 tmp" style="padding:10px;">';
 		multipleChoice += 	'		<div class="form-check">';
-		multipleChoice +=	'			<input class="form-check-input tmp" type="radio" name="flexRadioDefault'+c+'">';
+		multipleChoice +=	'			<input class="form-check-input tmp" type="radio" name="flexRadioDefault'+tmp2+'">';
 		multipleChoice +=	'			<input class="option" type="text" placeholder="Option">';
 		multipleChoice +=	'		</div>';
 		multipleChoice +=	'	</div>';
@@ -25,7 +30,6 @@ $(document).on('change','.q_type',function(){
 		if($(this).parent().parent().parent().find('.plusOption').hasClass('visually-hidden')){
 			$(this).parent().parent().parent().find('.plusOption').attr('class','btn btn-light plusOption');
 		};	//		
-		
 		$(this).parent().parent().parent().find('.optionDiv').append(multipleChoice);	//
 	
 	} else if($(this).val()== 'long'){
@@ -74,6 +78,11 @@ $(document).on('click','.plusOption',function(){
 	console.log('check');	
 	let targetTag = $(this).parent().parent().find('.optionDiv');			
 	if($(this).parent().parent().find('.q_type').val() == 'multipleChoice') {
+		let tmp = $(this).parent().parent().parent().attr('class');
+		let tmp2 = tmp.charAt(tmp.length - 1);
+		console.log(tmp2);
+		let whi = $(this).parent().parent().parent().find('.tmp').children().first();
+		console.log(whi.html());
 		targetTag.append(multipleChoice);		
 	} else if ($(this).parent().parent().find('.q_type').val() == 'check') {
 		console.log('get the checkbox');
