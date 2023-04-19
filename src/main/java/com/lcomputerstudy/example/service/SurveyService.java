@@ -11,6 +11,6 @@ public interface SurveyService {
 	
 	public List<Survey> selectSurvey();
 	
-	
+	public Survey respondSurvey(Survey survey);
 	
 }

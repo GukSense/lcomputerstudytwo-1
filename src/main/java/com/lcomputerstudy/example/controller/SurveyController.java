@@ -24,13 +24,10 @@ public class SurveyController {
 	}
 	
 	@RequestMapping("/survey/adjust/process")
-	public String surveyAdjustProcess(Model model, @RequestBody Survey survey) {
-		
+	public String surveyAdjustProcess(Model model, @RequestBody Survey survey) {		
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		survey.setUser(user);		
-		surveyservice.saveSurvey(survey);
-		
-		
+		surveyservice.saveSurvey(survey);		
 		
 		return "/survey/question";
 	}
@@ -42,10 +39,10 @@ public class SurveyController {
 		return "/survey/surveyList";
 	}
 	
-	@RequestMapping("/survey/response")
-	public String surveyResponse() {
-		
-		
+	@RequestMapping("/survey/response/{sIdx}")
+	public String surveyResponse(Survey survey, Model model) {		
+		System.out.println("SIDX: " + survey.getsIdx());
+		surveyservice.respondSurvey(survey);
 		return "/survey/response";
 	}
 }

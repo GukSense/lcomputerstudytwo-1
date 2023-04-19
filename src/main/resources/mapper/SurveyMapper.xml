@@ -61,4 +61,27 @@
 		FROM			lc_survey
 		ORDER BY		sDescription
 	</select>
+ 	<select id="getSurvey" resultType="Survey">
+		SELECT	s_idx as sIdx,
+				s_title as sTitle,
+				s_description as sDescription,
+				s_user as sName,
+				s_datetime as sDateTime
+		FROM	lc_survey
+		WHERE	s_idx = #{sIdx}
+	</select>
+	<select id="getQuestions" resultType="Question">
+		SELECT	q_idx as qIdx,
+				q_sidx as sIdx,
+				q_title as qTitle,
+				q_type as  qType
+		FROM	lc_question
+		WHERE	q_sIdx = #{sIdx}
+	</select>
+	<select id="getItems" resultType="Item">
+		SELECT	i_content as content,
+				i_idx	as idx			
+		FROM	lc_item
+		WHERE	sIdx = ${sIdx}
+	</select>	
 </mapper>

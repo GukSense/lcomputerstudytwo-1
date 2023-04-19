@@ -9,11 +9,20 @@ public class Survey {
 	private String sDateTime;
 	private User user;
 	private String sName;	//user name 
-	private List<Question> questions;
+	
+	
+	List<Question> questions;
+	List<Item> items;
 	
 	
 	
 	
+	public List<Item> getItems() {
+		return items;
+	}
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
 	public String getsName() {
 		return sName;
 	}

@@ -7,7 +7,8 @@ public class Question {
 	private String qType;
 	private String qTitle;
 	private int sIdx;
-	private List<item> items;
+	
+	List<Item> items;
 	
 	
 	
@@ -36,10 +37,10 @@ public class Question {
 	public void setqTitle(String qTitle) {
 		this.qTitle = qTitle;
 	}
-	public List<item> getItems() {
+	public List<Item> getItems() {
 		return items;
 	}
-	public void setItems(List<item> items) {
+	public void setItems(List<Item> items) {
 		this.items = items;
 	}
 	@Override

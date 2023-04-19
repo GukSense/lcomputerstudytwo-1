@@ -1,10 +1,20 @@
 package com.lcomputerstudy.example.domain;
 
-public class item {
+public class Item {
+	private int idx;
 	private String content;
 	private Question question;
 	
 	
+	
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+
 	public Question getQuestion() {
 		return question;
 	}

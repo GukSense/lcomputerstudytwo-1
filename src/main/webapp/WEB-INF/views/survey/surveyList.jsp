@@ -22,7 +22,7 @@
 	<ul>		
 		<c:forEach items="${list}" var="survey">
 			<li>
-				NO:${survey.sIdx } 	<a href="" title="${survey.sDescription }">설문제목: ${survey.sTitle }</a> 	설문작성자: ${survey.sName } 작성일: ${survey.sDateTime }	
+				NO:${survey.sIdx } 	<a href="/survey/response/${survey.sIdx} }" title="${survey.sDescription }">설문제목: ${survey.sTitle }</a> 	설문작성자: ${survey.sName } 작성일: ${survey.sDateTime }	
 			</li>	
 		</c:forEach>		
 	</ul>

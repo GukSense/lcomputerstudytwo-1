@@ -143,7 +143,7 @@ $(document).on('click','.closeOption',function(){
 /*질문폼추가*/
 $(document).on('click','#plusQuestion',function(){
 	let targetTag = $('.question');
-	let plusQuestion = '<div class="row question' + c + '">';
+	let plusQuestion = '<div class="row question ' + c + '">';
 	plusQuestion += '		<div class="col"></div>';
 	plusQuestion += '		<div class="col-6" style="border: 1px solid #bcbcbc;">';
 	plusQuestion += '			<div class="row">';
