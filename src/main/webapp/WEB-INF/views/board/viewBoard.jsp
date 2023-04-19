@@ -33,8 +33,7 @@
 		<a href="/logout" style="color:#1b5ac2; float: right; padding-right:10px;">로그아웃</a>
 	</sec:authorize>
 	<br><h1>view The Board</h1>
-	<sec:authentication property="principal" var="principal"/>
-	현재접속자상태 -> ${principal}
+	<sec:authentication property="principal" var="principal"/>	
 	<table>
 		<tr>
 			<th><h3>제목: ${board.bTitle }</h3></th>

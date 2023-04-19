@@ -30,11 +30,8 @@
 </head>
 <body>
 	<div class="container text-center">
-		<div class="row justify-content-md-center border-bottom border-top">
-	 		<div class="col col-lg-2">질문</div>
-	 		<div class="col-md-auto">응답</div>
-	 		<div class="col col-lg-2">설정</div>
-	 		<div class="col-md-auto"></div>    			
+		<div class="row border-bottom border-top" style="margin-bottom: 15px;">
+	 		<div class=col><b>설문조사 작성</b></div>	
 	 	</div>	 	
 	 	<div class="row" style="background-color: #fffff;" >
 	 		<div class="col"></div>

@@ -29,8 +29,8 @@ public class SurveyServiceImpl implements SurveyService {
 		
 	}		
 	@Override
-	public List<Survey> selectSurvey(User user) {
-		return surveymapper.selectSurvey(user);
+	public List<Survey> selectSurvey() {
+		return surveymapper.selectSurvey();
 	}
 	
 	

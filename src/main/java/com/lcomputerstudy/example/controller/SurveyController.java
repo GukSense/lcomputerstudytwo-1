@@ -1,6 +1,8 @@
 package com.lcomputerstudy.example.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
@@ -25,8 +27,7 @@ public class SurveyController {
 	public String surveyAdjustProcess(Model model, @RequestBody Survey survey) {
 		
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		survey.setUser(user);
-		System.out.println("GET DATA: " +survey);
+		survey.setUser(user);		
 		surveyservice.saveSurvey(survey);
 		
 		
@@ -34,4 +35,17 @@ public class SurveyController {
 		return "/survey/question";
 	}
 	
+	@RequestMapping("/survey/surveyList")
+	public String surveyList(Model model) {
+		List<Survey> list = surveyservice.selectSurvey();
+		model.addAttribute("list", list);
+		return "/survey/surveyList";
+	}
+	
+	@RequestMapping("/survey/response")
+	public String surveyResponse() {
+		
+		
+		return "/survey/response";
+	}
 }

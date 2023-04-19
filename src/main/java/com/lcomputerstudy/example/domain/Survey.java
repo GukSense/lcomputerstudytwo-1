@@ -8,12 +8,18 @@ public class Survey {
 	private int sIdx; 
 	private String sDateTime;
 	private User user;
-	
+	private String sName;	//user name 
 	private List<Question> questions;
 	
 	
 	
 	
+	public String getsName() {
+		return sName;
+	}
+	public void setsName(String sName) {
+		this.sName = sName;
+	}
 	public User getUser() {
 		return user;
 	}

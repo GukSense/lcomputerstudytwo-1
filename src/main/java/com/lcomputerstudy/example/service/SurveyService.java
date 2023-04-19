@@ -9,7 +9,7 @@ public interface SurveyService {
 	
 	public void saveSurvey(Survey survey);
 	
-	public List<Survey> selectSurvey(User user);
+	public List<Survey> selectSurvey();
 	
 	
 	
