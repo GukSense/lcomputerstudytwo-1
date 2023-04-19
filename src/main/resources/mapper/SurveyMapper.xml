@@ -72,15 +72,15 @@
 	</select>
 	<select id="getQuestions" resultType="Question">
 		SELECT	q_idx as qIdx,
-				q_sidx as sIdx,
+				sIdx as sIdx,
 				q_title as qTitle,
 				q_type as  qType
 		FROM	lc_question
-		WHERE	q_sIdx = #{sIdx}
+		WHERE	sIdx = #{sIdx}
 	</select>
 	<select id="getItems" resultType="Item">
-		SELECT	i_content as content,
-				i_idx	as idx			
+		SELECT	content as content,
+				i_idx as idx			
 		FROM	lc_item
 		WHERE	sIdx = ${sIdx}
 	</select>	

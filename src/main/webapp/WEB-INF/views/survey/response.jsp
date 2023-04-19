@@ -18,8 +18,8 @@
 	 		<div class="col"><!-- 빈공간 --></div>
 	    	<div class="col-7" style="border: 1px solid #bcbcbc; margin-top: 100px;">
 	      		
-	      		<h2>설문조사 타이틀 Survey.sTitle</h2>
-	      		<br>설문조사 설명 Survey.sDescription
+	      		<h2>${survey.sTitle}</h2>
+	      		<br>${survey.sDescription }
 	      		<br>
 	      		
 	      		<div class="row justify-content-start" style="margin-left: 15px;margin-top: 10px;">
