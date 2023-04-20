@@ -41,7 +41,7 @@ public class SurveyController {
 	
 	@RequestMapping("/survey/response/{sIdx}")
 	public String surveyResponse(Survey survey, Model model) {		
-		System.out.println("SIDX: " + survey.getsIdx());
+		System.out.println("SURBEY: " + survey);
 		Survey sv = surveyservice.respondSurvey(survey);
 		System.out.println("SURBEY: " + sv);
 		model.addAttribute("survey", sv);

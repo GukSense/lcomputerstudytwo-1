@@ -30,14 +30,16 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 	
 	@Override
-	public Survey respondSurvey(Survey survey) {		
+	public Survey respondSurvey(Survey survey) {						
 		
-		surveymapper.getSurvey(survey);
-		surveymapper.getQuestions(survey);
-		surveymapper.getItems(survey);
-		Survey resultSurvey = surveymapper.infoSurvey();
-		
-		System.out.println(resultSurvey);
+		Survey resultSurvey = surveymapper.getSurvey(survey);
+		resultSurvey.setQuestions(surveymapper.getQuestions(survey));
+		for(Question question : resultSurvey.getQuestions()) {
+			question.setsIdx(survey.getsIdx());
+			question.setItems(surveymapper.getItems(question));
+			
+		}
+		System.out.println("QUESTIOMS" + resultSurvey.getQuestions());
 		return resultSurvey;
 	}
 }

@@ -86,13 +86,13 @@
  		<result column="sIdx" property="sIdx"/>
  		<result column="qIdx" property="qIdx"/> 		 				
  	</resultMap>
- 	<select id="getSurvey" parameterType="Survey" resultMap="infoSurvey">
+ 	<select id="getSurvey" resultType="Survey" resultMap="infoSurvey">
  		SELECT * FROM lc_survey WHERE s_idx = #{sIdx}
  	</select>
- 	<select id="getQuestions" parameterType="Question" resultMap="QuestionInfo">
+ 	<select id="getQuestions" resultType="Question" resultMap="QuestionInfo">
  		SELECT * FROM lc_question WHERE sIdx = #{sIdx}
  	</select>
- 	<select id="getItems" parameterType="Item" resultMap="ItemInfo">
+ 	<select id="getItems" resultType="Item" resultMap="ItemInfo">
  		SELECT * FROM lc_item WHERE sIdx = #{sIdx}
  	</select>
 </mapper>
