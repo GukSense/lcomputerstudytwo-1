@@ -36,10 +36,9 @@ public class SurveyServiceImpl implements SurveyService {
 		resultSurvey.setQuestions(surveymapper.getQuestions(survey));
 		for(Question question : resultSurvey.getQuestions()) {
 			question.setsIdx(survey.getsIdx());
-			question.setItems(surveymapper.getItems(question));
-			
+			question.setItems(surveymapper.getItems(question));			
 		}
-		System.out.println("QUESTIOMS" + resultSurvey.getQuestions());
+		
 		return resultSurvey;
 	}
 }
