@@ -43,7 +43,7 @@ public class SurveyController {
 	public String surveyResponse(Survey survey, Model model) {		
 		System.out.println("SIDX: " + survey.getsIdx());
 		Survey sv = surveyservice.respondSurvey(survey);
-		
+		System.out.println("SURBEY: " + sv);
 		model.addAttribute("survey", sv);
 		return "/survey/response";
 	}

@@ -12,17 +12,7 @@ public class Survey {
 	
 	
 	List<Question> questions;
-	List<Item> items;
 	
-	
-	
-	
-	public List<Item> getItems() {
-		return items;
-	}
-	public void setItems(List<Item> items) {
-		this.items = items;
-	}
 	public String getsName() {
 		return sName;
 	}
@@ -65,12 +55,15 @@ public class Survey {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
-	
 	@Override
 	public String toString() {
 		return "Survey [sTitle=" + sTitle + ", sDescription=" + sDescription + ", sIdx=" + sIdx + ", sDateTime="
-				+ sDateTime + ", user=" + user + ", questions=" + questions + "]";
+				+ sDateTime + ", user=" + user + ", sName=" + sName + ", questions=" + questions + "]";
 	}
+	
+	
+	
+	
 	
 	
 	

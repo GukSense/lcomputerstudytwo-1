@@ -61,27 +61,38 @@
 		FROM			lc_survey
 		ORDER BY		sDescription
 	</select>
- 	<select id="getSurvey" resultType="Survey">
-		SELECT	s_idx as sIdx,
-				s_title as sTitle,
-				s_description as sDescription,
-				s_user as sName,
-				s_datetime as sDateTime
-		FROM	lc_survey
-		WHERE	s_idx = #{sIdx}
-	</select>
-	<select id="getQuestions" resultType="Question">
-		SELECT	q_idx as qIdx,
-				sIdx as sIdx,
-				q_title as qTitle,
-				q_type as  qType
-		FROM	lc_question
-		WHERE	sIdx = #{sIdx}
-	</select>
-	<select id="getItems" resultType="Item">
-		SELECT	content as content,
-				i_idx as idx			
-		FROM	lc_item
-		WHERE	sIdx = ${sIdx}
-	</select>	
+	
+	
+	<resultMap type="Survey" id="infoSurvey">
+		<result property="sIdx" column="s_idx"/>
+		<result property="sTitle" column="s_title"/>
+		<result property="sDescription" column="s_description"/>
+		<result property="sName" column="s_user"/>
+		<result property="sDateTime" column="s_datetime"/>				
+		
+		<collection property="questions" resultMap="QuestionInfo"/>			
+	</resultMap>
+ 	<resultMap type="Question" id="QuestionInfo">
+ 		<result column="q_idx" property="qIdx"/>
+ 		<result column="sIdx" property="sIdx"/>
+ 		<result column="q_title" property="qTitle"/>
+ 		<result column="q_type" property="qType"/>
+ 			
+ 		<collection property="items" resultMap="ItemInfo"/>
+ 	</resultMap>
+ 	<resultMap type="Item" id="ItemInfo">
+ 		<result column="content" property="content"/>
+ 		<result column="i_idx" property="idx"/>
+ 		<result column="sIdx" property="sIdx"/>
+ 		<result column="qIdx" property="qIdx"/> 		 				
+ 	</resultMap>
+ 	<select id="getSurvey" parameterType="Survey" resultMap="infoSurvey">
+ 		SELECT * FROM lc_survey WHERE s_idx = #{sIdx}
+ 	</select>
+ 	<select id="getQuestions" parameterType="Question" resultMap="QuestionInfo">
+ 		SELECT * FROM lc_question WHERE sIdx = #{sIdx}
+ 	</select>
+ 	<select id="getItems" parameterType="Item" resultMap="ItemInfo">
+ 		SELECT * FROM lc_item WHERE sIdx = #{sIdx}
+ 	</select>
 </mapper>

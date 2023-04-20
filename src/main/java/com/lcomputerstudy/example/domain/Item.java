@@ -3,25 +3,36 @@ package com.lcomputerstudy.example.domain;
 public class Item {
 	private int idx;
 	private String content;
-	private Question question;
+	private int sIdx;
+	private int qIdx;
 	
 	
 	
+	
+	
+	public int getsIdx() {
+		return sIdx;
+	}
+
+	public void setsIdx(int sIdx) {
+		this.sIdx = sIdx;
+	}
+
+	public int getqIdx() {
+		return qIdx;
+	}
+
+	public void setqIdx(int qIdx) {
+		this.qIdx = qIdx;
+	}
+
 	public int getIdx() {
 		return idx;
 	}
 
 	public void setIdx(int idx) {
 		this.idx = idx;
-	}
-
-	public Question getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(Question question) {
-		this.question = question;
-	}
+	}	
 
 	public String getContent() {
 		return content;

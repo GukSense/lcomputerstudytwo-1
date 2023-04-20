@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,22 +21,24 @@
 	      		
 	      		<h2>${survey.sTitle}</h2>
 	      		<br>${survey.sDescription }
-	      		<br>
+	      		<br>${survey}
 	      		
-	      		<div class="row justify-content-start" style="margin-left: 15px;margin-top: 10px;">
-		      		<br>질문타이틀 Question.qTitle
-	      			<br>질문목록들
-	      			<br>질문목록들
-	      			<br>질문목록들
-	      			<br>질문목록들
-	      			<br>질문목록들
-	      			<br>질문목록들
-	      			<br>질문목록들
-	      			<br>질문목록들
-	      			<br>질문목록들
-	      			<br>질문목록들
-	      			
-	      		</div>
+		      		<div class="row justify-content-start" style="margin-left: 15px;margin-top: 10px;">
+			      		
+			      		
+			      		<br>질문타이틀 Question.qTitle
+		      			<br>질문목록들
+		      			<br>질문목록들
+		      			<br>질문목록들
+		      			<br>질문목록들
+		      			<br>질문목록들
+		      			<br>질문목록들
+		      			<br>질문목록들
+		      			<br>질문목록들
+		      			<br>질문목록들
+		      			<br>질문목록들
+		      			
+		      		</div>
 	      		
 	      		
 	   		</div>

@@ -20,4 +20,6 @@ public interface SurveyMapper {
 	public Survey getSurvey(Survey survey);
 	public List<Question> getQuestions(Survey survey);
 	public List<Item> getItems(Survey survey);
+	
+	public Survey infoSurvey();
 }
