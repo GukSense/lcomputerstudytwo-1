@@ -19,7 +19,6 @@
 	border-top:0;
 	border: none;
 	}
-
 </style>
 </head>
 <body>
@@ -32,7 +31,7 @@
 	      		<br>${survey.sDescription }
 	      		<br>
 	      			<c:forEach items="${survey.questions}" var="q">
-			      		<div class="row justify-content-start" align="left" style="margin-left: 15px;margin-top: 10px;">
+			      		<div class="question row justify-content-start" align="left" style="margin-left: 15px;margin-top: 10px;">
 				      		<br><strong> ${q. qTitle}</strong>
 				      			<c:forEach items="${q.items }" var="i">
 				      				
@@ -64,4 +63,36 @@
 	    </div>
 	</div>
 </body>
+<script>
+	$(document).on('click','.submit', function(){
+		let questions = [];
+		let survey = {
+			sIdx:${survey.sIdx},	
+			sTitle:${survey.sTitle},
+			questions: questions
+		};
+		$('.question').each(function(index){
+			let q_title = '';
+			let q_type = '';
+			let items = [];
+		
+			$('items').each(function(index){
+				let item_content = '';
+				let item = {
+					content: item_content	
+				};
+				items.push(item);
+			})
+		
+			let question = {
+				qTitle: q_title,
+				qType: q_type,
+				items: items
+			}
+		questions.push(question);
+		
+		})
+	})
+</script>
+
 </html>
