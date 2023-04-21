@@ -45,8 +45,11 @@ public class Question {
 	}
 	@Override
 	public String toString() {
-		return "Question [qType=" + qType + ", qTitle=" + qTitle + ", items=" + items + "]";
+		return "Question [qIdx=" + qIdx + ", qType=" + qType + ", qTitle=" + qTitle + ", sIdx=" + sIdx + ", items="
+				+ items + "]";
 	}
+	
+	
 	
 	
 	

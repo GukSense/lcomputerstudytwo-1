@@ -93,6 +93,6 @@
  		SELECT * FROM lc_question WHERE sIdx = #{sIdx}
  	</select>
  	<select id="getItems" resultType="Item" resultMap="ItemInfo">
- 		SELECT * FROM lc_item WHERE sIdx = #{sIdx}
+ 		SELECT * FROM lc_item WHERE qIdx = #{qIdx}
  	</select>
 </mapper>
