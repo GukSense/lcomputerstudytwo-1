@@ -45,4 +45,13 @@ public class SurveyController {
 		model.addAttribute("survey", sv);
 		return "/survey/response";
 	}
+	@RequestMapping("/survey/response/process") 
+		public String surveyResponseProcess(@RequestBody Survey survey) {
+			
+		
+			return "";
+		}
+	
+	
+	
 }
