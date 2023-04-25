@@ -73,6 +73,7 @@
 		let survey = {
 			sIdx:${survey.sIdx},	
 			sTitle:'${survey.sTitle}',
+			sDescription: '${survey.sDescription }',
 			questions: questions
 		};
 		$('.question').each(function(index){

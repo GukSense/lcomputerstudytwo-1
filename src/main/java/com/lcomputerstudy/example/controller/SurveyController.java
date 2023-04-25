@@ -47,8 +47,9 @@ public class SurveyController {
 	}
 	@RequestMapping("/survey/response/process") 
 		public String surveyResponseProcess(@RequestBody Survey survey) {
-		System.out.println("SURBEY RESPONSE: " + survey);	
-		
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();	
+		survey.setUser(user);
+		surveyservice.saveResponse(survey);
 			return "/survey/surveyList";
 		}
 	

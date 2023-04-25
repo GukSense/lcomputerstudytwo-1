@@ -19,7 +19,11 @@ public interface SurveyMapper {
 	
 	public Survey getSurvey(Survey survey);
 	public List<Question> getQuestions(Survey survey);
-	public List<Item> getItems(Question question);
+	public List<Item> getItems(Question question);		
+
+	public void saveResponseSurvey(Survey survey);
+	public void saveResponseQuestion(Question question);
+	public void saveResponseItem(Question question);
+	public void updateRespondent(Survey survey);
 	
-	public Survey infoSurvey();
 }

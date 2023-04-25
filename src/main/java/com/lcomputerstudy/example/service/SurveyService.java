@@ -13,4 +13,6 @@ public interface SurveyService {
 	
 	public Survey respondSurvey(Survey survey);
 	
+	public void saveResponse(Survey survey);
+	
 }

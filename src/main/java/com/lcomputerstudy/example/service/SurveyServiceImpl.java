@@ -41,4 +41,14 @@ public class SurveyServiceImpl implements SurveyService {
 		
 		return resultSurvey;
 	}
+	@Override
+	public void saveResponse(Survey survey) {
+		 surveymapper.saveResponseSurvey(survey);
+		 
+		 for(Question q : survey.getQuestions()) {
+			 q.setsIdx(survey.getsIdx());
+			 surveymapper.saveResponseQuestion(q);
+			 surveymapper.saveResponseItem(q);
+		 }
+	}
 }

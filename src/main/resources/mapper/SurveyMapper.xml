@@ -62,7 +62,7 @@
 		ORDER BY		sDescription
 	</select>
 	
-	
+	<!-- 설문조사 응답화면 출력 -->
 	<resultMap type="Survey" id="infoSurvey">
 		<result property="sIdx" column="s_idx"/>
 		<result property="sTitle" column="s_title"/>
@@ -95,4 +95,58 @@
  	<select id="getItems" resultType="Item" resultMap="ItemInfo">
  		SELECT * FROM lc_item WHERE qIdx = #{qIdx}
  	</select>
+ 	
+ 	<!-- 응답정보 DB SAVE -->
+ 	<insert id="saveResponseSurvey" parameterType="Survey">
+		INSERT INTO	res_survey
+		(
+			s_title,
+			s_description,
+			s_user			
+		)
+		VALUES (
+			#{sTitle},
+			#{sDescription},
+			#{user.username}			
+		)
+		<selectKey resultType="int" keyProperty="sIdx" order="AFTER">
+				SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+ 	<insert id="saveResponseQuestion" parameterType="Question">
+		INSERT INTO	res_question
+		(
+			q_title,
+			q_type,
+			sIdx			
+		)
+		VALUES (
+			#{qTitle},
+			#{qType},
+			#{sIdx}
+		)
+		<selectKey resultType="int" keyProperty="qIdx" order="AFTER">
+				SELECT LAST_INSERT_ID()
+		</selectKey>				 					
+	</insert>
+	<insert id="saveResponseItem" parameterType="Question">
+		INSERT INTO res_item (
+			sIdx,
+			qIdx,
+			content
+		)
+		VALUES 
+			<foreach collection="items" item="item" index="index" separator=",">
+			(
+				#{sIdx},
+				#{qIdx},
+				#{item.content}
+			)
+			</foreach>
+	</insert>
+	<update id="updateRespondent" parameterType="Survey">
+		UPDATE	res_survey
+		SET		s_countRespondent =   s_countRespondent + 1
+		WHERE	s_idx = #{sIdx}
+	</update>
 </mapper>
