@@ -44,7 +44,7 @@ public class SurveyServiceImpl implements SurveyService {
 	@Override
 	public void saveResponse(Survey survey) {
 		 surveymapper.saveResponseSurvey(survey);
-		 
+		 surveymapper.updateRespondent(survey);
 		 for(Question q : survey.getQuestions()) {
 			 q.setsIdx(survey.getsIdx());
 			 surveymapper.saveResponseQuestion(q);
