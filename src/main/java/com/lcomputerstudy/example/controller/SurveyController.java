@@ -34,7 +34,7 @@ public class SurveyController {
 	
 	@RequestMapping("/survey/surveyList")
 	public String surveyList(Model model) {
-		List<Survey> list = surveyservice.selectSurvey();
+		List<Survey> list = surveyservice.surveyList();
 		model.addAttribute("list", list);
 		return "/survey/surveyList";
 	}
@@ -47,9 +47,9 @@ public class SurveyController {
 	}
 	@RequestMapping("/survey/response/process") 
 		public String surveyResponseProcess(@RequestBody Survey survey) {
-			
+		System.out.println("SURBEY RESPONSE: " + survey);	
 		
-			return "";
+			return "/survey/surveyList";
 		}
 	
 	

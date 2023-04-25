@@ -52,7 +52,7 @@
 			</foreach>
 	</insert>
 	<!-- 설문 리스트 -->
-	<select id="selectSurvey" resultType="Survey">
+	<select id="surveyList" resultType="Survey">
 		SELECT			s_idx as sIdx,
 						s_title as sTitle,
 						s_description as sDescription,

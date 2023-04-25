@@ -76,39 +76,42 @@
 			questions: questions
 		};
 		$('.question').each(function(index){
-			let q_title = $(this).children().first().text();
+			let q_title = $(this).children().first().text().slice(1);
 			let q_type = $(this).children().first().next().val();
 			let items = [];
 			
-			let opt = $(this).find('.option');
-			
+			let opt = $(this).find('.option');			
 				$(opt).each(function(index) {
-					let item_content = '';					
-					if(q_type == 'multipleChoice') {
-						let check = $(this).parent('.form-check').find('input[type=radio]').prop('checked');
-						console.log(check);
-						if(check == true) {
+					let item_content = '';
+					let nextOpt = opt.parent().next().next().find('.option');
+						if(q_type == 'multipleChoice') {
+							let check = $(this).parent('.form-check').find('input[type=radio]').prop('checked');							
+							if(check == true) {
+								item_content = opt.val();
+							} else if (check == false) {
+								item_content = null;
+								opt = nextOpt;
+								
+							}
+						} else if (q_type == 'long') {
 							item_content = opt.val();
-						} else if (check == false) {
-							item_content = null;
-							opt = opt.parent().attr('class');
-							console.log(opt);
-						}
-					} else if (q_type == 'long') {
-						item_content = opt.val();
-					} else if(q_type == 'check') {
-						if($(this).find('input[type=radio]').prop('checked')) {
-							item_content = opt.val();					
+						} else if(q_type == 'check') {
+							console.log('check');
+							let check = $(this).parent('.form-check').find('input[type=checkbox]').prop('checked');
+							if(check == true) {
+								item_content = opt.val();
+								opt = nextOpt;
+							} else if(check == false) {
+								item_content = null;
+								opt = nextOpt;
+							}						
 						}				
-					}
-					
 					let item = {
 						content: item_content	
 					};
 					if(item.content != null) {
 						items.push(item);						
-					}
-					
+					}									
 				})
 		
 									

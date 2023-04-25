@@ -11,7 +11,7 @@ import com.lcomputerstudy.example.domain.Survey;
 @Mapper
 public interface SurveyMapper {
 	
-	public List<Survey> selectSurvey();
+	public List<Survey> surveyList();
 	
 	public void saveSurvey(Survey survey);
 	public void saveQuestion(Question question);
