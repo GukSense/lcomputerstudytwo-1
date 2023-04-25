@@ -76,18 +76,42 @@
 			questions: questions
 		};
 		$('.question').each(function(index){
-			let q_title = $(this).find().val();
-			let q_type = $(this).find('.qType').val;
+			let q_title = $(this).children().first().text();
+			let q_type = $(this).children().first().next().val();
 			let items = [];
+			
+			let opt = $(this).find('.option');
+			
+				$(opt).each(function(index) {
+					let item_content = '';					
+					if(q_type == 'multipleChoice') {
+						let check = $(this).parent('.form-check').find('input[type=radio]').prop('checked');
+						console.log(check);
+						if(check == true) {
+							item_content = opt.val();
+						} else if (check == false) {
+							item_content = null;
+							opt = opt.parent().attr('class');
+							console.log(opt);
+						}
+					} else if (q_type == 'long') {
+						item_content = opt.val();
+					} else if(q_type == 'check') {
+						if($(this).find('input[type=radio]').prop('checked')) {
+							item_content = opt.val();					
+						}				
+					}
+					
+					let item = {
+						content: item_content	
+					};
+					if(item.content != null) {
+						items.push(item);						
+					}
+					
+				})
 		
-			$('items').each(function(index){
-				let item_content = $(this).find('input[name*="flexRadioDefault"]:checked');
-				let item = {
-					content: item_content	
-				};
-				items.push(item);
-			})
-		
+									
 			let question = {
 				qTitle: q_title,
 				qType: q_type,
@@ -101,7 +125,7 @@
 		
 		$.ajax({
 			method: "POST",
-			url: "/survey/adjust/process",
+			url: "/survey/response/process",
 			data: result,
 			contentType : "application/json",
 			success: function(data) {
