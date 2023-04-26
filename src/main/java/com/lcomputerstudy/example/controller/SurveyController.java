@@ -55,6 +55,9 @@ public class SurveyController {
 			return "/survey/surveyList";
 		}
 	
-	
+	@RequestMapping("/survey/response/static")
+	public String surveyStatic() {
+		return "/survey/static";
+	}
 	
 }

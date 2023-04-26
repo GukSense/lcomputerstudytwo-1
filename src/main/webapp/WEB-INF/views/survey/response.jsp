@@ -60,7 +60,10 @@
 				      			</c:forEach>
 			      		</div>
 	      			</c:forEach>
-	      			<br><br><div align="right" style="padding-bottom:10px;"><button type="button" class="btn btn-dark submit">응답</button></div>     		
+	      			<br><br><div align="right" style="padding-bottom:10px;">
+	      				<a href="/survey/response/static#?sIdx=${survey.sIdx}" class="btn btn-info">통계</a>
+	      				<button type="button" class="btn btn-dark submit">응답</button>
+	      			</div>     		
 	   		</div>
 	    	<div class="col"><!-- 빈공긴 --></div>
 	    </div>
