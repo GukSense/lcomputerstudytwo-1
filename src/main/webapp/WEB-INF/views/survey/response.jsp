@@ -33,10 +33,11 @@
 	      		<br>${survey.sDescription }
 	      		<br>
 	      			<c:forEach items="${survey.questions}" var="q">
-			      		<div class="question row justify-content-start" align="left" style="margin-left: 15px;margin-top: 10px;">
+			      		<div class="answer row justify-content-start" align="left" style="margin-left: 15px;margin-top: 10px;">
 				      		<strong>Q ${q. qTitle}</strong>
 				      			<c:forEach items="${q.items }" var="i">
 				      				<input type="hidden" value="${q.qType}" class="qType">
+				      				<input type="hidden" value="${q.qIdx}" class="qIdx">
 				      					<c:if test="${q.qType eq 'multipleChoice' }">
 							      			<div class="form-check">
 							      				<input class="form-check-input" type="radio" name="flexRadioDefault_${q.qIdx }">
@@ -52,7 +53,7 @@
 				      					<c:if test="${q.qType eq 'check'}">
 				      						<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="" name="flexRadioDefault_${q.qIdx }">
-												<input class="form-control option" type="text" value="${i.content }">
+												<input class="form-control option" type="text" value="${i.content }" aria-label="readonly input example" readonly>
 											</div>
 				      					</c:if>
 				      				
@@ -68,23 +69,21 @@
 <script>
 	$(document).on('click','.submit', function(){
 		console.log('click');
-		let questions = [];
+		let answers = [];
 		
-		let survey = {
-			sIdx:${survey.sIdx},	
-			sTitle:'${survey.sTitle}',
-			sDescription: '${survey.sDescription }',
-			questions: questions
+		let resSurvey = {
+			sIdx:${survey.sIdx},							
+			answers: answers
 		};
-		$('.question').each(function(index){
-			let q_title = $(this).children().first().text().slice(1);
+		$('.answer').each(function(index){
+			let q_idx = $(this).children().first().next().next().val();
 			let q_type = $(this).children().first().next().val();
 			let items = [];
 			
 			let opt = $(this).find('.option');			
 				$(opt).each(function(index) {
 					let item_content = '';
-					let nextOpt = opt.parent().next().next().find('.option');
+					let nextOpt = opt.parent().next().next().next().find('.option');					
 						if(q_type == 'multipleChoice') {
 							let check = $(this).parent('.form-check').find('input[type=radio]').prop('checked');							
 							if(check == true) {
@@ -116,16 +115,15 @@
 				})
 		
 									
-			let question = {
-				qTitle: q_title,
-				qType: q_type,
-				items: items
+			let answer = {
+				qIdx: q_idx,				
+				resItems: items
 			}
-		questions.push(question);
+				answers.push(answer);
 		
 		})
 		
-		let result = JSON.stringify(survey);
+		let result = JSON.stringify(resSurvey);
 		
 		$.ajax({
 			method: "POST",

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.lcomputerstudy.example.domain.ResSurvey;
 import com.lcomputerstudy.example.domain.Survey;
 import com.lcomputerstudy.example.domain.User;
 import com.lcomputerstudy.example.service.SurveyService;
@@ -46,10 +47,11 @@ public class SurveyController {
 		return "/survey/response";
 	}
 	@RequestMapping("/survey/response/process") 
-		public String surveyResponseProcess(@RequestBody Survey survey) {
+		public String surveyResponseProcess(@RequestBody ResSurvey resSurvey) {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();	
-		survey.setUser(user);
-		surveyservice.saveResponse(survey);
+		resSurvey.setUser(user);
+		System.out.println(resSurvey);
+		surveyservice.saveResponse(resSurvey);
 			return "/survey/surveyList";
 		}
 	

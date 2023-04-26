@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.lcomputerstudy.example.domain.Item;
 import com.lcomputerstudy.example.domain.Question;
+import com.lcomputerstudy.example.domain.ResAnswer;
+import com.lcomputerstudy.example.domain.ResSurvey;
 import com.lcomputerstudy.example.domain.Survey;
 
 @Mapper
@@ -21,9 +23,9 @@ public interface SurveyMapper {
 	public List<Question> getQuestions(Survey survey);
 	public List<Item> getItems(Question question);		
 
-	public void saveResponseSurvey(Survey survey);
-	public void saveResponseQuestion(Question question);
-	public void saveResponseItem(Question question);
-	public void updateRespondent(Survey survey);
+	public void saveResponseSurvey(ResSurvey resSurvey);
+	public void saveResponseAnswer(ResAnswer answer);
+	public void saveResponseItem(ResAnswer answer);
+	public void updateRespondent(ResSurvey resSurvey);
 	
 }

@@ -97,54 +97,44 @@
  	</select>
  	
  	<!-- 응답정보 DB SAVE -->
- 	<insert id="saveResponseSurvey" parameterType="Survey">
+ 	<insert id="saveResponseSurvey" parameterType="ResSurvey">
 		INSERT INTO	res_survey
-		(
-			s_title,
-			s_description,
-			s_user			
+		(			
+			s_idx,
+			res_user			
 		)
 		VALUES (
-			#{sTitle},
-			#{sDescription},
+			#{sIdx},			
 			#{user.username}			
-		)
-		<selectKey resultType="int" keyProperty="sIdx" order="AFTER">
-				SELECT LAST_INSERT_ID()
-		</selectKey>
+		)		
 	</insert>
- 	<insert id="saveResponseQuestion" parameterType="Question">
-		INSERT INTO	res_question
-		(
-			q_title,
-			q_type,
+ 	<insert id="saveResponseAnswer" parameterType="ResAnswer">
+		INSERT INTO	res_answer
+		(			
+			q_idx,
 			sIdx			
 		)
 		VALUES (
-			#{qTitle},
-			#{qType},
+			#{qIdx},			
 			#{sIdx}
-		)
-		<selectKey resultType="int" keyProperty="qIdx" order="AFTER">
-				SELECT LAST_INSERT_ID()
-		</selectKey>				 					
+		)					 					
 	</insert>
-	<insert id="saveResponseItem" parameterType="Question">
+	<insert id="saveResponseItem" parameterType="ResAnswer">
 		INSERT INTO res_item (
 			sIdx,
 			qIdx,
 			content
 		)
 		VALUES 
-			<foreach collection="items" item="item" index="index" separator=",">
+			<foreach collection="resItems" item="ResItem" index="index" separator=",">
 			(
 				#{sIdx},
 				#{qIdx},
-				#{item.content}
+				#{ResItem.content}
 			)
 			</foreach>
 	</insert>
-	<update id="updateRespondent" parameterType="Survey">
+	<update id="updateRespondent" parameterType="ResSurvey">
 		UPDATE	res_survey
 		SET		s_countRespondent =   s_countRespondent + 1
 		WHERE	s_idx = #{sIdx}

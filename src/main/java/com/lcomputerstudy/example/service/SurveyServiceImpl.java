@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lcomputerstudy.example.domain.Question;
+import com.lcomputerstudy.example.domain.ResAnswer;
+import com.lcomputerstudy.example.domain.ResSurvey;
 import com.lcomputerstudy.example.domain.Survey;
 import com.lcomputerstudy.example.mapper.SurveyMapper;
 
@@ -42,13 +44,15 @@ public class SurveyServiceImpl implements SurveyService {
 		return resultSurvey;
 	}
 	@Override
-	public void saveResponse(Survey survey) {
-		 surveymapper.saveResponseSurvey(survey);
-		 surveymapper.updateRespondent(survey);
-		 for(Question q : survey.getQuestions()) {
-			 q.setsIdx(survey.getsIdx());
-			 surveymapper.saveResponseQuestion(q);
-			 surveymapper.saveResponseItem(q);
+	public void saveResponse(ResSurvey resSurvey) {
+		 surveymapper.saveResponseSurvey(resSurvey);
+		 surveymapper.updateRespondent(resSurvey);		 
+		 		 
+		 for(ResAnswer a : resSurvey.getAnswers()) {
+			 a.setsIdx(resSurvey.getsIdx());
+			 surveymapper.saveResponseAnswer(a);
+			 surveymapper.saveResponseItem(a);
 		 }
+		 
 	}
 }
