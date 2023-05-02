@@ -67,10 +67,41 @@ public class SurveyController {
 		List<Result> list;
 		Result result;
 		
+		System.out.println(resultList);
 		
+		int key = resultList.get(0).getrIndex();
 		
-		
-		return "/survey/static";
+		for(int i = 1; i < resultList.size(); i++) {	
+			  if(key == resultList.get(i).getrIndex()) {
+				  resultList.remove(i);
+				  i--;
+			  } else {
+				  key = resultList.get(i).getrIndex();
+			  }	  
+		}
+		for(int j = 0; j < resultList.size(); j++) {   		
+			if(resultList.get(j).getqType().equals("long")) {
+				resultList.remove(j);
+				j--;	   			   
+	   		}  
+		}
+		for(int i = 0; i < resultList.size(); i++) {
+	   		   list = new ArrayList<>();
+	   		   for(int j = 0; j < resultList.size(); j++) {
+	   			   if(resultList.get(i).getrIndex() == resultList.get(j).getrIndex()) {
+	   				   result = new Result();   				  
+	   				   result.setCount(resultList.get(j).getCount());
+	   				   result.setContent(resultList.get(j).getContent());
+	   				   result.setrIndex(resultList.get(j).getrIndex());
+	   				   list.add(result);
+	   			   }
+	   		   }
+	   		   
+	   		   map.put(resultList.get(i).getrIndex(), list);   
+	   	   }   	   
+	   	   	 
+	       System.out.println("MAP: " + map);		
+	       return "/survey/static";
 	}
 	
 }

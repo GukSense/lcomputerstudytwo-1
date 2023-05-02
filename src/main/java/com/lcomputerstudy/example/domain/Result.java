@@ -1,6 +1,8 @@
 package com.lcomputerstudy.example.domain;
 
 public class Result {
+	private int rIndex;
+	private String qType;
 	private int sIdx;
 	private int qIdx;
 	private String content;
@@ -8,6 +10,23 @@ public class Result {
 	private String qTitle;
 	
 	
+	
+	public String getqType() {
+		return qType;
+	}
+
+	public void setqType(String qType) {
+		this.qType = qType;
+	}
+
+	public int getrIndex() {
+		return rIndex;
+	}
+
+	public void setrIndex(int rIndex) {
+		this.rIndex = rIndex;
+	}
+
 	public String getqTitle() {
 		return qTitle;
 	}
@@ -50,9 +69,11 @@ public class Result {
 
 	@Override
 	public String toString() {
-		return "Result [sIdx=" + sIdx + ", qIdx=" + qIdx  + ", qTitle=" + qTitle  + ", content=" + content + ", count=" + count + "]";
+		return "Result [rIndex=" + rIndex + ", qType=" + qType + ", sIdx=" + sIdx + ", qIdx=" + qIdx + ", content="
+				+ content + ", count=" + count + ", qTitle=" + qTitle + "]";
 	}
-	
+
+
 	
 	
 }

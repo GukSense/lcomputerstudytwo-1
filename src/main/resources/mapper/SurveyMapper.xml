@@ -141,14 +141,16 @@
 	</update>
 	<!-- Get Result -->
 	<select id="getResult" parameterType="Survey" resultType="Result">
-	SELECT 	tb.sIdx as sIdx,
+	SELECT 	tb.i_idx AS rIndex,
+			tc.q_type AS qType,
+			tb.sIdx as sIdx,
 			tb.qIdx as qIdx,
 			tc.q_title as qTitle,
 			ta.content as content,
 			ta.count as count
 	FROM
 	(
-		SELECT 	sIdx,
+		SELECT 		sIdx,
 					qIdx,
 					content,
 					COUNT(content) AS COUNT
