@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.lcomputerstudy.example.domain.Question;
 import com.lcomputerstudy.example.domain.ResAnswer;
 import com.lcomputerstudy.example.domain.ResSurvey;
+import com.lcomputerstudy.example.domain.Result;
 import com.lcomputerstudy.example.domain.Survey;
 import com.lcomputerstudy.example.mapper.SurveyMapper;
 
@@ -52,7 +53,11 @@ public class SurveyServiceImpl implements SurveyService {
 			 a.setsIdx(resSurvey.getsIdx());
 			 surveymapper.saveResponseAnswer(a);
 			 surveymapper.saveResponseItem(a);
-		 }
-		 
+		 }		 
+	}
+	@Override
+	public List<Result> getResult(Survey survey) {
+						
+		return surveymapper.getResult(survey);
 	}
 }

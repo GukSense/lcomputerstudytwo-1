@@ -3,6 +3,7 @@ package com.lcomputerstudy.example.service;
 import java.util.List;
 
 import com.lcomputerstudy.example.domain.ResSurvey;
+import com.lcomputerstudy.example.domain.Result;
 import com.lcomputerstudy.example.domain.Survey;
 
 public interface SurveyService {
@@ -14,5 +15,7 @@ public interface SurveyService {
 	public Survey respondSurvey(Survey survey);
 	
 	public void saveResponse(ResSurvey resSurvey);
+	
+	public List<Result> getResult(Survey survey); 
 	
 }

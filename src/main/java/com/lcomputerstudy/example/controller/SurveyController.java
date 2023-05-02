@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lcomputerstudy.example.domain.ResSurvey;
+import com.lcomputerstudy.example.domain.Result;
 import com.lcomputerstudy.example.domain.Survey;
 import com.lcomputerstudy.example.domain.User;
 import com.lcomputerstudy.example.service.SurveyService;
@@ -55,8 +56,14 @@ public class SurveyController {
 			return "/survey/surveyList";
 		}
 	
-	@RequestMapping("/survey/response/static")
-	public String surveyStatic() {
+	@RequestMapping("/survey/response/static/{sIdx}")
+	public String surveyStatic(Survey survey) {
+		System.out.println(survey);
+		
+		List<Result> resultList = surveyservice.getResult(survey);
+		for(Result r : resultList) {
+			System.out.println(r);
+		}
 		return "/survey/static";
 	}
 	

@@ -8,6 +8,7 @@ import com.lcomputerstudy.example.domain.Item;
 import com.lcomputerstudy.example.domain.Question;
 import com.lcomputerstudy.example.domain.ResAnswer;
 import com.lcomputerstudy.example.domain.ResSurvey;
+import com.lcomputerstudy.example.domain.Result;
 import com.lcomputerstudy.example.domain.Survey;
 
 @Mapper
@@ -27,5 +28,7 @@ public interface SurveyMapper {
 	public void saveResponseAnswer(ResAnswer answer);
 	public void saveResponseItem(ResAnswer answer);
 	public void updateRespondent(ResSurvey resSurvey);
+	
+	public List<Result> getResult(Survey survey);
 	
 }

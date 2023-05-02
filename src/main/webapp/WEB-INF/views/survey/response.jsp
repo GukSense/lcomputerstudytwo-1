@@ -61,7 +61,7 @@
 			      		</div>
 	      			</c:forEach>
 	      			<br><br><div align="right" style="padding-bottom:10px;">
-	      				<a href="/survey/response/static#?sIdx=${survey.sIdx}" class="btn btn-info">통계</a>
+	      				<a href="/survey/response/static/${survey.sIdx}" class="btn btn-info">통계</a>
 	      				<button type="button" class="btn btn-dark submit">응답</button>
 	      			</div>     		
 	   		</div>

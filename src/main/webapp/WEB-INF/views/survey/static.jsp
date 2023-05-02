@@ -15,7 +15,7 @@
             data.addColumn('number','Count');		//item_content count type  	
  
             data.addRows([ 
-                ['피자',15],	//content, count
+                ['피자',0],	//content, count
                 ['치킨',25],	
                 ['햄버거',63]	
             ]);

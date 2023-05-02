@@ -139,4 +139,28 @@
 		SET		s_countRespondent =   s_countRespondent + 1
 		WHERE	s_idx = #{sIdx}
 	</update>
+	<!-- Get Result -->
+	<select id="getResult" parameterType="Survey" resultType="Result">
+	SELECT 	tb.sIdx as sIdx,
+			tb.qIdx as qIdx,
+			tc.q_title as qTitle,
+			ta.content as content,
+			ta.count as count
+	FROM
+	(
+		SELECT 	sIdx,
+					qIdx,
+					content,
+					COUNT(content) AS COUNT
+		FROM 		res_item
+		GROUP BY	content
+	) ta
+	INNER JOIN  lc_item tb ON ta.sIdx = tb.sIdx AND ta.qIdx = tb.qIdx
+	INNER JOIN 	lc_question tc ON ta.sIdx = tc.sIdx AND ta.qIdx = tc.q_idx
+	WHERE 		tb.sIdx = #{sIdx}
+	GROUP BY 	ta.content
+	ORDER BY 	tb.sIdx ASC , tb.qIdx desc
+	</select>
+	
+	
 </mapper>
