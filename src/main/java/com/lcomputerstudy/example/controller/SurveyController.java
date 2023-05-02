@@ -1,6 +1,8 @@
 package com.lcomputerstudy.example.controller;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,9 +63,13 @@ public class SurveyController {
 		System.out.println(survey);
 		
 		List<Result> resultList = surveyservice.getResult(survey);
-		for(Result r : resultList) {
-			System.out.println(r);
-		}
+		HashMap<Integer, List<Result>> map = new HashMap<>();
+		List<Result> list;
+		Result result;
+		
+		
+		
+		
 		return "/survey/static";
 	}
 	
