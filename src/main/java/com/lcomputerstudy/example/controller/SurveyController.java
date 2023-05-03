@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lcomputerstudy.example.domain.ResSurvey;
 import com.lcomputerstudy.example.domain.Result;
@@ -58,27 +59,27 @@ public class SurveyController {
 			return "/survey/surveyList";
 		}
 	
-	@RequestMapping("/survey/response/static/{sIdx}")
-	public String surveyStatic(Survey survey) {
-		System.out.println(survey);
+	@RequestMapping("/survey/response/static/{sIdx}/{sTitle}")
+	public String surveyStatic(Survey survey, Model model) {
+		List<Result> resultList = surveyservice.getResult(survey);
+		List<Result> resultList2 = surveyservice.getResult(survey);
+		System.out.println("ST " + resultList);
+		model.addAttribute("survey", survey);
+		model.addAttribute("resultList", resultList);
+		model.addAttribute("resultList2", resultList2);
 		
+		return "/survey/static";
+	}
+	
+	@RequestMapping("/get/chart/data")
+	@ResponseBody
+	 public HashMap<Integer, List<Result>> getChartData(Model model,Survey survey) { 
+				
 		List<Result> resultList = surveyservice.getResult(survey);
 		HashMap<Integer, List<Result>> map = new HashMap<>();
 		List<Result> list;
 		Result result;
 		
-		System.out.println(resultList);
-		
-		int key = resultList.get(0).getrIndex();
-		
-		for(int i = 1; i < resultList.size(); i++) {	
-			  if(key == resultList.get(i).getrIndex()) {
-				  resultList.remove(i);
-				  i--;
-			  } else {
-				  key = resultList.get(i).getrIndex();
-			  }	  
-		}
 		for(int j = 0; j < resultList.size(); j++) {   		
 			if(resultList.get(j).getqType().equals("long")) {
 				resultList.remove(j);
@@ -93,15 +94,13 @@ public class SurveyController {
 	   				   result.setCount(resultList.get(j).getCount());
 	   				   result.setContent(resultList.get(j).getContent());
 	   				   result.setrIndex(resultList.get(j).getrIndex());
+	   				   result.setqTitle(resultList.get(j).getqTitle());
 	   				   list.add(result);
 	   			   }
 	   		   }
 	   		   
 	   		   map.put(resultList.get(i).getrIndex(), list);   
-	   	   }   	   
-	   	   	 
-	       System.out.println("MAP: " + map);		
-	       return "/survey/static";
+	   	}
+		return map;
 	}
-	
 }

@@ -8,9 +8,17 @@ public class Result {
 	private String content;
 	private int count;
 	private String qTitle;
+	private String sTitle;
 	
 	
-	
+	public String getsTitle() {
+		return sTitle;
+	}
+
+	public void setsTitle(String sTitle) {
+		this.sTitle = sTitle;
+	}
+
 	public String getqType() {
 		return qType;
 	}

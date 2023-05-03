@@ -141,8 +141,8 @@
 	</update>
 	<!-- Get Result -->
 	<select id="getResult" parameterType="Survey" resultType="Result">
-	SELECT 	tb.i_idx AS rIndex,
-			tc.q_type AS qType,
+	SELECT 	tb.i_idx as rIndex,
+			tc.q_type as qType,
 			tb.sIdx as sIdx,
 			tb.qIdx as qIdx,
 			tc.q_title as qTitle,
