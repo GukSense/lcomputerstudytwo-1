@@ -57,15 +57,15 @@
 	 <c:forEach items="${resultList}" var="result" varStatus="status">	 	
 	 	<div id="piechart${status.index}"></div>
 	 </c:forEach>
-	 <h3>주관식</h3>
-	 <c:forEach items="${resultList2}" var="result">
-	 	<div>
-	 		<c:if test="${result.qType == 'long'}">
+	 
+	 <c:forEach items="${resultList2}" var="result" varStatus="status">
+	 	<c:if test="${result.qType == 'long'}">			
+	 		<div>
 	 			<ul>
 	 				<li>${result.content }</li>
 	 			</ul>
-	 		</c:if>
-	 	</div>
+	 		</div>
+	 	</c:if>
 	</c:forEach> 
 </body>
 </html>
