@@ -64,9 +64,9 @@
 				<a href="/board/beforeReplyBoard/${board.bOrder }&${board.bGroup }&${board.bDepth }">답글</a>
 			</td>
 		</tr>
-		<c:if test="${not empty board.filePath}"><tr><td><img src="/file/${board.filePath }"></td></tr></c:if>
+		<c:if test="${not empty board.filePath}"><tr><td><img src="http://43.202.26.177/home/ec2-user/src/main/resources/static/file/${board.filePath }"></td></tr></c:if>
 	</table>
-			<c:if test="${not empty board.filePath}"><br><a href="/file/${board.filePath }">다운로드</a></c:if>
+			<c:if test="${not empty board.filePath}"><br><a href="http://43.202.26.177/home/ec2-user/src/main/resources/static/file/${board.filePath }">다운로드</a></c:if>
 	
 <!-- 댓글코멘트 -->	
 	<ul id="commentList">
