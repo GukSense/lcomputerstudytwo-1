@@ -264,26 +264,11 @@ a:hover{
               		<div>
 	              		Save<input id="remember_me" name="remember-me" style="margin:3px;" type="checkbox"/> 
               		</div>
-    	          <a href="#">Forgot Password?</a>
+    	          <a href="/beforeSignUp">Sign up</a>
               </div>
               <input type="submit" class="btn" value="Login">
             </form>
         </div>
-    </div>
-		<h1 class="h3 mb-3 fw-normal">로그인</h1>
-			<form action="/loginPro" method="post">
-				<input type="hidden" name="${_csrf.parameterName }" value="${csrf.token }">
-				<div class="form-floating">
-					<input type="text" name="username" placeholder="id를 입력해주세요.">
-				</div>
-				 <div class="form-floating">
-					<input type="password" name="password" placeholder="password를 입력해주세요.">
-				</div>
-				<div class="checkbox mb-3">
-					<input id="remember_me" name="remember-me" type="checkbox"/> Remember me
-				 </div>
-				<button type="submit" class="w-100 btn btn-lg btn-primary">로그인</button>
-			</form>	
-	
+    </div>			
 </body>
 </html>
