@@ -5,127 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-	<style>
-	a {
-		text-decoration: none; /* 링크의 밑줄 제거 */
-  		color: #222222; /* 링크의 색상 제거 */
-  		font-weight:13px;
-	}
-	table {
-		border-collapse:collapse;
-		margin:40px auto;
-		margin-top:0px;
-	}
-	
-	table tr th, table tr td {
-		border:1px solid #818181;
-		width:200px;
-		text-align:center;
-	}
-	.td_title {
-		width:800px;
-	    text-align:left;
-	    text-indent:10px;
-  		overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
-	}
-	.fl_search{
-		height: 40px;
-		width: 460px;
-		bachground: #ffffff;
-		display:flex;
-		
-	}
-	.fr {
-		height: 40px;
-		border: 1px solid #1b5ac2;
-		background: #ffffff;
-	}
-	.select_t {
-		color:#ffffff;
-		background:#1b5ac2;
-		border: 1px solid #1b5ac2;
-		outline:none;
-	}
-	.i_search {
-		font-size: 16px;
-		width: 325px;
-		padding: 10px;
-		border: 0px;
-		outline:none;
-		float:left;
-	}
-	.s_button, .written{
-		width:50px;
-		height:100%;
-		border:0px;
-		background:#1b5ac2;
-		outline: none;
-		float: right;
-		color: #ffffff;
-	}
-	.select {
-		height: 40px;
-		width: 462px;
-		border: 1px solid #1b5ac2;
-		background:#1b5ac2;
-		display:flex;
-	}
-	.fr {
-		float:right;
-		
-	}
-	.btm {
-		display:flex;
-		justify-content: space-between;
-		clear:both;
-	}
-	ul {	<!-- 페이지네이션 css-->
-		width:450px;
-		height:50px;
-		margin:10px auto;
-		display: table;
-  		margin-left: auto;
- 		margin-right: auto;
-					
-	}
-	li {	<!-- 페이지네이션 css-->
-		list-style:none;
-		width:50px;
-		line-height:50px;
-		border:1px solid #ededed;
-		float:left;
-		margin:0 5px;
-		border-radius:5px;
-		display:inline;
-		background:#1b5ac2;
-		color:#ffffff;
-		text-align:center;
-	}
-	
-	.tab_menu{
-		display:flex;
-		justify-content:row;
-		height:45px;
-		background:#1b5ac2;
-	}
-	.tab_menu li {
-		padding-right:15px;
-		padding-left:15px;
-		border:none;
-		line-height:45px;	
-	}
-	.logo {
-		text-align:center;
-	}
-	.administratorBtn, .retrunBtn, .manageBtn, .loginBtn, .logoutBtn{
-		border: none;
-		background:#ffffff;
-		outline: none;
-		float: right;
-		color: #1b5ac2;
-	}
-</style>
+<link rel ="stylesheet" type="text/css" href="/css/table.css">
 <meta charset="EUC-KR">
 <title>boardList</title>
 </head>
@@ -143,42 +23,53 @@
 	</sec:authorize>	
 	<!--  로고 이미지 -->
 	<div class="logo">
-		<a href="/board/boardList"><img src="/img/logo.jpg" alt="" style="width:150px; height:70px;"></a>
-		<a href="/board/boardList"><img src="/img/logo_title.jpg" alt="" style="width:400px; height:70px;"></a>
-		<a href="/survey/surveyList"><img src="/img/survey.png" style="border-radius:40px width:40px height:40px;height: 70px;"></a>
+		<a href="/board/boardList"><img src="/img/L_logo-removebg-preview.png" alt="" style="width:150px; height:70px;"></a>		
+		<h1> Academy</h1>
+		<a href="/survey/surveyList"><img src="/img/survey.png" style="border-radius:40px width:40px height:40px;height: 70px; padding-left:15px;"></a>
 	</div>
-	<table>
-	<tr>
-		<td colspan="5" style="border:none; padding:10px 0px;">
-			<ul class ="tab_menu">
-				<li><a href="/board/boardList?category=lcomputer" style="color:#ffffff;">lcomputer</a></li>
-				<li><a href="/board/boardList?category=개발" style="color:#ffffff;">개발</a></li>
-				<li><a href="/board/boardList?category=일상" style="color:#ffffff;">일상</a></li>
-				<li><a href="/board/boardList?category=질문" style="color:#ffffff;">질문</a></li>
-			</ul>
-		</td>
-	</tr>
-		<tr style="background:#1b5ac2; color=#ffffff;">
-			<th>탭</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일시</th>
-			<th>조회수</th>
-		</tr>
-		<c:forEach items="${list}" var="board">
-			<tr>
-				<td>${board.bCategory}</td>				
-				<td class= "td_title">
-					<a href="/board/viewBoard/${ board.bIdx}">
-						${board.bTitle}				
-					</a></td>
-				<td>${board.bWriter} </td>
-				<td>${board.bDateTime }</td>
-				<td>${board.bHits }</td>
-			</tr>
-		</c:forEach>
-		<tr>
-			<td colspan="5" style="border:none; padding:10px 0px;" >
+	<section>
+		<div class="tbl-header">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<thead>
+					<tr>
+						<td colspan="5" style="border:none; padding:10px 0px;">
+							<ul class ="tab_menu">
+								<li><a href="/board/boardList?category=lcomputer" style="color:#ffffff;">lcomputer</a></li>
+								<li><a href="/board/boardList?category=개발" style="color:#ffffff;">개발</a></li>
+								<li><a href="/board/boardList?category=일상" style="color:#ffffff;">일상</a></li>
+								<li><a href="/board/boardList?category=질문" style="color:#ffffff;">질문</a></li>
+							</ul>
+						</td>
+					</tr>					
+					<tr>
+						<th>탭</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일시</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+			</table>			
+		</div>
+		<div class="tbi-content">
+			 <table cellpadding="0" cellspacing="0" border="0">
+			 	<tbody>
+					<c:forEach items="${list}" var="board">
+				 		<tr>
+							<td>${board.bCategory}</td>				
+							<td class= "td_title">
+								<a href="/board/viewBoard/${ board.bIdx}">
+									${board.bTitle}				
+								</a></td>
+							<td>${board.bWriter} </td>
+							<td>${board.bDateTime }</td>
+							<td>${board.bHits }</td>				 		
+				 		</tr>
+					</c:forEach>
+			 	</tbody>
+			 </table>
+		</div>
+	</section>
 		<div class="btm">
 		<!-- 검색 -->
 			<div class="fl_search">
@@ -203,8 +94,7 @@
 			</sec:authorize>	
 			
 		</div>
-		</tr>
-	</table>
+		
 <!-- 페이지네이션 -->
 
 <!--페이지네이션-->
