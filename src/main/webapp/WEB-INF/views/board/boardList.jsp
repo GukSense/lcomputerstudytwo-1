@@ -34,10 +34,10 @@
 					<tr>
 						<td colspan="5" style="border:none; padding:10px 0px;">
 							<ul class ="tab_menu">
-								<li><a href="/board/boardList?category=lcomputer" style="color:#ffffff;">lcomputer</a></li>
-								<li><a href="/board/boardList?category=개발" style="color:#ffffff;">개발</a></li>
-								<li><a href="/board/boardList?category=일상" style="color:#ffffff;">일상</a></li>
-								<li><a href="/board/boardList?category=질문" style="color:#ffffff;">질문</a></li>
+								<li class="tab_li"><a href="/board/boardList?category=lcomputer" style="color:#ffffff;">lcomputer</a></li>
+								<li class="tab_li"><a href="/board/boardList?category=개발" style="color:#ffffff;">개발</a></li>
+								<li class="tab_li"><a href="/board/boardList?category=일상" style="color:#ffffff;">일상</a></li>
+								<li class="tab_li"><a href="/board/boardList?category=질문" style="color:#ffffff;">질문</a></li>
 							</ul>
 						</td>
 					</tr>					
