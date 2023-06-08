@@ -102,7 +102,7 @@
 		<ul>
 			<c:choose>
 				<c:when test="${pagination.startPage > 5}">
-					<li>
+					<li class="pagination">
 						<a href="/board/boardList?page=${pagination.prevPage }">
 							◀
 						</a>
@@ -113,12 +113,12 @@
 				<c:choose>
 					<c:when test="${ pagination.page == i}">
 						
-						<li style="background-color:#ededed; color:black;">
+						<li class="pagination" style="background-color:#ededed; color:black;">
 							<span>${i}</span>
 						</li>
 					</c:when>
 					<c:when test="${pagination.page != i }">
-						<li>
+						<li class="pagination">
 							<a href="/board/boardList?page=${i}">${i}</a>
 						</li>
 					</c:when>				
@@ -126,7 +126,7 @@
 			</c:forEach>
 			<c:choose>
 				<c:when test="${ pagination.nextPage < pagination.lastPage }">
-					<li style="display:inlien;">
+					<li class="pagination" style="display:inlien;">
 						<a href ="/board/boardList?page=${pagination.nextPage }">▶</a>
 					</li>
 				</c:when>

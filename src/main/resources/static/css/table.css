@@ -133,7 +133,7 @@ section{
  		margin-right: auto;
 					
 	}
-	li {	/* 페이지네이션 css*/
+	.pagination {	/* 페이지네이션 css*/
 		list-style:none;
 		width:50px;
 		line-height:50px;
