@@ -93,6 +93,7 @@ public class BoardController {
 		System.out.println(board.getbIdx() + "  " + board.getbGroup() + "  " + board.getbDepth() + "  " + board.getbOrder() );
 		board.setbOrder(board.getbOrder() + 1);
 		boardService.replyBoard(board, file); 
+		
 		return "redirect:/board/boardList";
 	}
 	@RequestMapping("/board/beforeEditBoard/{bIdx}")
