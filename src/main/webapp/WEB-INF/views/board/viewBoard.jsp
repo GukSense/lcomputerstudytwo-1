@@ -15,7 +15,7 @@ section > #commentList > li {
 	border-bottom:1px solid rgba(255,255,255,0.5);
 	list-style:none;
 	line-height:25px;
-	padding:10px;
+	padding:10px;	
 }
 section > #commentList {	
 	width:100%;	

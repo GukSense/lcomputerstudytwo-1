@@ -24,7 +24,7 @@
 	<!--  로고 이미지 -->
 	<div class="logo">
 		<a href="/board/boardList"><img src="/img/L_logo-removebg-preview.png" alt="" style="width:150px; height:70px;"></a>		
-		<h1> Academy</h1>
+		<h1> Academy </h1>
 		<a href="/survey/surveyList"><img src="/img/survey.png" style="border-radius:40px width:40px height:40px;height: 70px; padding-left:15px;"></a>
 	</div>
 	<section>
@@ -58,9 +58,13 @@
 				 		<tr>
 							<td>${board.bCategory}</td>				
 							<td class= "td_title">
-								<a href="/board/viewBoard/${ board.bIdx}">
-									${board.bTitle}				
-								</a></td>
+								<c:if test="${board.bDepth > 0}">
+  									<c:forEach var="i" begin="1" end="${board.bDepth}">
+    									<img src="/img/reply_ico.png" alt="" style="width:15px; height:15px;">
+  									</c:forEach>
+								</c:if>							
+								<a href="/board/viewBoard/${ board.bIdx}">${board.bTitle}</a>
+							</td>
 							<td>${board.bWriter} </td>
 							<td>${board.bDateTime }</td>
 							<td>${board.bHits }</td>				 		
