@@ -15,8 +15,7 @@
 	}
 	.wrap {
 	    position: static;
-	    margin: auto;
-	    
+	    margin: auto;	    
 	    height: auto;
 	    overflow: hidden;
 	}
@@ -79,8 +78,7 @@
 	}
 </style>
 </head>
-<body>
-	<h1> 회원</h1>
+<body>	
 	<div class="wrap">                
                 <div class="user">                    
                     <div class="logo">
@@ -111,8 +109,8 @@
                           </div>                      							
                         </div>                                                                        
                 </div>				
-								<a href="/board/boardList">게시판 돌아가기</a>									
             </div>				
+								<a href="/board/boardList" style="color:black;">게시판 돌아가기</a>									
 <!--  아래부터 Pagination -->	
 				
 					<ul class="pagi_ul">
