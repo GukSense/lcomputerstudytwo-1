@@ -26,7 +26,10 @@
 	}
 	.head > .menu > a {
 		color:#555;
-	} 
+	}
+	.menu > a {
+		padding-right: 15px;
+	}  
 </style>
 
 </head>
@@ -37,28 +40,24 @@
 			<h1 style="padding-top: 30px;">Academy</h1>
 		</div>	
 		<div class="menu">
-	       	<sec:authorize access="isAnonymous()">
-	           <a href="/login" style="padding-right: 15px;">로그인 </a>
-	           <a href="/beforeSignUp" style="padding-right: 15px;">회원가입 </a>
-	           <a href="/board/boardList" style="padding-right: 15px;">게시판 </a>	   
+	       	<sec:authorize access="isAnonymous()">	<!-- 비 로그인 시 -->
+	           <a href="/beforeSignUp">회원가입 </a>
+	           <a href="/board/boardList">게시판 </a>	   
+	           <a href="/login">로그인 </a>
 	       	</sec:authorize>
+		    <sec:authorize access="isAuthenticated()">	<!--  로그인 중일 시 -->
+        		<!--
+        			<sec:authentication property="principal" var="principal"/>
+		        	<h2>${principal }</h2>
+		        -->
+	        	<a href="/user/info">내 정보</a>
+	        	<a href="/admin">관리자</a>
+	        	<a href="/board/boardList">게시판</a>	        	
+       			<a href="/logout">로그아웃</a>
+		    </sec:authorize>		    					
 		</div>
 	</nav>
 	<img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/wave.png">      				        
-		        <ul>
-		        	<sec:authorize access="isAuthenticated()">
-		        		<li><a href="/logout">로그아웃</a></li>
-		        		<li><sec:authentication property="principal" var="principal"/></li>
-		        		<li><h2>${principal }</h2></li>
-		        	</sec:authorize>
-		        </ul>
-		        
-		        <div>
-			        <sec:authorize access="isAuthenticated()">
-			        	<a href="/user/info">내 정보</a>
-			        	<a href="/admin">관리자</a>
-			        	<a href="/board/boardList">게시판</a>	        	
-			        </sec:authorize>
-		        </div>
+		
 </body>
 </html>
