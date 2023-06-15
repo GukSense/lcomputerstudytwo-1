@@ -37,7 +37,7 @@ public class BoardServiceImpl implements BoardService{
 		 /*빈 껍데기 생성*/
         /*File을 생성할건데, 이름은 "fileName" 으로할거고, Path 라는 경로에 담긴다는 뜻*/
 		File savaFile = new File(path, fileName);
-		if(file.getOriginalFilename()!= null) {
+		if(file.getOriginalFilename()!= "") {
 			file.transferTo(savaFile);
 			/*디비에 파일 넣기*/
 			board.setFileName(fileName);
