@@ -84,7 +84,7 @@
 							<option value="b_content">내용</option>
 							<option value="b_writer">작성자</option>
 						</select>
-					
+						<input type="hidden" value="${pagination.search.category }" name="category">
 						<input type="text" class="i_search" placeholder="검색어 입력" name="keyword">	
 						<button class="s_button">검색</button>
 					</span>
@@ -115,16 +115,22 @@
 			</c:choose>
 			<c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 				<c:choose>
-					<c:when test="${ pagination.page == i}">
-						
+					<c:when test="${ pagination.page == i}">						
 						<li class="pagination" style="background-color:#ededed; color:black;">
 							<span>${i}</span>
 						</li>
 					</c:when>
 					<c:when test="${pagination.page != i }">
-						<li class="pagination">
-							<a href="/board/boardList?page=${i}">${i}</a>
-						</li>
+						<c:choose>
+							<c:when test="">
+								<li class="pagination">
+									<a href="/board/boardList?page=${i}">${i}</a>
+								</li>						
+							</c:when>
+							<c:when test="">
+								
+							</c:when>
+						</c:choose>
 					</c:when>				
 				</c:choose>
 			</c:forEach>

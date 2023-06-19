@@ -31,18 +31,21 @@ public class BoardController {
 	public String boardList(Model model, Pagination pagination, Search search) {
 		
 		System.out.println(search);
-		int boardCount = boardService.countBoard();
-		System.out.println("보드카운트: "+boardCount);
 		
 		Pagination pagi = new Pagination();
 		pagi.setSearch(search);
 		System.out.println("카테고리: " + pagi.getSearch().getCategory());
 		System.out.println("타겟: " + pagi.getSearch().getTarget() + " 키워드: " + pagi.getSearch().getKeyword() );
+		int boardCount = boardService.countBoard(pagi);
+		System.out.println("보드카운트: "+boardCount);
 		pagi.setCount(boardCount);
 		pagi.setPage(pagination.getPage());
 		pagi.init();
-		//pagi.setSearch(search);
+		
+		
 		List<Board> list = boardService.selectBoardList(pagi);
+		
+		
 		model.addAttribute("list", list);
 		model.addAttribute("pagination", pagi);
 		return "/board/boardList";

@@ -20,7 +20,7 @@ public interface BoardService /*extends UserDetailsService*/{
 	
 	public void editBoard(Board board, MultipartFile file);		// 수정
 	
-	public int countBoard();				// 카운트
+	public int countBoard(Pagination pagination);				// 카운트
 }
 
 	

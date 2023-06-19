@@ -26,6 +26,6 @@ public interface BoardMapper {
 	//수정
 	public void editBoard(Board board);
 	//게시판 카운트
-	public int countBoard();
+	public int countBoard(Pagination pagination);
 }
 

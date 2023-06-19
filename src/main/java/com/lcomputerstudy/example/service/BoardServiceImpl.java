@@ -76,7 +76,7 @@ public class BoardServiceImpl implements BoardService{
 		boardmapper.editBoard(board);
 	}
 	@Override
-	public int countBoard() {
-		return boardmapper.countBoard();
+	public int countBoard(Pagination pagination) {
+		return boardmapper.countBoard(pagination);
 	}
 }
