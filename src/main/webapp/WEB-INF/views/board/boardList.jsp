@@ -121,16 +121,14 @@
 						</li>
 					</c:when>
 					<c:when test="${pagination.page != i }">
-						<c:choose>
-							<c:when test="">
+						
+							
 								<li class="pagination">
 									<a href="/board/boardList?page=${i}">${i}</a>
 								</li>						
-							</c:when>
-							<c:when test="">
-								
-							</c:when>
-						</c:choose>
+							
+						
+						
 					</c:when>				
 				</c:choose>
 			</c:forEach>
