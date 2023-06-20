@@ -32,7 +32,7 @@
                             <input type="submit" class="button" value="가입하기">
                           </form>
                           <div class="help-action">
-                            <p><i class="fa fa-arrow-left" aria-hidden="true"></i><a class="forgot" href="/login">Remind your password?</a></p>
+                            <p></p>
                           </div>
                         </div>                                                  
                       </div>
