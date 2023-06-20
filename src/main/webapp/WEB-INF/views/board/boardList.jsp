@@ -24,7 +24,7 @@
 	<!--  로고 이미지 -->
 	<div class="logo">
 		<a href="/board/boardList"><img src="/img/L_logo-removebg-preview.png" alt="" style="width:150px; height:70px;"></a>		
-		<h1> Academy </h1>
+		<h1>Academy</h1>
 		<a href="/survey/surveyList"><img src="/img/survey.png" style="border-radius:40px width:40px height:40px;height: 70px; padding-left:15px;"></a>
 	</div>
 	<section>
@@ -84,7 +84,9 @@
 							<option value="b_content">내용</option>
 							<option value="b_writer">작성자</option>
 						</select>
-						<input type="hidden" value="${pagination.search.category }" name="category">
+						<c:if test="${not empty pagination.search.category }">
+							<input type="hidden" value="${pagination.search.category }" name="category">
+						</c:if>
 						<input type="text" class="i_search" placeholder="검색어 입력" name="keyword">	
 						<button class="s_button">검색</button>
 					</span>
@@ -121,14 +123,28 @@
 						</li>
 					</c:when>
 					<c:when test="${pagination.page != i }">
-						
-							
+						<c:choose>
+							<c:when test="${empty pagination.search.category && empty pagination.search.keyword}">
 								<li class="pagination">
 									<a href="/board/boardList?page=${i}">${i}</a>
-								</li>						
-							
-						
-						
+								</li>
+							</c:when>
+							<c:when test="${empty pagination.search.keyword}">
+								<li class="pagination">
+									<a href="/board/boardList?category=${pagination.search.category}&page=${i}">${i}</a>									
+								</li>
+							</c:when>
+							<c:when test="${empty pagination.search.category}">
+								<li class="pagination">
+									<a href="/board/boardList?target=${pagination.search.target}&keyword=${pagination.search.keyword}&page=${i}">${i}</a>									
+								</li>
+							</c:when>
+							<c:when test="${not empty pagination.search.category && not empty pagination.search.keyword}">
+								<li class="pagination">
+									<a href="/board/boardList?target=${pagination.search.target}&category=${pagination.search.category}&keyword=${pagination.search.keyword}&page=${i}">${i}</a>									
+								</li>
+							</c:when>																										
+						</c:choose>													
 					</c:when>				
 				</c:choose>
 			</c:forEach>
