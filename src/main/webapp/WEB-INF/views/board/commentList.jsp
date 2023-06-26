@@ -5,23 +5,37 @@
 <sec:authentication property="principal" var="principal"/>
 <c:forEach items="${list}" var="comment">		
 	<li>
+			<c:if test="${comment.cDepth > 0}">
+				<c:forEach var="i" begin="1" end="${comment.cDepth}">
+						<img src="/img/reply_ico.png" alt="" style="width:15px; height:15px;">
+				</c:forEach>
+			</c:if>
 			<div>				
 				<a>${comment.cName }</a>
-				<span>시간: ~전</span>
+				<span>날짜: ${comment.cDateTime }</span>
 			</div>
 				<div class="cont">${comment.cContent }</div>
 			<div>
 				<br>
 				<span></span>
 				<input type="hidden" name=cBidx value="${board.bIdx }">
-				<input type="hidden" name="cIdx" value="${comment.cIdx }">
-				<sec:authorize access="isAuthenticated()">
-					<c:if test="${principal.username == comment.cId}">
-						<button type="button" class="btnUpdateForm">수정</button>
-						<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
-					</c:if>
+				<input type="hidden" name="cIdx" value="${comment.cIdx }">				
+					<sec:authorize access="isAuthenticated()">		<!-- 댓글의 수정 삭제는 글작성자 이거나 관리자일때만 보이게설정 -->
+						<c:choose>
+							<c:when test="${principal.username == comment.cId}">	<!-- 관리자o && 작성자o -->
+								<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
+									<button type="button" class="btnUpdateForm">수정</button>
+									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+								</sec:authorize>		
+							</c:when>
+							<c:when test="${principal.username != comment.cId}">	<!-- 관리자o && 작성자x -->													
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
+								</sec:authorize>					
+							</c:when>							
+						</c:choose>						
+					</sec:authorize>
 				<button type="button" class="btnReplyForm">답글</button>
-				</sec:authorize>
 			</div>
 		</li>
 		<li style="display: none;">

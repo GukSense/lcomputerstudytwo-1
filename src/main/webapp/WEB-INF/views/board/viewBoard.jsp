@@ -35,9 +35,10 @@ section > #commentList {
     </sec:authorize>
     <!-- 로그아웃 기능 -->
     <sec:authorize access="isAuthenticated()">
+    	
 		<a href="/logout" style="color:#1b5ac2; float: right; padding-right:10px;">로그아웃</a>
 	</sec:authorize>
-	<br><h1>view The Board</h1>
+	<br><h1>view The Board </h1>
 	<sec:authentication property="principal" var="principal"/>
 	<section>
 		<div class="tbl-header">
@@ -56,7 +57,7 @@ section > #commentList {
 				<td>날짜: ${board.bDateTime }	조회수: ${board.bHits }	작성자: ${board.bWriter }</td>
 			</tr>
 			<tr>
-				<td>
+				<td style="float:left;">
 					<h1>${board.bContent}</h1> 
 					<c:if test="${not empty board.filePath}"><img src="http://43.202.26.177/home/ec2-user/src/main/resources/static/file/${board.filePath }"></c:if>
 				</td>			
@@ -77,8 +78,8 @@ section > #commentList {
 									</sec:authorize>					
 								</c:when>
 							</c:choose>						
-					</sec:authorize>		
 					<a href="/board/beforeReplyBoard/${board.bOrder }&${board.bGroup }&${board.bDepth }">답글</a>
+					</sec:authorize>		
 				</td>
 			</tr>
 			</tbody>
@@ -92,9 +93,14 @@ section > #commentList {
 	<ul id="commentList">
 		<c:forEach items="${list}" var="comment">		
 		<li>
+			<c:if test="${comment.cDepth > 0}">
+				<c:forEach var="i" begin="1" end="${comment.cDepth}">
+						<img src="/img/reply_ico.png" alt="" style="width:15px; height:15px;">
+				</c:forEach>
+			</c:if>	
 			<div>				
 				<a>${comment.cName }</a>
-				<span>시간: ~전</span>
+				<span>날짜: ${comment.cDateTime }</span>
 			</div>
 				<div class="cont">${comment.cContent }</div>
 			<div>
@@ -105,7 +111,7 @@ section > #commentList {
 					<sec:authorize access="isAuthenticated()">		<!-- 댓글의 수정 삭제는 글작성자 이거나 관리자일때만 보이게설정 -->
 						<c:choose>
 							<c:when test="${principal.username == comment.cId}">	<!-- 관리자o && 작성자o -->
-								<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
 									<button type="button" class="btnUpdateForm">수정</button>
 									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
 								</sec:authorize>		
@@ -114,7 +120,7 @@ section > #commentList {
 								<sec:authorize access="hasRole('ROLE_ADMIN')">
 									<button type="button" class="btnDelete" cDelteCidx="${comment.cIdx }" cDeleteBidx="${comment.cBidx }">삭제</button>
 								</sec:authorize>					
-							</c:when>
+							</c:when>							
 						</c:choose>						
 					</sec:authorize>
 				<button type="button" class="btnReplyForm">답글</button>
