@@ -6,10 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<title>view The Board</title>
-<link rel ="stylesheet" type="text/css" href="/css/table.css">
+	<meta charset="EUC-KR">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<title>view The Board</title>
+	<link rel ="stylesheet" type="text/css" href="/css/table.css">
 <style>
 section > #commentList > li {
 	border-bottom:1px solid rgba(255,255,255,0.5);
@@ -93,7 +93,7 @@ section > #commentList {
 	<ul id="commentList">
 		<c:forEach items="${list}" var="comment">		
 		<li>
-			<c:if test="${comment.cDepth > 0}">
+			<c:if test="${comment.cDepth > 0}">	<!-- 답글추가시 생성되는 이미지 -->
 				<c:forEach var="i" begin="1" end="${comment.cDepth}">
 						<img src="/img/reply_ico.png" alt="" style="width:15px; height:15px;">
 				</c:forEach>

@@ -40,7 +40,7 @@ public class BoardController {
 		System.out.println("보드카운트: "+boardCount);
 		pagi.setCount(boardCount);
 		pagi.setPage(pagination.getPage());
-		pagi.init();
+		pagi.init();	
 		
 		
 		List<Board> list = boardService.selectBoardList(pagi);

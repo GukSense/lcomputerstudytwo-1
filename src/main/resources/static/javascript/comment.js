@@ -9,7 +9,7 @@ $(document).on('click','#submit',function(){
 			url:  "/comment/writeComment",
 			data: {
 				cBidx: cBidx,
-				cContent: cContent				
+				cContent: cContent												
 			},
 			success: function(response) {
 				console.log(response);
