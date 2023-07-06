@@ -20,7 +20,8 @@
   - SpringFramework 2.7.7
 
 ## 3.ERD 설계 
-![](Spring MVC Board](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/b17018e9-d9b6-4c6d-9298-2b57dc39a76d)
+
+![Spring MVC Board](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/d19531b9-749b-4094-8c19-512f16bce715)
 
 ## 4.핵심기능
 
