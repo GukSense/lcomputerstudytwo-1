@@ -31,4 +31,5 @@
 
 ### 전체 흐름
 ![설계도](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/9da8b872-b5b1-4c64-860e-a41070b6c41c)
-
+</div>
+</details>
