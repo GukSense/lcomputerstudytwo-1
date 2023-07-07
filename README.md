@@ -58,13 +58,14 @@
 <details>
 <summary> 로그아웃 시 index.html 로 리다이렉트 되는 문제 </summary>
 <div markdown="1">
-  - SecurityConfig에 configure 메서드에 logoutSucceHandelr 로 request.getHeader 을 redirect 시키는방법으로 해 
-   ```
+	
+```
   .logoutSuccessHandler((request, response, authentication) -> {
 	             String refererUrl = request.getHeader("Referer");
 	             response.sendRedirect(refererUrl);
 	         })
-    ```
+```
+- SecurityConfig에 configure 메서드에 logoutSucceHandelr 로 request.getHeader 을 redirect 시키는방법으로 해결
 </div>
 </details> 
 <details>
