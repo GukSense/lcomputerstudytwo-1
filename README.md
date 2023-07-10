@@ -89,7 +89,7 @@
 </details> 
 
 <details>
-<summary>aws 게시글 작성 시 yyyy-mm-dd 형식으로만 출력되는 문제   </summary>
+<summary> 게시글 작성 시 yyyy-mm-dd 형식으로만 출력되는 문제   </summary>
 <div markdown="1">
 	
 ```
