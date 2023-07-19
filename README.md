@@ -164,7 +164,7 @@
 ### 댓글은 게시글과 마찬가지로 답글, 삭제, 수정 기능이 있으며 ajax 를 통한 비동기방식으로 데이터가 처리 되도록 구현하였습니다.
 댓글예시
 <br>
-![Read(코멘트)](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/e62bbab3-b0ce-4e09-a23d-870ec91d8413)
+![답글 후 댓글](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/b5afe6f3-515f-451e-a3bf-3f63f01d5947)
 <br>
 수정 버튼 클릭 시 화면
 <br>
@@ -178,8 +178,19 @@
 </details> 
 
 <details>
-<summary> 댓글 </summary>
+<summary> 권한 </summary>
 <div markdown="1">
+
+### 권한 설정은 작성자는 삭제만 가능하게, 작성자는 삭제, 수정만 가능하도록 구현하였습니다
+
+작성자일시 수정 삭제 답글만 가능하다.
+<br>
+![권한처리](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/4078217f-cb5a-4ff2-921f-e5a08755e201)
+<br>
+관리자는 삭제, 답글만 가능하다.
+<br>
+![권한처리](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/ddd02838-a36f-45fe-94de-0560246379a1)
+<br>
 </div> 
 </details> 
 
