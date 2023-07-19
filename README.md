@@ -127,10 +127,12 @@
 </div>
 </details>
  
-## 문제와해결
+## ::pushpin: 문제와해결
+### 가장기억에 남던 문제
 - 사용자가 게시판을 이용할때 본인이 원하는 정보만 필터해서 보길 원할 경우가 분명 있을거라고 생각하여 탭 별로 정렬 할 수 있도록 바꾸었습니다.
  - 그러나 단순 쿼리문에서 where category = '값' 만 통해서는 검색까지 동반 될 시 필터가 제대로 되지않는 것을 확인 mybatis 동적쿼리 if문을 통하여 새로 쿼리문을 작성해주었습니다.
  - [코드확인](https://github.com/GukSense/lcomputerstudytwo-1/blob/main/src/main/resources/mapper/BoardMapper.xml#L27)
+### 그밖의 문제들
 <details>
 <summary> 로그아웃 시 index.html 로 리다이렉트 되는 문제 </summary>
 <div markdown="1">
