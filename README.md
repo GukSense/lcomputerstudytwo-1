@@ -158,8 +158,22 @@
 </details> 
 
 <details>
-<summary> 읽기 </summary>
+<summary> 댓글 </summary>
 <div markdown="1">
+
+### 댓글은 게시글과 마찬가지로 답글, 삭제, 수정 기능이 있으며 ajax 를 통한 비동기방식으로 데이터가 처리 되도록 구현하였습니다.
+댓글예시
+<br>
+![Read(코멘트)](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/e62bbab3-b0ce-4e09-a23d-870ec91d8413)
+<br>
+수정 버튼 클릭 시 화면
+<br>
+![수정시화면](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/60caa388-eb18-4486-879a-f79f7919ee44)
+<br>
+수정 후 댓글
+<br>
+![수정 후 댓글](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/a77ca4c9-e212-4880-b72c-e859d98c5e26)
+
 </div> 
 </details> 
 
