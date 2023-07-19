@@ -52,16 +52,24 @@
 	
 </div>
 </details>
-## 5. 서비스 실행 모습
+
+## 서비스 실행 모습 
 <details>
-<summary><b>주요기능 서비스 실행 모습</b></summary>
+<summary><b>주요기능 서비스 실행 모습 보기기</b></summary>
 
 ### 회원가입 및 로그인 서비스 기능 
 <details>
-<summary> 로그인화면 </summary>
+<summary> 로그인 </summary>
 <div markdown="1">
- ![로그인화면](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/13e82af0-29bf-4793-a425-93a79ad8377c)
-- 비로그인 시 상태  	![비로그인시상태](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/ea8a8f56-147b-4bb8-9746-58014a9aecd6)
+
+### 로그인화면과 비 로그인 상태일때 화면 표시
+
+![로그인화면](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/fb79c701-78d7-458e-9c1c-87803be5b57c)
+
+ ![비로그인시상태](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/ea8a8f56-147b-4bb8-9746-58014a9aecd6)
+
+ ![로그인후 우측상단 메뉴](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/32687b6d-39c4-43c8-b032-bd9a0a60dbc0)
+
 
 </div>
 </details> 
