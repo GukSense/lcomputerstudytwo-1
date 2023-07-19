@@ -137,9 +137,24 @@
 
 
 <details>
-<summary> 쓰기 </summary>
+<summary> 쓰기와읽기 </summary>
 <div markdown="1">
+
+### 게시글 작성기능과 읽을 수 있는 기능을 구현 하였습니다.
+글쓰기버튼 클릭 시 화면
+<br>
+![게시글 작성](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/5c3712f2-7782-450f-8fa7-2480fe214c7c)
+<br>
+게시글 작성 후 갱신 리스트 모습
+<br>
+![작성후 게시판](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/86080cba-8e94-4def-9e96-502d6aa5515c)
+<br>
+게시글 클릭 후 읽기 기능 구현 시 모습
+<br>
+![게시판 읽기](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/701fa286-88e2-4bc6-9a80-1f0f443d6a26)
+<br>
 </div> 
+
 </details> 
 
 <details>
