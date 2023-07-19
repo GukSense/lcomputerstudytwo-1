@@ -63,17 +63,28 @@
 <div markdown="1">
 
 ### 로그인화면과 비 로그인 상태일때 화면 표시
+로그인 화면
+ ![로그인화면](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/fb79c701-78d7-458e-9c1c-87803be5b57c)	
 
-![로그인화면](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/fb79c701-78d7-458e-9c1c-87803be5b57c)
+ ![비로그인시상태](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/ea8a8f56-147b-4bb8-9746-58014a9aecd6)	비 로그인 일 시 우측화면 상단에 상태표시가 뜬다.
 
- ![비로그인시상태](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/ea8a8f56-147b-4bb8-9746-58014a9aecd6)
-
- ![로그인후 우측상단 메뉴](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/32687b6d-39c4-43c8-b032-bd9a0a60dbc0)
+ ![로그인후 우측상단 메뉴](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/32687b6d-39c4-43c8-b032-bd9a0a60dbc0)		로그인을 하면 상태가 바뀐다.
 
 
 </div>
 </details> 
 
+<summary> 회원가입 </summary>
+<div markdown="1">
+
+회원가입 화면
+![회원가입화면](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/fc053dc3-6208-43d9-a906-7b3fbca05273)
+![회원가입후 DB](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/f0f0a58f-a52f-4a75-a2ea-7c4e34dc2edd)
+
+회원가입을 하면 DB에 데이터가 저장이 된다.
+</div> 
+
+</details> 
 
 </div>
 </details>
