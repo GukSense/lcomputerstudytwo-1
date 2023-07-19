@@ -194,6 +194,37 @@
 </div> 
 </details> 
 
+### 설문조사
+
+<details>
+<summary> 작성과등록 </summary>
+<div markdown="1">
+
+### 설문조사를 작성하고 게시글에 올려 사람들이 투표 할 수 있게 구현하엿습니다.
+설문조사 작성 화면
+<br>
+![설문조사 작성기능](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/4c898ba1-a39c-4704-81ad-834b21901cb0)
+<br>
+작성 된 설문조사의 모습
+<br>
+![설문조사 추가 후 리스트](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/e12ecca2-20b7-4c46-8ff2-cacf718c293d)
+
+</div> 
+</details> 
+
+<details>
+<summary> 응답과 통계 </summary>
+<div markdown="1">
+
+### 작성된 설문조사에 투표를 하고 통계를 볼 수 있습니다.
+응답화면
+![ㄹㄹㄹ](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/71722f95-4322-4cb5-8adb-3e649b098f7f)<br>
+통계화면<br>
+![통계3](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/e7452fe9-5e71-47cb-9ba0-2a5565b24676)
+
+</div> 
+</details> 
+
 </div>
 </details>
  
