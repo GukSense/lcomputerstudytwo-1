@@ -51,11 +51,10 @@
 
 	<details>
 	<summary><b>주요기능 서비스 실행 모습</b></summary>
-	<div markdown="1">
- 		### 1.로그인 및 회원가입
-		### 2.게시판
-		### 3.설문조사
-	</div>
+		### 회원가입 및 로그인 서비스 기능 
+		
+ 			
+ 	</div>
 	</details>
 </div>
 </details>
