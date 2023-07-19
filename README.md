@@ -217,9 +217,15 @@
 <div markdown="1">
 
 ### 작성된 설문조사에 투표를 하고 통계를 볼 수 있습니다.
+
+<br>
 응답화면
-![ㄹㄹㄹ](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/71722f95-4322-4cb5-8adb-3e649b098f7f)<br>
-통계화면<br>
+<br>
+
+![ㄹㄹㄹ](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/71722f95-4322-4cb5-8adb-3e649b098f7f)
+<br>
+통계화면
+<br>
 ![통계3](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/e7452fe9-5e71-47cb-9ba0-2a5565b24676)
 
 </div> 
