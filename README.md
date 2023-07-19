@@ -91,13 +91,22 @@
 <details>
 <summary> 리스트 </summary>
 <div markdown="1">
+
+### 게시판 리스트의 모습 - 제목, 작성자 조회수 작성 카테고리등을 볼 수 있다.
+![게시판리스트](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/cfba5d08-19df-404c-a967-504e8358c590)
+
 </div> 
 </details> 
 
 <details>
 <summary> 답글 </summary>
 <div markdown="1">
+
+### 답글은 답글 지정글 바로밑에 최신순으로 작성되게 구현 하였으며, 답글일 경우 화살표 이미지가 생성되게 하였다. 답글의 답글 일때 마다 n개 씩 늘어나도록 구현
+
+ ![답글저장](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/2ce88ef0-8d30-41e7-b9f6-b88383a1a860)
 </div> 
+
 </details> 
 
 <details>
