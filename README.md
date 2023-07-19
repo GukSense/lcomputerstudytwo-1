@@ -74,6 +74,7 @@
 </div>
 </details> 
 
+<details>
 <summary> 회원가입 </summary>
 <div markdown="1">
 
@@ -83,8 +84,9 @@
 
 회원가입을 하면 DB에 데이터가 저장이 된다.
 </div> 
-
 </details> 
+
+
 
 </div>
 </details>
