@@ -112,8 +112,21 @@
 <details>
 <summary> 검색 </summary>
 <div markdown="1">
+
+### 검색은 제목, 내용, 작성자 별로 검색 할 수 있도록 구현 하였고, 정렬이 된 상태일 시 정렬이 유지된 채로 검색이 가능하도록 구현하였다.
+### 검색 시 페이지네이션도 그에 맞춰서 변 할 수있게 구현해주었다.
+
+(정렬하지않고)'테스트' 검색 시 화면
+![일반검색](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/2aa014b0-acda-4e9f-b3c2-fedbe1879818)
+(정렬 상태) '테스트' 검색 시 화면
+![탭정렬 후 검색](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/9e5871f2-e109-4aaa-8969-ea3fc64721ff)
+(정렬하지않고) 페이지네이션
+![검색만했을시 페이지네이션](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/d6e27bae-c419-4d18-a18e-97b69acca270)
+(정렬 상태) 페이지네이션
+![탭정렬 후 검색 후 페이지네이션](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/7fc3fff4-a8d8-4dbf-9e8f-84eac934c67b)
 </div> 
 </details>
+
 
 <details>
 <summary> 쓰기 </summary>
