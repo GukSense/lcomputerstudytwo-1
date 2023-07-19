@@ -233,7 +233,26 @@
 
 </div>
 </details>
+
+## 배포
+ <details>
+<summary> aws ec2를 통해 배포하는 경험을 해보았습니다. </summary>
+<div markdown="1">
+	
+putty 를 통해  서버에 접속하는 모습
+<br>
+ ![putty](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/113506f6-19ab-43d0-8e88-66dcbd41050c)
+ <br>
+ sudo java -jar 파일이름.war 명령어를 통해 프로젝트 파일 실행하여 접속
+ <br>
+ ![리눅스화면](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/b23a89fb-de30-45bb-bd0c-031df43f1438)
+ <br>
  
+ 
+
+
+</div>
+</details> 
 ## ::pushpin: 문제와해결
 ### 가장기억에 남던 문제
 - 사용자가 게시판을 이용할때 본인이 원하는 정보만 필터해서 보길 원할 경우가 분명 있을거라고 생각하여 탭 별로 정렬 할 수 있도록 바꾸었습니다.
