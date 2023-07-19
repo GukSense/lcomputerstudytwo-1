@@ -53,7 +53,7 @@
 </div>
 </details>
 
-## 서비스 실행 모습 
+## 5.서비스 실행 모습 
 <details>
 <summary><b>주요기능 서비스 실행 모습 보기기</b></summary>
 
@@ -78,15 +78,51 @@
 <summary> 회원가입 </summary>
 <div markdown="1">
 
-회원가입 화면
+### 회원가입 과 DB
 ![회원가입화면](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/fc053dc3-6208-43d9-a906-7b3fbca05273)
 ![회원가입후 DB](https://github.com/GukSense/lcomputerstudytwo-1/assets/101082667/f0f0a58f-a52f-4a75-a2ea-7c4e34dc2edd)
 
-회원가입을 하면 DB에 데이터가 저장이 된다.
+
 </div> 
 </details> 
 
+### 게시판 기능들
 
+<details>
+<summary> 리스트 </summary>
+<div markdown="1">
+</div> 
+</details> 
+
+<details>
+<summary> 답글 </summary>
+<div markdown="1">
+</div> 
+</details> 
+
+<details>
+<summary> 검색 </summary>
+<div markdown="1">
+</div> 
+</details>
+
+<details>
+<summary> 쓰기 </summary>
+<div markdown="1">
+</div> 
+</details> 
+
+<details>
+<summary> 읽기 </summary>
+<div markdown="1">
+</div> 
+</details> 
+
+<details>
+<summary> 댓글 </summary>
+<div markdown="1">
+</div> 
+</details> 
 
 </div>
 </details>
